@@ -1,0 +1,2316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="معهد أكتوبر العالي للهندسة والتكنولوجيا - مؤسسة تعليمية رائدة في مدينة 6 أكتوبر تقدم برامج هندسية وإدارية معتمدة">
+    <meta name="keywords" content="معهد أكتوبر, الهندسة, التكنولوجيا, إدارة الأعمال, التعليم العالي, مدينة 6 أكتوبر">
+    <title>معهد أكتوبر العالي للهندسة والتكنولوجيا</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="image.png.jpg">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #012b5b;
+            --primary-light: #0056b3;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --footer-dark: #001f3f;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --nav-glow: 0 0 15px rgba(1, 43, 91, 0.7);
+            --transition: all 0.3s ease;
+            --navbar-height: 80px;
+        }
+
+        /* الوضع الليلي */
+        [data-theme="dark"] {
+            --primary-color: #0a192f;
+            --primary-light: #172a45;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #64ffda;
+            --accent-green: #28a745;
+            --text-dark: #e6f1ff;
+            --text-light: #8892b0;
+            --bg-light: #112240;
+            --bg-white: #0a192f;
+            --footer-dark: #020c1b;
+        }
+
+        /* إعدادات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(1, 43, 91, 0.1);
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+
+        .loader-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--bg-light);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-circle:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-top-color: var(--secondary-color);
+            animation-direction: reverse;
+            animation-duration: 0.8s;
+        }
+
+        .loader-circle:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-top-color: var(--accent-color);
+            animation-duration: 0.6s;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 1rem 0;
+            box-shadow: var(--nav-glow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(1, 43, 91, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .logo:hover::before {
+            left: 100%;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 60px;
+            margin-left: 15px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            padding: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(252, 163, 17, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(252, 163, 17, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(252, 163, 17, 0); }
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.2;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+
+        .theme-toggle:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05) rotate(15deg);
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .lang-btn.active {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin: 0 5px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+
+        .nav-links i {
+            margin-left: 8px;
+        }
+
+        .fa-chevron-down {
+            font-size: 0.8rem;
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links li:hover .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-white);
+            min-width: 280px;
+            border-radius: var(--border-radius);
+            padding: 15px 0;
+            display: none;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(1, 43, 91, 0.2);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+        }
+
+        .nav-links li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 0 25px rgba(1, 43, 91, 0.3);
+        }
+
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dropdown a::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            width: 0;
+            height: 0;
+            transition: width 0.3s;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .dropdown a:hover::after {
+            width: 4px;
+            height: 70%;
+        }
+
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .dropdown a i {
+            margin-left: 10px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .dropdown a:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: var(--navbar-height);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff10" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        /* Animated Banner */
+        .animated-banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 50px 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover;
+            filter: brightness(0.7);
+            z-index: -2;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.8), rgba(252, 163, 17, 0.4));
+            z-index: -1;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 0 30px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .banner-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .banner-subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-title {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* Custom Buttons */
+        .btn-primary-custom {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(252, 163, 17, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-light);
+            box-shadow: 0 15px 35px rgba(252, 163, 17, 0.4);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Cards */
+        .about-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .about-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: var(--transition);
+        }
+
+        .about-card:hover .about-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* Vision & Mission Section */
+        .vision-mission {
+            background: var(--bg-light);
+        }
+
+        .vision-mission-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .vision-mission-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .vision-mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .vision-mission-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: var(--transition);
+        }
+
+        .vision-mission-card:hover .vision-mission-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* Program Cards */
+        .program-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-img-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-img {
+            transform: scale(1.1);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .program-body {
+            padding: 25px;
+        }
+
+        .program-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Admission Section */
+        .admission-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .admission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-green));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .admission-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .admission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .admission-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .admission-title i {
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .admission-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .admission-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed rgba(1, 43, 91, 0.1);
+            position: relative;
+            padding-right: 30px;
+            transition: var(--transition);
+        }
+
+        .admission-list li:hover {
+            padding-right: 35px;
+            color: var(--primary-color);
+        }
+
+        .admission-list li:last-child {
+            border-bottom: none;
+        }
+
+        .admission-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: var(--accent-green);
+            transition: var(--transition);
+        }
+
+        .admission-list li:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-info {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .contact-info:hover::before {
+            transform: translateX(0);
+        }
+
+        .contact-info:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info h3 i {
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            margin-left: 15px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .contact-info p:hover i {
+            transform: scale(1.2);
+            color: var(--secondary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.3rem;
+        }
+
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px) scale(1.1) rotate(15deg);
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px 30px;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-green));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .contact-form:hover::before {
+            transform: translateX(0);
+        }
+
+        .contact-form:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-form h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-form h3 i {
+            margin-left: 10px;
+            color: var(--accent-color);
+        }
+
+        .contact-form .form-control {
+            border-radius: 8px;
+            border: 1px solid rgba(1, 43, 91, 0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(1, 43, 91, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-dark);
+            color: white;
+            padding: 60px 0 20px;
+            transition: var(--transition);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 8px 8px 0;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--secondary-light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px) rotate(15deg);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            max-width: 400px;
+        }
+
+        .notification-toast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .notification-toast i {
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+
+        .notification-toast.success i {
+            color: var(--accent-green);
+        }
+
+        .notification-toast.error i {
+            color: #dc3545;
+        }
+
+        .notification-toast.info i {
+            color: var(--accent-color);
+        }
+
+        .notification-toast.warning i {
+            color: #ffc107;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .banner-title {
+                font-size: 2rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: var(--navbar-height);
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: calc(100vh - var(--navbar-height));
+                background: var(--primary-color);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition:all;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+                width: 100%;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 15px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: none;
+                border: none;
+                padding: 10px 0;
+                margin-top: 10px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown a {
+                color: var(--bg-white);
+                padding: 10px 15px;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+            
+            .hero-section {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .logo {
+                font-size: 1.1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .animated-banner {
+                height: 250px;
+                margin: 30px 0;
+            }
+            
+            .banner-title {
+                font-size: 1.8rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .about-card, .vision-mission-card, .program-card, .admission-card, .contact-info, .contact-form {
+                padding: 25px 20px;
+            }
+            
+            .social-icons {
+                gap: 10px;
+            }
+            
+            .social-icons a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .animated-banner {
+                height: 200px;
+            }
+            
+            .banner-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-theme {
+            background-color: #0a192f;
+            color: #e6f1ff;
+        }
+
+        body.dark-theme .navbar {
+            background: rgba(10, 25, 47, 0.95);
+        }
+
+        body.dark-theme .section {
+            background-color: #0a192f;
+        }
+
+        body.dark-theme .vision-mission {
+            background-color: #112240;
+        }
+
+        body.dark-theme .contact {
+            background-color: #112240;
+        }
+
+        body.dark-theme .about-card,
+        body.dark-theme .vision-mission-card,
+        body.dark-theme .program-card,
+        body.dark-theme .admission-card,
+        body.dark-theme .contact-info,
+        body.dark-theme .contact-form {
+            background-color: #112240;
+            color: #e6f1ff;
+        }
+
+        body.dark-theme .admission-list li {
+            border-bottom-color: #1a2f5a;
+        }
+
+        body.dark-theme .contact-form .form-control {
+            background-color: #0a192f;
+            border-color: #1a2f5a;
+            color: #e6f1ff;
+        }
+
+        body.dark-theme .newsletter-form input {
+            background-color: #0a192f;
+            color: #e6f1ff;
+        }
+
+        body.dark-theme .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* English Language Styles */
+        .lang-en {
+            direction: ltr;
+        }
+
+        .lang-en .navbar {
+            direction: ltr;
+        }
+
+        .lang-en .nav-container {
+            flex-direction: row;
+        }
+
+        .lang-en .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+
+        .lang-en .nav-links {
+            direction: ltr;
+        }
+
+        .lang-en .nav-links a i {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+
+        .lang-en .fa-chevron-down {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+
+        .lang-en .dropdown {
+            right: auto;
+            left: 0;
+        }
+
+        .lang-en .admission-list li {
+            padding-right: 0;
+            padding-left: 30px;
+        }
+
+        .lang-en .admission-list li::before {
+            right: auto;
+            left: 0;
+        }
+
+        .lang-en .contact-info i {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+
+        .lang-en .footer-links a:hover {
+            transform: translateX(5px);
+        }
+
+        .lang-en .mobile-menu-btn {
+            left: 20px;
+            right: auto;
+        }
+
+        .lang-en .nav-links {
+            right: auto;
+            left: -100%;
+        }
+
+        .lang-en .nav-links.active {
+            left: 0;
+        }
+
+        .lang-en .dropdown {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+
+        .lang-en .back-to-top {
+            left: auto;
+            right: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .lang-en .back-to-top {
+                right: 20px;
+                left: auto;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-container">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+        <div class="loader-text">جاري التحميل...</div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notification">
+        <i class="fas fa-info-circle"></i>
+        <span id="notification-message">Notification message</span>
+    </div>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <!-- Language Toggle -->
+            <div class="language-switcher">
+                <button class="lang-btn active" id="lang-ar" onclick="switchLanguage('ar')">
+                    <i class="fas fa-globe"></i> AR
+                </button>
+                <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">
+                    <i class="fas fa-globe"></i> EN
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="m4 - png.jpg" alt="October Institute Logo">
+                <div class="logo-text">
+                    <h3>معهد أكتوبر العالي للهندسة والتكنولوجيا</h3>
+                </div>
+            </a>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span class="nav-text" data-i18n="home">الصفحة الرئيسية</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span class="nav-text" data-i18n="engineering">كلية هندسة</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span class="nav-text" data-i18n="civil-engineering">هندسة مدني</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span class="nav-text" data-i18n="architecture">هندسة عمارة</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span class="nav-text" data-i18n="communications">هندسة اتصالات الكترونية</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span class="nav-text" data-i18n="business">كلية ادارة الاعمال</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span class="nav-text" data-i18n="business-info">نظم معلومات الأعمال</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span class="nav-text" data-i18n="business-admin">إدارة أعمال</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span class="nav-text" data-i18n="investment">استثمار وبنوك</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span class="nav-text" data-i18n="marketing">تسويق</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span class="nav-text" data-i18n="news">الأخبار</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span class="nav-text" data-i18n="events">فعاليات</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span class="nav-text" data-i18n="academic-news">اخبار الاكاديمي</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span class="nav-text" data-i18n="student-news">اخبار للطلابه</span></a>
+                        <a href="عن المعهد .html"><i class="fas fa-users"></i> <span class="nav-text" data-i18n="About the institute">عن المعهد</span></a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span class="nav-text" data-i18n="contact">الاتصال والتواصل</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title" data-aos="fade-up">معهد أكتوبر العالي للهندسة والتكنولوجيا</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">مؤسسة تعليمية رائدة منذ عام 1993</p>
+            <a href="#about" class="btn btn-primary-custom" data-aos="fade-up" data-aos-delay="200">تعرف المزيد</a>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </section>
+
+    <!-- Animated Banner -->
+    <section class="container">
+        <div class="animated-banner" data-aos="fade-up" data-aos-delay="300">
+            <div class="banner-bg"></div>
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <h2 class="banner-title">عن المعهد</h2>
+                <p class="banner-subtitle">تأسس المعهد عام 1993 بقرار وزاري رقم 1069 لسنة 1993، ويعتبر من أفضل المعاهد التعليمية في مصر والشرق الأوسط</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">عن المعهد</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">تأسس المعهد عام 1993 بقرار وزاري رقم 1069 لسنة 1993</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right" data-aos-delay="200">
+                    <div class="about-card text-center">
+                        <div class="about-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>التأسيس</h3>
+                        <p>تأسس المعهد عام 1993 بقرار وزاري رقم 1069 لسنة 1993، وذلك طبقًا للقانون رقم 52 لسنة 1970 الخاص بالمعاهد العليا الخاصة. بدأ الدراسة أول مرة العام الدراسي 1993/1994.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-card text-center">
+                        <div class="about-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>الاعتماد</h3>
+                        <p>المعهد معتمد من الهيئة القومية لضمان جودة التعليم والاعتماد. جميع البرامج الهندسية معتمدة من اتحاد المهندسين العرب.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-left" data-aos-delay="400">
+                    <div class="about-card text-center">
+                        <div class="about-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>الخريجون</h3>
+                        <p>جميع الخريجين في التخصصات الهندسية مسجلون في نقابة المهندسين المصرية. وخريجون قسم إدارة الأعمال مسجلون بنقابة التجار.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="section vision-mission">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">الرؤية والرسالة</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="vision-mission-card">
+                        <div class="vision-mission-icon text-center">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="text-center mb-4">الرؤية</h3>
+                        <p>أن يكون المعهد ذا ميزة تنافسية إقليمياً، ونموذج تعليمي مميز في إدارة نظم التعليم الهندسية والتكنولوجية، البحث العلمي، وخدمة المجتمع.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="vision-mission-card">
+                        <div class="vision-mission-icon text-center">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-center mb-4">الرسالة</h3>
+                        <p>تأهيل كوادر متخصّصة معرفياً وأكاديمياً ومهنياً وأخلاقياً وفق المعايير القومية، قادرة على المنافسة والتميز في سوق العمل، والمساهمة في خدمة المجتمع والتنمية البيئية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">التخصصات والبرامج الأكاديمية</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">يمنح المعهد شهادة البكالوريوس المعادلة لشهادة البكالوريوس التي تمنحها الجامعات المصرية</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-card">
+                        <div class="program-img-container">
+                            <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="الهندسة المعمارية" class="program-img">
+                            <div class="program-badge">هندسة</div>
+                        </div>
+                        <div class="program-body">
+                            <h3 class="program-title">الهندسة المعمارية</h3>
+                            <p>ضمنها فروع من السنة الثالثة: العمارة البيئية، حفظ التراث، التصميم الحضري</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-card">
+                        <div class="program-img-container">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="الهندسة المدنية" class="program-img">
+                            <div class="program-badge">هندسة</div>
+                        </div>
+                        <div class="program-body">
+                            <h3 class="program-title">الهندسة المدنية / التشييد والبناء</h3>
+                            <p>تأهيل كوادر هندسية متخصصة في مجال التشييد والبناء وإدارة المشاريع</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="program-card">
+                        <div class="program-img-container">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="هندسة الاتصالات" class="program-img">
+                            <div class="program-badge">هندسة</div>
+                        </div>
+                        <div class="program-body">
+                            <h3 class="program-title">هندسة الاتصالات والإلكترونيات</h3>
+                            <p>برنامج حاصل على اعتماد جودة من الهيئة القومية لضمان جودة التعليم والاعتماد</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="program-card">
+                        <div class="program-img-container">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="إدارة الأعمال" class="program-img">
+                            <div class="program-badge">إدارة</div>
+                        </div>
+                        <div class="program-body">
+                            <h3 class="program-title">إدارة الأعمال والتكنولوجيا</h3>
+                            <p>تخصصات: التسويق، الاستثمار والمصارف، نظم المعلومات التجارية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">شروط القبول والأوراق المطلوبة</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">تهنئ ادارة المعهد بقبول الطلاب المستجدين والمرشحين للعام الدراسي ٢٠٢٥-٢٠٢٦م</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="admission-card">
+                        <h3 class="admission-title"><i class="fas fa-graduation-cap"></i> شروط الالتحاق ببرامج الماجستير</h3>
+                        <ul class="admission-list">
+                            <li>شهادة البكالوريوس + شهادة المعادلة من المجلس الأعلى للجامعات</li>
+                            <li>الماجستير المهني: لا يشترط تقدير معين</li>
+                            <li>الماجستير الأكاديمي: يشترط تقدير عام جيد جدًا</li>
+                            <li>التقديم يتم فقط من خلال الموقع الرسمي للجامعة</li>
+                            <li>المصروفات تُسدد على فصلين دراسيين</li>
+                            <li>مدة الدراسة لا تقل عن عامين</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="admission-card">
+                        <h3 class="admission-title"><i class="fas fa-file-alt"></i> الأوراق المطلوبة للقيد</h3>
+                        <ul class="admission-list">
+                            <li>أصل شهادة المؤهل لسنة ۲۰۲٥ + صورة</li>
+                            <li>أصل بطاقة الترشيح لسنة ٢٠٢٥</li>
+                            <li>أصل شهادة الميلاد بتاريخ حديث + صورة</li>
+                            <li>عدد (۷) صور شخصية في ظرف</li>
+                            <li>عدد (۲) صورة البطاقة الشخصية للطالب + صورة بطاقة ولى الامر</li>
+                            <li>نموذج (۲) جند ، ٦ جند للطلاب الذكور</li>
+                            <li>حافظة بكبسولة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://admission.must.edu.eg/postgraduate/login" class="btn btn-primary-custom" target="_blank">التقديم للماجستير</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">اتصل بنا</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">نرحب بتواصلكم معنا للاستفسار عن أي معلومات</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info">
+                        <h3><i class="fas fa-map-marker-alt"></i> معلومات الاتصال</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> مدينة 6 أكتوبر، الحيّ الثالث، المجاورة الثانية — أمام مبنى شرطة النجدة الجديدة</p>
+                        <p><i class="fas fa-phone"></i> +201006069292</p>
+                        <p><i class="fas fa-phone-alt"></i> 0238356496</p>
+                        <p><i class="fas fa-envelope"></i> ohi@ohi.edu.eg</p>
+                        
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/ohinstitute" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/Ohi_1993" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/ohi_1993" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="contact-form">
+                        <h3><i class="fas fa-paper-plane"></i> ارسل لنا رسالة</h3>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="الاسم" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="الموضوع" required>
+                            <textarea class="form-control" rows="4" placeholder="رسالتك" required></textarea>
+                            <button type="submit" class="btn btn-primary-custom">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">معهد أكتوبر العالي</div>
+                    <p>October High Institute for Engineering & Technology</p>
+                    <p>تأسس المعهد عام 1993 بقرار وزاري رقم 1069 لسنة 1993</p>
+                    
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit">اشترك</button>
+                    </form>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">روابط سريعة</h5>
+                    <ul class="footer-links">
+                        <li><a href="#about">عن المعهد</a></li>
+                        <li><a href="#programs">البرامج الأكاديمية</a></li>
+                        <li><a href="#admission">شروط القبول</a></li>
+                        <li><a href="#">النظام الدراسي</a></li>
+                        <li><a href="#">الاعترافات والاعتمادات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">تواصل معنا</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> مدينة 6 أكتوبر، الحيّ الثالث، المجاورة الثانية</p>
+                    <p><i class="fas fa-phone"></i> +201006069292</p>
+                    <p><i class="fas fa-envelope"></i> ohi@ohi.edu.eg</p>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/ohinstitute" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/Ohi_1993" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ohi_1993" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 معهد أكتوبر العالي للهندسة والتكنولوجيا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Translation data
+        const translations = {
+            ar: {
+                "home": "الصفحة الرئيسية",
+                "engineering": "كلية هندسة",
+                "civil-engineering": "هندسة مدني",
+                "architecture": "هندسة عمارة",
+                "communications": "هندسة اتصالات الكترونية",
+                "business": "كلية ادارة الاعمال",
+                "business-info": "نظم معلومات الأعمال",
+                "business-admin": "إدارة أعمال",
+                "investment": "استثمار وبنوك",
+                "marketing": "تسويق",
+                "news": "الأخبار",
+                "events": "فعاليات",
+                "academic-news": "اخبار الاكاديمي",
+                "student-news": "اخبار للطلابه",
+                "about-institute": "عن المعهد",
+                "contact": "الاتصال والتواصل"
+            },
+            en: {
+                "home": "Home",
+                "engineering": "Engineering College",
+                "civil-engineering": "Civil Engineering",
+                "architecture": "Architectural Engineering",
+                "communications": "Communications and Electronics Engineering",
+                "business": "Business College",
+                "business-info": "Business Information Systems",
+                "business-admin": "Business Administration",
+                "investment": "Investment and Banking",
+                "marketing": "Marketing",
+                "news": "News",
+                "events": "Events",
+                "academic-news": "Academic News",
+                "student-news": "Student News",
+                "about-institute": "About the Institute",
+                "contact": "Contact Us"
+            }
+        };
+        
+        // Current language
+        let currentLang = 'ar';
+        
+        // Language switcher
+        function switchLanguage(lang) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            
+            // Set current language
+            currentLang = lang;
+            
+            // Update page language
+            updateLanguage();
+            
+            // Show notification
+            showNotification(lang === 'ar' ? 'تم تغيير اللغة بنجاح' : 'Language changed successfully', 'success');
+        }
+        
+        // Update page language
+        function updateLanguage() {
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLang;
+            
+            // Update body direction
+            if (currentLang === 'en') {
+                document.body.classList.add('lang-en');
+                document.body.dir = 'ltr';
+            } else {
+                document.body.classList.remove('lang-en');
+                document.body.dir = 'rtl';
+            }
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            // Update page title
+            document.title = currentLang === 'ar' 
+                ? 'معهد أكتوبر العالي للهندسة والتكنولوجيا'
+                : 'October Higher Institute for Engineering and Technology';
+        }
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Theme Toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const body = document.body;
+            const icon = this.querySelector('i');
+            
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                showNotification(currentLang === 'ar' ? 'تم تفعيل الوضع الفاتح' : 'Light mode activated', 'info');
+            } else {
+                body.classList.add('dark-theme');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                showNotification(currentLang === 'ar' ? 'تم تفعيل الوضع الداكن' : 'Dark mode activated', 'info');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            // Set message
+            notificationMessage.textContent = message;
+            
+            // Set type
+            notification.className = 'notification-toast';
+            notification.classList.add(type);
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1500);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.getElementById('nav-links');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = document.querySelector('.mobile-menu-btn i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject = this.querySelector('input[type="text"]:nth-of-type(2)').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                showNotification(currentLang === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة' : 'Please fill in all required fields', 'error');
+                return;
+            }
+            
+            // Show success message
+            showNotification(currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح' : 'Your message has been sent successfully', 'success');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get email value
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Simple validation
+            if (!email) {
+                showNotification(currentLang === 'ar' ? 'يرجى إدخال بريدك الإلكتروني' : 'Please enter your email', 'error');
+                return;
+            }
+            
+            // Show success message
+            showNotification(currentLang === 'ar' ? 'تم الاشتراك في النشرة البريدية بنجاح' : 'Successfully subscribed to the newsletter', 'success');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.about-card, .vision-mission-card, .program-card, .admission-card, .contact-info, .contact-form');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+            });
+        });
+    </script>
+</body>
+</html>

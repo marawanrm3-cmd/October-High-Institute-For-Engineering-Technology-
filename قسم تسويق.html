@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="قسم التسويق بمعهد أكتوبر العالي - نقدم برامج تعليمية متميزة في التسويق الرقمي، استراتيجيات التسويق، وإدارة العلامات التجارية">
+    <meta name="keywords" content="تسويق, معهد أكتوبر, تسويق رقمي, استراتيجيات تسويق, إدارة علامات تجارية, تحليل سوق, التسويق الإلكتروني">
+    <meta name="author" content="معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    <meta property="og:title" content="قسم التسويق - معهد أكتوبر العالي">
+    <meta property="og:description" content="اكتشف فنون التسويق الحديث مع برامجنا التعليمية المتطورة">
+    <meta property="og:image" content="https://example.com/marketing-department-image.jpg">
+    <meta property="og:url" content="https://example.com/marketing-department">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="image.png.jpg">
+    <title>قسم التسويق - معهد أكتوبر العالي</title>
+    
+    <!-- مكتبات CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #012b5b;
+            --primary-light: #0056b3;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --accent-purple: #6f42c1;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --footer-dark: #001f3f;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --nav-glow: 0 0 15px rgba(1, 43, 91, 0.7);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body.en {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* شريط التنقل */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: var(--nav-glow);
+            transition: var(--transition);
+            position:absolute;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--bg-white);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: width 0.5s ease;
+        }
+        
+        .logo:hover::after {
+            width: 100%;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 30px;
+            margin-left: 15px;
+            border-radius: 4px;
+            background: var(--secondary-color);
+            padding: 3px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg);
+        }
+        
+        body.en .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        /* زر القائمة للموبايل */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .menu-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .menu-toggle:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        /* الروابط */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-white);
+            min-width: 280px;
+            border-radius: var(--border-radius);
+            padding: 15px 0;
+            display: none;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(1, 43, 91, 0.2);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+        }
+        
+        body.en .dropdown {
+            right: auto;
+            left: 0;
+        }
+        
+        .nav-links li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 0 25px rgba(1, 43, 91, 0.3);
+        }
+        
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .dropdown a::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        body.en .dropdown a::after {
+            right: auto;
+            left: 15px;
+        }
+        
+        .dropdown a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        body.en .dropdown a:hover {
+            transform: translateX(-5px);
+        }
+        
+        .dropdown a i {
+            margin-left: 10px;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown a:hover i {
+            transform: scale(1.2);
+        }
+        
+        body.en .dropdown a i {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        /* زر تبديل اللغة */
+        .lang-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 1001;
+            margin-left: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .lang-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        body.en .lang-toggle {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .lang-toggle i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .lang-toggle:hover i {
+            transform: rotate(180deg);
+        }
+        
+        body.en .lang-toggle i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        /* زر تبديل الثيم */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            z-index: 1001;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05) rotate(15deg);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* البنر الرئيسي */
+        .banner {
+            position: relative;
+            height: 70vh;
+            margin-top: 90px;
+            overflow: hidden;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomEffect 20s infinite alternate;
+        }
+        
+        @keyframes zoomEffect {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(1, 43, 91, 0.7), rgba(252, 163, 17, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-content {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            max-width: 900px;
+        }
+        
+        .banner-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .banner-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .banner-badge {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(252, 163, 17, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(252, 163, 17, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(252, 163, 17, 0);
+            }
+        }
+        
+        /* تأثير الجسيمات */
+        .particles-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 80px 30px;
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* قسم التعريف */
+        .intro-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .intro-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .intro-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .intro-image {
+            position: relative;
+            height: 350px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* المهارات */
+        .skills-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: var(--transition);
+        }
+        
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .skill-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* المجالات التطبيقية */
+        .fields-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .field-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            background: var(--bg-light);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .field-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(252, 163, 17, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .field-item:hover::before {
+            left: 100%;
+        }
+        
+        .field-item:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .field-item i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        
+        .field-item:hover i {
+            color: var(--bg-white);
+            transform: scale(1.2);
+        }
+        
+        .field-item h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .field-item:hover h4 {
+            color: var(--bg-white);
+        }
+        
+        .field-item p {
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .field-item:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* قسم المقالات */
+        .articles-section {
+            margin-bottom: 60px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        body.en .article-date {
+            right: auto;
+            left: 15px;
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+        
+        .article-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-link {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 25px;
+            background: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .read-more-link::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(1, 43, 91, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .read-more-link:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .read-more-link:hover {
+            transform: translateX(5px);
+            background: var(--primary-color);
+            color: var(--bg-white);
+        }
+        
+        body.en .read-more-link:hover {
+            transform: translateX(-5px);
+        }
+        
+        .read-more-link i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        body.en .read-more-link i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        body.en .read-more-link:hover i {
+            transform: translateX(-3px);
+        }
+        
+        /* معرض الصور */
+        .gallery-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 30px 20px 20px;
+            color: var(--bg-white);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* فرص العمل */
+        .careers-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            color: var(--bg-white);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .careers-section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .career-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+        
+        .career-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .career-item i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .career-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .career-item h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .career-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        /* شهادات الخريجين */
+        .testimonials-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+            border: 1px solid var(--bg-light);
+            cursor: pointer;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.1;
+        }
+        
+        body.en .testimonial-quote {
+            right: auto;
+            left: 20px;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .student-info {
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-light);
+        }
+        
+        .student-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-left: 20px;
+            border: 3px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover .student-avatar {
+            transform: scale(1.1);
+        }
+        
+        body.en .student-avatar {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+        
+        .student-details {
+            flex: 1;
+        }
+        
+        .student-details h4 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+        
+        .student-details p {
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .student-rating {
+            display: flex;
+            gap: 5px;
+            margin-top: 8px;
+        }
+        
+        .student-rating i {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover .student-rating i {
+            transform: scale(1.2);
+        }
+        
+        /* لماذا تختارنا */
+        .why-section {
+            margin-bottom: 60px;
+        }
+        
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .why-item {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .why-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: var(--transition);
+        }
+        
+        .why-item:hover .why-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .why-item h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .why-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* زر الحجز */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .cta-button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(252, 163, 17, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-light);
+            box-shadow: 0 15px 35px rgba(252, 163, 17, 0.4);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--footer-dark);
+            color: var(--bg-white);
+            padding: 60px 30px 40px;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .social-links a:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px) scale(1.1);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* زر العودة للأعلى */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.en .back-to-top {
+            left: auto;
+            right: 30px;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(252, 163, 17, 0.3);
+        }
+        
+        /* رسالة التحميل */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--bg-light);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* تأثير التموج عند النقر */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* الوضع الليلي */
+        body.dark-theme {
+            --primary-color: #0a4d8c;
+            --primary-light: #0066cc;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --accent-purple: #6f42c1;
+            --text-dark: #e9ecef;
+            --text-light: #adb5bd;
+            --bg-white: #1a1a2e;
+            --bg-light: #16213e;
+            --footer-dark: #0f0f1e;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --nav-glow: 0 0 15px rgba(10, 77, 140, 0.7);
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 1200px) {
+            .banner-content h1 {
+                font-size: 3rem;
+            }
+            
+            .banner-content p {
+                font-size: 1.2rem;
+            }
+            
+            .skills-grid,
+            .fields-grid,
+            .articles-grid,
+            .gallery-grid,
+            .careers-grid,
+            .testimonials-grid,
+            .why-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .banner-content p {
+                font-size: 1.1rem;
+            }
+            
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .skills-grid,
+            .fields-grid,
+            .articles-grid,
+            .gallery-grid,
+            .careers-grid,
+            .testimonials-grid,
+            .why-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            body.en .nav-links {
+                right: auto;
+                left: -100%;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            body.en .nav-links.active {
+                right: auto;
+                left: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 15px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: none;
+                border: none;
+                padding: 10px 0;
+                margin-top: 10px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown a {
+                color: var(--bg-white);
+                padding: 10px 15px;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+            
+            .banner {
+                height: 60vh;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 60px 20px;
+            }
+            
+            .intro-section,
+            .fields-section,
+            .gallery-section,
+            .testimonials-section {
+                padding: 40px 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid,
+            .fields-grid,
+            .articles-grid,
+            .gallery-grid,
+            .careers-grid,
+            .testimonials-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            body.en .back-to-top {
+                left: auto;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            .intro-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .intro-text p {
+                font-size: 1rem;
+            }
+            
+            .skill-card,
+            .why-item,
+            .field-item,
+            .career-item {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+            
+            .student-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .student-avatar {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+            
+            body.en .student-avatar {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رسالة التحميل -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <!-- زر العودة للأعلى -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="index.html" class="logo">
+                <img src="m4 - png.jpg" alt="شعار المعهد">
+                <span data-ar="معهد أكتوبر العالي" data-en="October Higher Institute">معهد أكتوبر العالي</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-ar="كلية الهندسة" data-en="Engineering College">كلية الهندسة</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-ar="قسم هندسة مدني" data-en="Civil Engineering">قسم هندسة مدني</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-ar="قسم هندسة عمارة" data-en="Architecture">قسم هندسة عمارة</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-ar="قسم هندسة اتصالات" data-en="Communications Engineering">قسم هندسة اتصالات</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-ar="كلية إدارة الأعمال" data-en="Business College">كلية إدارة الأعمال</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-ar="نظم معلومات الأعمال" data-en="Business Information Systems">نظم معلومات الأعمال</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-ar="إدارة أعمال" data-en="Business Administration">إدارة أعمال</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-ar="استثمار وبنوك" data-en="Investment and Banking">استثمار وبنوك</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-ar="تسويق" data-en="Marketing">تسويق</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span data-ar="الأخبار" data-en="News">الأخبار</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-ar="أخبار أكاديمية" data-en="Academic News">أخبار أكاديمية</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="Student News">أخبار الطلابة</span></a>
+                        <a href="عن المعهد .html"><i class="fas fa-users"></i> <span data-ar="عن المعهد" data-en="About the institute">عن المعهد</span></a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span></a></li>
+            </ul>
+            
+            <div style="display: flex; align-items: center;">
+                <button class="lang-toggle" id="langToggle" title="Change Language">
+                    <i class="fas fa-globe"></i> <span id="currentLang">EN</span>
+                </button>
+                
+                <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- البنر الرئيسي -->
+    <div class="banner">
+        <div class="particles-container" id="particles-container"></div>
+        <img src="m12.jpeg" alt="فعاليات المعهد">
+        <div class="banner-overlay">
+            <div class="banner-content" data-aos="fade-up">
+                <div class="banner-badge">
+                    <i class="fas fa-bullhorn"></i> <span data-ar="التسويق الاحترافي" data-en="Professional Marketing">التسويق الاحترافي</span>
+                </div>
+                <h1 data-ar="مرحبا بك في عالم التسويق" data-en="Welcome to the World of Marketing">مرحبا بك في عالم التسويق</h1>
+                <p data-ar="استكشف أحدث فعالياتنا وورش العمل والأنشطة التي ننظمها" data-en="Explore our latest events, workshops and activities">استكشف أحدث فعالياتنا وورش العمل والأنشطة التي ننظمها</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="container">
+            <!-- قسم التعريف -->
+            <section class="intro-section" data-aos="fade-up">
+                <div class="intro-header">
+                    <h2 data-ar="مرحباً بك في عالم التسويق" data-en="Welcome to the World of Marketing">مرحباً بك في عالم التسويق</h2>
+                </div>
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <p data-ar="قسم التسويق بمعهد أكتوبر العالي هو وجهتك المثالية لتعلم فنون وأسس التسويق الحديث، حيث نقدم برامج تعليمية متكاملة تجمع بين النظرية والتطبيق العملي." data-en="The Marketing Department at October Higher Institute is your ideal destination to learn the arts and foundations of modern marketing, where we offer integrated educational programs that combine theory and practical application.">
+                            قسم التسويق بمعهد أكتوبر العالي هو وجهتك المثالية لتعلم فنون وأسس التسويق الحديث، 
+                            حيث نقدم برامج تعليمية متكاملة تجمع بين النظرية والتطبيق العملي.
+                        </p>
+                        <p data-ar="نهدف إلى إعداد جيل من المسوقين المبدعين القادرين على فهم احتياجات السوق وتطوير استراتيجيات تسويقية فعالة تساهم في نجاح المؤسسات ونموها." data-en="We aim to prepare a generation of creative marketers capable of understanding market needs and developing effective marketing strategies that contribute to the success and growth of institutions.">
+                            نهدف إلى إعداد جيل من المسوقين المبدعين القادرين على فهم احتياجات السوق 
+                            وتطوير استراتيجيات تسويقية فعالة تساهم في نجاح المؤسسات ونموها.
+                        </p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="m8.jpeg" alt="قاعة التسويق">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- المهارات -->
+            <section class="skills-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="المهارات التي ستكتسبها" data-en="Skills You Will Acquire">المهارات التي ستكتسبها</h2>
+                    <p data-ar="أهم المهارات التي ستمتلكها بعد التخرج" data-en="The most important skills you will have after graduation">أهم المهارات التي ستمتلكها بعد التخرج</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="skill-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 data-ar="التفكير الاستراتيجي" data-en="Strategic Thinking">التفكير الاستراتيجي</h3>
+                        <p data-ar="تطوير استراتيجيات تسويقية مبتكرة ومتكاملة" data-en="Developing innovative and integrated marketing strategies">تطوير استراتيجيات تسويقية مبتكرة ومتكاملة</p>
+                    </div>
+                    
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 data-ar="تحليل السوق" data-en="Market Analysis">تحليل السوق</h3>
+                        <p data-ar="فهم عميق لسلوك المستهلك واتجاهات السوق" data-en="Deep understanding of consumer behavior and market trends">فهم عميق لسلوك المستهلك واتجاهات السوق</p>
+                    </div>
+                    
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="skill-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 data-ar="التسويق الرقمي" data-en="Digital Marketing">التسويق الرقمي</h3>
+                        <p data-ar="إتقان أدوات التسويق الإلكتروني ووسائل التواصل" data-en="Mastering e-marketing tools and communication media">إتقان أدوات التسويق الإلكتروني ووسائل التواصل</p>
+                    </div>
+                    
+                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 data-ar="إدارة العلاقات" data-en="Relationship Management">إدارة العلاقات</h3>
+                        <p data-ar="بناء وإدارة علاقات قوية مع العملاء" data-en="Building and managing strong relationships with customers">بناء وإدارة علاقات قوية مع العملاء</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المقالات -->
+            <section class="articles-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="أحدث المقالات" data-en="Latest Articles">أحدث المقالات</h2>
+                    <p data-ar="تابع آخر المستجدات في عالم التسويق" data-en="Follow the latest developments in the world of marketing">تابع آخر المستجدات في عالم التسويق</p>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card" data-aos="flip-left" data-aos-delay="100">
+                        <div class="article-image" style="background-image: url('m25.jpeg')">
+                            <div class="article-date">15 نوفمبر 2025</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-ar="مستقبل التسويق في عصر الذكاء الاصطناعي" data-en="The Future of Marketing in the Age of Artificial Intelligence">مستقبل التسويق في عصر الذكاء الاصطناعي</h3>
+                            <p class="article-excerpt" data-ar="كيف يغير الذكاء الاصطناعي طرق التسويق التقليدية ويفتح آفاقاً جديدة..." data-en="How artificial intelligence is changing traditional marketing methods and opening new horizons...">كيف يغير الذكاء الاصطناعي طرق التسويق التقليدية ويفتح آفاقاً جديدة...</p>
+                            <a href="#" class="read-more-link"><span data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</span> <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="article-image" style="background-image: url('m21.jpeg')">
+                            <div class="article-date">10 2024 </div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-ar="استراتيجيات التسويق للمشاريع الناشئة" data-en="Marketing Strategies for Startups">استراتيجيات التسويق للمشاريع الناشئة</h3>
+                            <p class="article-excerpt" data-ar="دليل شامل للمشاريع الناشئة لبناء استراتيجية تسويق ناجحة بميزانية محدودة..." data-en="A comprehensive guide for startups to build a successful marketing strategy with a limited budget...">دليل شامل للمشاريع الناشئة لبناء استراتيجية تسويق ناجحة بميزانية محدودة...</p>
+                            <a href="#" class="read-more-link"><span data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</span> <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card" data-aos="flip-left" data-aos-delay="300">
+                        <div class="article-image" style="background-image: url('m24.png')">
+                            <div class="article-date">5 نوفمبر 2023</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-ar="قوة وسائل التواصل الاجتماعي في التسويق" data-en="The Power of Social Media in Marketing">قوة وسائل التواصل الاجتماعي في التسويق</h3>
+                            <p class="article-excerpt" data-ar="كيف تستفيد الشركات من منصات التواصل الاجتماعي للوصول إلى جمهور أوسع..." data-en="How companies benefit from social media platforms to reach a wider audience...">كيف تستفيد الشركات من منصات التواصل الاجتماعي للوصول إلى جمهور أوسع...</p>
+                            <a href="#" class="read-more-link"><span data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</span> <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- معرض الصور -->
+            <section class="gallery-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="معرض أنشطة القسم" data-en="Department Activities Gallery">معرض أنشطة القسم</h2>
+                    <p data-ar="صور من فعالياتنا وورش العمل" data-en="Photos from our events and workshops">صور من فعالياتنا وورش العمل</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="m12.jpeg" alt="ورشة عمل">
+                        <div class="gallery-overlay">
+                            <h4 data-ar="ورشة عمل التسويق الرقمي" data-en="Digital Marketing Workshop">ورشة عمل التسويق الرقمي</h4>
+                            <p data-ar="تدريب عملي على أدوات التسويق الإلكتروني" data-en="Practical training on e-marketing tools">تدريب عملي على أدوات التسويق الإلكتروني</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="m26.jpeg" alt="مسابقة تسويق">
+                        <div class="gallery-overlay">
+                            <h4 data-ar="مسابقة أفضل حملة تسويقية" data-en="Best Marketing Campaign Competition">مسابقة أفضل حملة تسويقية</h4>
+                            <p data-ar="منافسة بين الطلاب لتصميم حملات مبتكرة" data-en="Competition between students to design innovative campaigns">منافسة بين الطلاب لتصميم حملات مبتكرة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="m27.jpeg" alt="محاضرة متخصصة">
+                        <div class="gallery-overlay">
+                            <h4 data-ar="محاضرة خبراء الصناعة" data-en="Industry Experts Lecture">محاضرة خبراء الصناعة</h4>
+                            <p data-ar="لقاء مع كبار المسوقين في الشركات العالمية" data-en="Meeting with top marketers in global companies">لقاء مع كبار المسوقين في الشركات العالمية</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="m24.png" alt="معرض تسويق">
+                        <div class="gallery-overlay">
+                            <h4 data-ar="معرض التسويق السنوي" data-en="Annual Marketing Exhibition">معرض التسويق السنوي</h4>
+                            <p data-ar="عرض مشاريع الطلاب الإبداعية" data-en="Display of students' creative projects">عرض مشاريع الطلاب الإبداعية</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- فرص العمل -->
+            <section class="careers-section" data-aos="fade-up">
+                <h2 data-ar="فرص العمل المتميزة" data-en="Excellent Job Opportunities">فرص العمل المتميزة</h2>
+                <p data-ar="تخرج من قسم التسويق يفتح لك أبواباً واسعة في سوق العمل" data-en="Graduating from the Marketing Department opens wide doors for you in the job market">تخرج من قسم التسويق يفتح لك أبواباً واسعة في سوق العمل</p>
+                <div class="careers-grid">
+                    <div class="career-item" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-bullhorn"></i>
+                        <h4 data-ar="مدير تسويق" data-en="Marketing Manager">مدير تسويق</h4>
+                        <p data-ar="إدارة الحملات التسويقية للشركات" data-en="Managing marketing campaigns for companies">إدارة الحملات التسويقية للشركات</p>
+                    </div>
+                    
+                    <div class="career-item" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-hashtag"></i>
+                        <h4 data-ar="مسوق رقمي" data-en="Digital Marketer">مسوق رقمي</h4>
+                        <p data-ar="التسويق عبر المنصات الرقمية" data-en="Marketing through digital platforms">التسويق عبر المنصات الرقمية</p>
+                    </div>
+                    
+                    <div class="career-item" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4 data-ar="محلل تسويق" data-en="Marketing Analyst">محلل تسويق</h4>
+                        <p data-ar="تحليل بيانات السوق والمستهلكين" data-en="Analyzing market and consumer data">تحليل بيانات السوق والمستهلكين</p>
+                    </div>
+                    
+                    <div class="career-item" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="fas fa-ad"></i>
+                        <h4 data-ar="مدير إعلانات" data-en="Advertising Manager">مدير إعلانات</h4>
+                        <p data-ar="تخطيط وإدارة الحملات الإعلانية" data-en="Planning and managing advertising campaigns">تخطيط وإدارة الحملات الإعلانية</p>
+                    </div>
+                </div>
+            </section>
+            <!-- المجالات التطبيقية -->
+            <section class="fields-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="المجالات التطبيقية" data-en="Application Fields">المجالات التطبيقية</h2>
+                    <p data-ar="أين يمكنك تطبيق مهاراتك؟" data-en="Where can you apply your skills?">أين يمكنك تطبيق مهاراتك؟</p>
+                </div>
+                <div class="fields-grid">
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h4 data-ar="التجارة الإلكترونية" data-en="E-commerce">التجارة الإلكترونية</h4>
+                        <p data-ar="تسويق المنتجات والخدمات عبر الإنترنت" data-en="Marketing products and services online">تسويق المنتجات والخدمات عبر الإنترنت</p>
+                    </div>
+                    
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4 data-ar="التسويق الرقمي" data-en="Digital Marketing">التسويق الرقمي</h4>
+                        <p data-ar="التسويق عبر وسائل التواصل الاجتماعي" data-en="Marketing through social media">التسويق عبر وسائل التواصل الاجتماعي</p>
+                    </div>
+                    
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fas fa-tv"></i>
+                        <h4 data-ar="التسويق التقليدي" data-en="Traditional Marketing">التسويق التقليدي</h4>
+                        <p data-ar="التلفزيون، الراديو، والطباعة" data-en="Television, radio, and print">التلفزيون، الراديو، والطباعة</p>
+                    </div>
+                    
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="fas fa-bullhorn"></i>
+                        <h4 data-ar="العلاقات العامة" data-en="Public Relations">العلاقات العامة</h4>
+                        <p data-ar="بناء صورة إيجابية للشركات والعلامات" data-en="Building a positive image for companies and brands">بناء صورة إيجابية للشركات والعلامات</p>
+                    </div>
+                    
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="500">
+                        <i class="fas fa-ad"></i>
+                        <h4 data-ar="الإعلان والترويج" data-en="Advertising and Promotion">الإعلان والترويج</h4>
+                        <p data-ar="تصميم حملات إعلانية فعالة" data-en="Designing effective advertising campaigns">تصميم حملات إعلانية فعالة</p>
+                    </div>
+                    
+                    <div class="field-item" data-aos="zoom-in" data-aos-delay="600">
+                        <i class="fas fa-handshake"></i>
+                        <h4 data-ar="تسويق الخدمات" data-en="Service Marketing">تسويق الخدمات</h4>
+                        <p data-ar="تسويق الخدمات المالية والتعليمية" data-en="Marketing financial and educational services">تسويق الخدمات المالية والتعليمية</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- شهادات الخريجين -->
+            <section class="testimonials-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="شهادات الخريجين" data-en="Graduate Testimonials">شهادات الخريجين</h2>
+                    <p data-ar="استمع إلى تجارب خريجينا الناجحين" data-en="Listen to the experiences of our successful graduates">استمع إلى تجارب خريجينا الناجحين</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="100">
+                        <i class="fas fa-quote-right testimonial-quote"></i>
+                        <p class="testimonial-content" data-ar="&quot;المعهد منحني الأساس القوي الذي ساعدني على النجاح في مجال التسويق الرقمي. المناهج عملية وحديثة وتواكب متطلبات سوق العمل.&quot;" data-en="&quot;The Institute gave me the strong foundation that helped me succeed in the field of digital marketing. The curricula are practical, modern and keep pace with the requirements of the job market.&quot;">
+                            "المعهد منحني الأساس القوي الذي ساعدني على النجاح في مجال التسويق الرقمي. 
+                            المناهج عملية وحديثة وتواكب متطلبات سوق العمل."
+                        </p>
+                        <div class="student-info">
+                            <div class="student-avatar" style="background-image: url('m19.jpg')"></div>
+                            <div class="student-details">
+                                <h4 data-ar="هنادي" data-en="Hind">هنادي</h4>
+                                <p data-ar="مديرة تسويق رقمي" data-en="Digital Marketing Manager">مديرة تسويق رقمي</p>
+                                <div class="student-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="200">
+                        <i class="fas fa-quote-right testimonial-quote"></i>
+                        <p class="testimonial-content" data-ar="&quot;التدريب العملي والمشاريع التطبيقية في المعهد ساعدتني على اكتساب الخبرة اللازمة للحصول على وظيفة مميزة فور التخرج.&quot;" data-en="&quot;The practical training and applied projects at the Institute helped me acquire the necessary experience to get a distinguished job immediately after graduation.&quot;">
+                            "التدريب العملي والمشاريع التطبيقية في المعهد ساعدتني على اكتساب الخبرة 
+                            اللازمة للحصول على وظيفة مميزة فور التخرج."
+                        </p>
+                        <div class="student-info">
+                            <div class="student-avatar" style="background-image: url('m2.jpg')"></div>
+                            <div class="student-details">
+                                <h4 data-ar="مروان" data-en="Marwan">مروان</h4>
+                                <p data-ar="مسوق إعلانات" data-en="Advertising Marketer">مسوق إعلانات</p>
+                                <div class="student-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- لماذا تختارنا -->
+            <section class="why-section" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="لماذا تختار قسم التسويق؟" data-en="Why Choose the Marketing Department?">لماذا تختار قسم التسويق؟</h2>
+                </div>
+                <div class="why-grid">
+                    <div class="why-item" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="why-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 data-ar="شراكات صناعية" data-en="Industrial Partnerships">شراكات صناعية</h3>
+                        <p data-ar="تعاون مع كبرى الشركات والمؤسسات التسويقية" data-en="Cooperation with major companies and marketing institutions">تعاون مع كبرى الشركات والمؤسسات التسويقية</p>
+                    </div>
+                    
+                    <div class="why-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="why-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 data-ar="تكنولوجيا حديثة" data-en="Modern Technology">تكنولوجيا حديثة</h3>
+                        <p data-ar="أحدث الأدوات والبرامج المستخدمة في التسويق" data-en="The latest tools and programs used in marketing">أحدث الأدوات والبرامج المستخدمة في التسويق</p>
+                    </div>
+                    
+                    <div class="why-item" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="why-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 data-ar="هيئة تدريس متميزة" data-en="Distinguished Faculty">هيئة تدريس متميزة</h3>
+                        <p data-ar="خبراء من الصناعة وأكاديميون متخصصون" data-en="Experts from industry and specialized academics">خبراء من الصناعة وأكاديميون متخصصون</p>
+                    </div>
+                    
+                    <div class="why-item" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="why-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 data-ar="فرص تدريب" data-en="Training Opportunities">فرص تدريب</h3>
+                        <p data-ar="تدريب ميداني في كبرى الشركات التسويقية" data-en="Field training in major marketing companies">تدريب ميداني في كبرى الشركات التسويقية</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- زر الحجز -->
+            <div class="cta-section" data-aos="fade-up">
+                <a href="الاتصال والتواصل.html" class="cta-button">
+                    <i class="fas fa-user-plus"></i> <span data-ar="انضم إلينا الآن" data-en="Join Us Now">انضم إلينا الآن</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- الفوتر -->
+    <footer data-aos="fade-up">
+        <div class="footer-content">
+            <p data-ar="معهد أكتوبر العالي للهندسة والتكنولوجيا - قسم التسويق" data-en="October Higher Institute for Engineering and Technology - Marketing Department">معهد أكتوبر العالي للهندسة والتكنولوجيا - قسم التسويق</p>
+            <p data-ar="نسعى لتخريج مسوقين مبدعين قادرين على مواكبة أحدث التطورات في عالم التسويق الرقمي والتقليدي" data-en="We strive to graduate creative marketers who are able to keep up with the latest developments in the world of digital and traditional marketing">نسعى لتخريج مسوقين مبدعين قادرين على مواكبة أحدث التطورات في عالم التسويق الرقمي والتقليدي</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/ohinstitute" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/Ohi_1993?t=79l5XJ4KeAaxJn7jeGuTrg&s=09" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ohi_1993?igsh=d2NkcjJ4ZHE2aHFw" title="إنستجرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ohi.channel-r4r?si=ba_FuEv0kgs1nyB3" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/" title="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p data-ar="&copy; 2023 معهد أكتوبر العالي. جميع الحقوق محفوظة." data-en="&copy; 2023 October Higher Institute. All rights reserved.">&copy; 2023 معهد أكتوبر العالي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    
+    <!-- مكتبات JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // إخفاء رسالة التحميل عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 500);
+        });
+        
+        // إنشاء الجسيمات المتحركة
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-container');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // حجم عشوائي للجسيمات
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // موقع عشوائي للجسيمات
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // مدة عشوائية للتحريك
+                const duration = Math.random() * 15 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // تأخير عشوائي للبدء
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // زر العودة للأعلى
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // تبديل اللغة
+        const langToggle = document.getElementById('langToggle');
+        const currentLangSpan = document.getElementById('currentLang');
+        const body = document.body;
+        const html = document.documentElement;
+        
+        // تحقق من وجود لغة محفوظة
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'en') {
+            body.classList.add('en');
+            html.setAttribute('lang', 'en');
+            html.setAttribute('dir', 'ltr');
+            currentLangSpan.textContent = 'AR';
+            updateLanguage('en');
+        }
+        
+        langToggle.addEventListener('click', () => {
+            if (body.classList.contains('en')) {
+                body.classList.remove('en');
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                currentLangSpan.textContent = 'EN';
+                localStorage.setItem('lang', 'ar');
+                updateLanguage('ar');
+            } else {
+                body.classList.add('en');
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                currentLangSpan.textContent = 'AR';
+                localStorage.setItem('lang', 'en');
+                updateLanguage('en');
+            }
+        });
+        
+        // تحديث النصوص حسب اللغة
+        function updateLanguage(lang) {
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else {
+                    element.textContent = element.getAttribute('data-ar');
+                }
+            });
+            
+            // تحديث عناوين الصفحة
+            document.title = lang === 'en' 
+                ? 'Marketing Department - October Higher Institute' 
+                : 'قسم التسويق - معهد أكتوبر العالي';
+        }
+        
+        // تبديل الثيم (فاتح/داكن)
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // تحميل الثيم المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تأثير التمرير للشريط العلوي
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('scroll-up');
+                navbar.classList.add('scrolled');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
+                navbar.classList.remove('scroll-up');
+                navbar.classList.add('scroll-down');
+                navbar.classList.add('scrolled');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
+                navbar.classList.remove('scroll-down');
+                navbar.classList.add('scroll-up');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // القائمة المتجاوبة للموبايل
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // تحسين الأداء على الموبايل
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
+        // تعطيل بعض التأثيرات على الموبايل لتحسين الأداء
+        if (isMobile()) {
+            // تقليل عدد العناصر المتحركة
+            const animatedElements = document.querySelectorAll('[data-aos]');
+            animatedElements.forEach((element, index) => {
+                if (index > 10) { // تعطيل الأنيميشن للعناصر بعد العنصر العاشر
+                    element.removeAttribute('data-aos');
+                }
+            });
+        }
+        
+        // تحسين تحميل الصور
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.src;
+                            image.classList.add('loaded');
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(image => {
+                    imageObserver.observe(image);
+                });
+            } else {
+                // متصفحات قديمة لا تدعم IntersectionObserver
+                lazyImages.forEach(image => {
+                    image.src = image.src;
+                });
+            }
+        });
+        
+        // إضافة تأثيرات تفاعلية إضافية
+        document.querySelectorAll('.skill-card, .why-item, .field-item, .career-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // تحسين تجربة المستخدم على الشاشات اللمسية
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.skill-card, .why-item, .field-item, .career-item').forEach(item => {
+                item.addEventListener('touchstart', function() {
+                    this.classList.add('touch-active');
+                });
+                
+                item.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.classList.remove('touch-active');
+                    }, 300);
+                });
+            });
+        }
+        
+        // تأثير التموج عند النقر
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+            
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+            circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+            circle.classList.add('ripple');
+            
+            const ripple = button.getElementsByClassName('ripple')[0];
+            
+            if (ripple) {
+                ripple.remove();
+            }
+            
+            button.appendChild(circle);
+        }
+        
+        // إضافة تأثير التموج للأزرار
+        const buttons = document.querySelectorAll('.cta-button, .lang-toggle, .theme-toggle, .back-to-top, .read-more-link');
+        buttons.forEach(button => {
+            button.addEventListener('click', createRipple);
+        });
+        
+        // تأثير حركة الماوس على البنر
+        const banner = document.querySelector('.banner');
+        const bannerImg = banner.querySelector('img');
+        
+        banner.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const moveX = (x - 0.5) * 20;
+            const moveY = (y - 0.5) * 20;
+            
+            bannerImg.style.transform = `scale(1.1) translate(${moveX}px, ${moveY}px)`;
+        });
+        
+        banner.addEventListener('mouseleave', () => {
+            bannerImg.style.transform = 'scale(1.1)';
+        });
+        
+        // تأثير بارالكسا للبنر
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            const bannerHeight = banner.offsetHeight;
+            const parallaxSpeed = 0.5;
+            
+            if (scrollPosition < bannerHeight) {
+                const yPos = -(scrollPosition * parallaxSpeed);
+                bannerImg.style.transform = `scale(1.1) translateY(${yPos}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

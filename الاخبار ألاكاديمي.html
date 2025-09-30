@@ -1,0 +1,3784 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="الأخبار الأكاديمية - معهد أكتوبر العالي للهندسة والتكنولوجيا. تابع أحدث التطورات والإنجازات الأكاديمية، شروط القبول، الرسوم الدراسية، والفعاليات القادمة.">
+    <meta name="keywords" content="معهد أكتوبر العالي, الهندسة, إدارة الأعمال, أخبار أكاديمية, قبول, رسوم دراسية, فعاليات, تقديرات, مصر">
+    <meta name="author" content="معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="الأخبار الأكاديمية - معهد أكتوبر العالي">
+    <meta property="og:description" content="تابع أحدث التطورات والإنجازات في معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    <meta property="og:image" content="https://i.imgur.com/7XWHDaF.png">
+    <meta property="og:url" content="https://october-institute.edu/news">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الأخبار الأكاديمية - معهد لا أكتوبر العالي">
+    <meta name="twitter:description" content="تابع أحدث التطورات والإنجازات في معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    <meta name="twitter:image" content="https://i.imgur.com/7XWHDaF.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="m4 - png.jpg" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/7XWHDaF.png">
+    
+    <title>الأخبار الأكاديمية - معهد أكتوبر العالي للهندسة والتكنولوجيا</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #012b5b;
+            --primary-light: #0056b3;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --footer-dark: #001f3f;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --nav-glow: 0 0 15px rgba(1, 43, 91, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-circle {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .notification-toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .notification-toast.info {
+            background: var(--accent-color);
+        }
+        
+        .notification-toast.success {
+            background: var(--accent-green);
+        }
+        
+        /* Enhanced Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: var(--nav-glow);
+            transition: all 0.3s ease;
+            position: relative;   /* أو حتى ممكن تسيبها من غير */
+            width: 100%;
+            font-size: 0.8rem;
+        }
+        
+        .navbar.scrolled {
+            padding: 8px 0;
+            background: rgba(1, 43, 91, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--bg-white);
+            font-size: 0.9rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            padding: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.05) rotate(15deg);
+        }
+        
+        .apply-now-btn {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .apply-now-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .apply-now-btn:hover::before {
+            left: 100%;
+        }
+        
+        .apply-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* خلفية متحركة عند التمرير فوق العناصر */
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(252, 163, 17, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            margin: 5px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .dropdown a::after {
+            display: none;
+        }
+        
+        .dropdown a i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .fa-chevron-down {
+            margin-left: 5px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links li:hover .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .lang-btn {
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .lang-btn:not(.active):hover {
+            background: var(--bg-light);
+        }
+        
+        /* Enhanced News Hero Section */
+        .news-hero {
+            position: relative;
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            overflow: hidden;
+            border-radius: 0 0 30% 30% / 50px;
+        }
+        
+        .news-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/5G7mQ9F.jpg') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .news-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: var(--bg-light);
+            z-index: 1;
+        }
+        
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .news-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .news-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .news-hero-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .news-hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 30px auto 40px;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-feature {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-feature:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-feature:hover .hero-feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .hero-feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-feature p {
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .hero-btn {
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+        
+        .hero-btn-primary {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .hero-btn-primary:hover {
+            background: var(--secondary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(252, 163, 17, 0.4);
+        }
+        
+        .hero-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .hero-btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 25px auto 0;
+            line-height: 1.8;
+        }
+        
+        .about-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-right: 5px solid var(--primary-color);
+        }
+        
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .about-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .about-card h3 i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .about-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.7), rgba(1, 86, 179, 0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .about-image:hover::before {
+            opacity: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.08);
+        }
+        
+        /* Admission Section */
+        .admission-section {
+            padding: 100px 0;
+            background: var(--bg-white);
+            position: relative;
+        }
+        
+        .admission-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-white);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .admission-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-right: 5px solid var(--secondary-color);
+        }
+        
+        .admission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .admission-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .admission-card h3 i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .admission-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .admission-card li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .admission-card li i {
+            color: var(--accent-green);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .admission-motivation {
+            background: rgba(1, 43, 91, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            border-right: 4px solid var(--secondary-color);
+        }
+        
+        .admission-motivation p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .admission-link {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .admission-link:hover {
+            color: var(--secondary-color);
+            transform: translateX(8px);
+        }
+        
+        .admission-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            position: relative;
+        }
+        
+        .admission-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.7), rgba(1, 86, 179, 0.7));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .admission-image:hover::before {
+            opacity: 1;
+        }
+        
+        .admission-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .admission-image:hover img {
+            transform: scale(1.08);
+        }
+        
+        /* Academic News Section */
+        .academic-news-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        
+        .academic-news-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .news-item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .news-item-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-item-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+        }
+        
+        .news-item-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-item-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .news-item-card:hover .news-item-img::after {
+            opacity: 1;
+        }
+        
+        .news-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-item-card:hover .news-item-img img {
+            transform: scale(1.12);
+        }
+        
+        .news-item-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-item-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-item-excerpt {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+        
+        .news-item-date {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .news-item-date i {
+            color: var(--secondary-color);
+        }
+        
+        .news-item-read-more {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            margin-top: auto;
+        }
+        
+        .news-item-read-more:hover {
+            color: var(--secondary-color);
+            transform: translateX(8px);
+        }
+        
+        /* Grades Section */
+        .grades-section {
+            padding: 100px 0;
+            background: var(--bg-white);
+            position: relative;
+        }
+        
+        .grades-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-white);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .grades-container {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--accent-color);
+        }
+        
+        .grades-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .grades-header h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .grades-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .grades-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .grades-table td {
+            padding: 18px;
+            text-align: center;
+            border-bottom: 1px solid var(--bg-light);
+            font-size: 1.05rem;
+        }
+        
+        .grades-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .grades-table tr:hover {
+            background: rgba(1, 43, 91, 0.05);
+        }
+        
+        .grade-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .grade-a-plus {
+            background: #28a745;
+        }
+        
+        .grade-a {
+            background: #17a2b8;
+        }
+        
+        .grade-b-plus {
+            background: #007bff;
+        }
+        
+        .grade-b {
+            background: #6f42c1;
+        }
+        
+        .grade-c-plus {
+            background: #fd7e14;
+        }
+        
+        .grade-c {
+            background: #e83e8c;
+        }
+        
+        .grade-d-plus {
+            background: #dc3545;
+        }
+        
+        .grade-d {
+            background: #6c757d;
+        }
+        
+        .grade-f {
+            background: #343a40;
+        }
+        
+        .grades-note {
+            background: rgba(1, 43, 91, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border-right: 5px solid var(--secondary-color);
+        }
+        
+        .grades-note h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .grades-note h4 i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .grades-note p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Fees Section */
+        .fees-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        
+        .fees-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .fees-container {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--secondary-color);
+        }
+        
+        .fees-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .fees-header h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .fees-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        .fees-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 15px;
+        }
+        
+        .fees-tab {
+            padding: 15px 30px;
+            background: var(--bg-light);
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fees-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .fees-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .fees-tab.active::before {
+            width: 100%;
+        }
+        
+        .fees-tab:not(.active):hover {
+            background: rgba(1, 43, 91, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .fees-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 18px;
+            text-align: right;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .fees-table td {
+            padding: 18px;
+            text-align: right;
+            border-bottom: 1px solid var(--bg-light);
+            font-size: 1.05rem;
+        }
+        
+        .fees-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .fees-table tr:hover {
+            background: rgba(1, 43, 91, 0.05);
+        }
+        
+        .fees-table tr:last-child {
+            background: rgba(1, 43, 91, 0.1);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .fees-total {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .fees-flexible-payment {
+            background: rgba(252, 163, 17, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-right: 5px solid var(--secondary-color);
+        }
+        
+        .fees-flexible-payment h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .fees-flexible-payment h4 i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .fees-flexible-payment p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .fees-note {
+            background: rgba(1, 43, 91, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border-right: 5px solid var(--primary-color);
+        }
+        
+        .fees-note h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .fees-note h4 i {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .fees-note ul {
+            list-style: none;
+        }
+        
+        .fees-note li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .fees-note li i {
+            color: var(--secondary-color);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        /* Events Section */
+        .events-section {
+            padding: 100px 0;
+            background: var(--bg-white);
+            position: relative;
+        }
+        
+        .events-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-white);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .events-timeline {
+            position: relative;
+            padding-right: 40px;
+        }
+        
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 20px;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+        
+        .event-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .event-dot {
+            position: absolute;
+            top: 8px;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 5px solid var(--bg-white);
+            box-shadow: var(--shadow);
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .event-content {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-right: 60px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-right: 5px solid var(--primary-color);
+        }
+        
+        .event-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .event-date {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.4;
+        }
+        
+        .event-title i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .event-description {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.2rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .contact-card p {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .contact-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .contact-card a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* New Admission Requirements Section */
+        .admission-requirements-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+        
+        .admission-requirements-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--bg-light);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+        
+        .requirements-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .requirements-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-right: 5px solid var(--primary-color);
+            height: 100%;
+        }
+        
+        .requirements-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .requirements-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .requirements-card h3 i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        .requirements-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+        
+        .requirements-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .requirements-list li i {
+            color: var(--accent-green);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .master-requirements {
+            background: rgba(1, 43, 91, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-top: 30px;
+            border-right: 5px solid var(--accent-color);
+        }
+        
+        .master-requirements h4 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .master-requirements h4 i {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+        }
+        
+        .master-requirements ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .master-requirements li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .master-requirements li i {
+            color: var(--accent-color);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .master-requirements a {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        
+        .master-requirements a:hover {
+            color: var(--secondary-color);
+            transform: translateX(8px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--footer-dark);
+            color: white;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .footer-widget h5 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .footer-widget h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        .footer-widget p {
+            margin-bottom: 25px;
+            opacity: 0.8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            padding: 8px 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(8px);
+        }
+        
+        .footer-links i {
+            margin-left: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(252, 163, 17, 0.3);
+        }
+        
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Dark Theme */
+        body.dark-theme {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .about-section,
+        body.dark-theme .admission-section,
+        body.dark-theme .grades-section,
+        body.dark-theme .events-section,
+        body.dark-theme .contact-section,
+        body.dark-theme .admission-requirements-section {
+            background: #1e1e1e;
+        }
+        
+        body.dark-theme .academic-news-section,
+        body.dark-theme .fees-section {
+            background: #2a2a2a;
+        }
+        
+        body.dark-theme .about-card,
+        body.dark-theme .admission-card,
+        body.dark-theme .news-item-card,
+        body.dark-theme .grades-container,
+        body.dark-theme .fees-container,
+        body.dark-theme .contact-card,
+        body.dark-theme .event-content,
+        body.dark-theme .requirements-card {
+            background: #2a2a2a;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .grades-table,
+        body.dark-theme .fees-table {
+            background: #2a2a2a;
+        }
+        
+        body.dark-theme .grades-table th,
+        body.dark-theme .fees-table th {
+            background: #012b5b;
+        }
+        
+        body.dark-theme .grades-table td,
+        body.dark-theme .fees-table td {
+            border-bottom-color: #444;
+        }
+        
+        body.dark-theme .grades-table tr:hover,
+        body.dark-theme .fees-table tr:hover {
+            background: #333;
+        }
+        
+        body.dark-theme .fees-tab {
+            background: #333;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .fees-tab.active {
+            background: #012b5b;
+            color: white;
+        }
+        
+        body.dark-theme .fees-tab:not(.active):hover {
+            background: #444;
+        }
+        
+        body.dark-theme .fees-total {
+            background: #333;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .admission-motivation,
+        body.dark-theme .grades-note,
+        body.dark-theme .fees-flexible-payment,
+        body.dark-theme .fees-note,
+        body.dark-theme .master-requirements {
+            background: #333;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .event-date {
+            background: #012b5b;
+        }
+        
+        body.dark-theme .language-switcher {
+            background: #2a2a2a;
+        }
+        
+        body.dark-theme .lang-btn:not(.active) {
+            background: #333;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .lang-btn:not(.active):hover {
+            background: #444;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 15px;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(255, 255, 255, 0.1);
+                margin: 10px 0 0 0;
+                width: 100%;
+                padding: 10px 0;
+            }
+            
+            .dropdown a {
+                color: rgba(255, 255, 255, 0.9);
+                padding: 10px 20px;
+                margin: 0;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--secondary-color);
+            }
+            
+            .dropdown a i {
+                color: var(--secondary-color);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+            
+            .news-hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-feature {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .language-switcher {
+                top: 80px;
+                right: 10px;
+            }
+            
+            .requirements-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .news-hero-content h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .news-item-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-timeline::before {
+                right: 15px;
+            }
+            
+            .event-dot {
+                right: -5px;
+            }
+            
+            .event-content {
+                margin-right: 35px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .news-hero {
+                padding: 140px 0 100px;
+            }
+            
+            .news-hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btn {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .grades-table,
+            .fees-table {
+                font-size: 0.95rem;
+            }
+            
+            .grades-table th,
+            .grades-table td,
+            .fees-table th,
+            .fees-table td {
+                padding: 12px 5px;
+            }
+            
+            .fees-tabs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .fees-tab {
+                width: 100%;
+            }
+            
+            .hero-feature {
+                width: 100%;
+            }
+        }
+        
+        /* LTR Support */
+        body.lang-en {
+            direction: ltr;
+        }
+        
+        body.lang-en .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        body.lang-en .dropdown {
+            left: auto;
+            right: 0;
+        }
+        
+        body.lang-en .dropdown a {
+            padding: 12px 20px 12px 12px;
+        }
+        
+        body.lang-en .dropdown a i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        body.lang-en .dropdown a:hover {
+            transform: translateX(-5px);
+        }
+        
+        body.lang-en .nav-links {
+            right: auto;
+            left: 0;
+        }
+        
+        body.lang-en .nav-links a {
+            justify-content: flex-start;
+        }
+        
+        body.lang-en .fa-chevron-down {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        body.lang-en .nav-links li:hover .fa-chevron-down {
+            transform: rotate(-180deg);
+        }
+        
+        body.lang-en .admission-card li i {
+            margin-left: 10px;
+            margin-right: 0;
+        }
+        
+        body.lang-en .grades-table th,
+        body.lang-en .fees-table th {
+            text-align: left;
+        }
+        
+        body.lang-en .grades-table td,
+        body.lang-en .fees-table td {
+            text-align: left;
+        }
+        
+        body.lang-en .events-timeline {
+            padding-right: 0;
+            padding-left: 40px;
+        }
+        
+        body.lang-en .events-timeline::before {
+            right: auto;
+            left: 20px;
+        }
+        
+        body.lang-en .event-dot {
+            right: auto;
+            left: 0;
+        }
+        
+        body.lang-en .event-content {
+            margin-right: 0;
+            margin-left: 60px;
+        }
+        
+        body.lang-en .footer-widget h5::after {
+            right: auto;
+            left: 0;
+        }
+        
+        body.lang-en .footer-links a {
+            justify-content: flex-start;
+        }
+        
+        body.lang-en .footer-links i {
+            margin-left: 0;
+            margin-right: 12px;
+        }
+        
+        body.lang-en .footer-links a:hover {
+            transform: translateX(-8px);
+        }
+        
+        body.lang-en .back-to-top {
+            left: auto;
+            right: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            body.lang-en .nav-links.active {
+                left: auto;
+                right: 0;
+            }
+            
+            body.lang-en .language-switcher {
+                right: auto;
+                left: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body.lang-en .events-timeline::before {
+                left: 15px;
+            }
+            
+            body.lang-en .event-dot {
+                left: -5px;
+            }
+            
+            body.lang-en .event-content {
+                margin-left: 35px;
+            }
+            
+            body.lang-en .back-to-top {
+                right: 20px;
+                left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notification">
+        <i class="fas fa-info-circle"></i>
+        <span id="notification-message">Notification message</span>
+    </div>
+    
+    <!-- Enhanced Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="apply-now-btn">
+                <i class="fas fa-graduation-cap"></i> <span data-i18n="apply-now">التقديم الآن</span>
+            </button>
+            
+            <a href="index.html" class="logo">
+                <img src="m4 - png.jpg" alt="October Institute Logo">
+                <span data-i18n="institute-name">معهد أكتوبر العالي</span>
+            </a>
+            
+                <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-ar="كلية الهندسة" data-en="Engineering College">كلية الهندسة</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-ar="قسم هندسة مدني" data-en="Civil Engineering">قسم هندسة مدني</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-ar="قسم هندسة عمارة" data-en="Architecture Engineering">قسم هندسة عمارة</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-ar="قسم هندسة اتصالات" data-en="Communications Engineering">قسم هندسة اتصالات</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-ar="كلية إدارة الأعمال" data-en="Business College">كلية إدارة الأعمال</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-ar="نظم معلومات الأعمال" data-en="Business Information Systems">نظم معلومات الأعمال</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-ar="إدارة أعمال" data-en="Business Administration">إدارة أعمال</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-ar="استثمار وبنوك" data-en="Investment and Banking">استثمار وبنوك</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-ar="تسويق" data-en="Marketing">تسويق</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span data-ar="الأخبار" data-en="News">الأخبار</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-ar="أخبار أكاديمية" data-en="Academic News">أخبار أكاديمية</span></a>
+                                                <a href="عن المعهد .html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="About the institute">عن المعهد</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="Student News">أخبار الطلابة</span></a>
+                    </div>
+                </li>
+                <li><a href="index.html"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <div class="lang-btn active" data-lang="ar">AR</div>
+        <div class="lang-btn" data-lang="en">EN</div>
+    </div>
+    
+    <!-- Enhanced News Hero Section -->
+    <section class="news-hero">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="news-hero-content">
+                <h1 data-aos="fade-up" data-i18n="welcome-message">مرحبًا بكم في معهد أكتوبر العالي للهندسة والتكنولوجيا</h1>
+                <p data-aos="fade-up" data-aos-delay="100" data-i18n="institute-description">مؤسسة تعليمية رائدة تسعى لتخريج مهندسين ومديرين أكفاء قادرين على مواكبة تحديات سوق العمل المحلي والدولي.</p>
+                
+                <div class="hero-features" data-aos="fade-up" data-aos-delay="200">
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 data-i18n="academic-programs">برامج أكاديمية معتمدة</h3>
+                        <p data-i18n="academic-programs-desc">برامج معتمدة من وزارة التعليم العالي والبحث العلمي</p>
+                    </div>
+                    
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 data-i18n="practical-training">تدريب عملي</h3>
+                        <p data-i18n="practical-training-desc">تدريب عملي وربط مباشر بسوق العمل</p>
+                    </div>
+                    
+                    <div class="hero-feature">
+                        <div class="hero-feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 data-i18n="partnerships">شراكات دولية</h3>
+                        <p data-i18n="partnerships-desc">شراكات مع مؤسسات دولية مرموقة</p>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#admission" class="hero-btn hero-btn-primary">
+                        <i class="fas fa-user-graduate"></i> <span data-i18n="admission">القبول والتنسيق</span>
+                    </a>
+                    <a href="#academic-news" class="hero-btn hero-btn-secondary">
+                        <i class="fas fa-newspaper"></i> <span data-i18n="academic-news">الأخبار الأكاديمية</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <!-- Admission Section -->
+    <section class="admission-section" id="admission">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="admission-title">القبول والتنسيق</h2>
+                <p class="section-subtitle" data-i18n="admission-subtitle">تعرف على شروط القبول والتنسيق في معهد أكتوبر العالي للهندسة والتكنولوجيا</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="admission-card">
+                        <h3><i class="fas fa-user-graduate"></i> <span data-i18n="admission-conditions">شروط القبول</span></h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="condition-1">الثانوية العامة (شعبة علمي رياضة)</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="condition-2">الثانوية الأزهرية (شعبة علمي)</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="condition-3">الدبلومات الفنية الصناعية (3 سنوات – 5 سنوات)</span></li>
+                        </ul>
+                        
+                        <div class="admission-motivation">
+                            <p data-i18n="admission-motivation-text">انضم إلى نخبة من الطلاب المتميزين وابدأ رحلتك الأكاديمية في بيئة تعليمية حديثة.</p>
+                            <a href="#" class="admission-link" data-i18n="admission-link-text">التقديم عبر التنسيق الإلكتروني</a>
+                        </div>
+                    </div>
+                    
+                    <div class="admission-card">
+                        <h3><i class="fas fa-laptop-code"></i> <span data-i18n="application-method">طريقة التقديم</span></h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="application-method-1">القبول يتم من خلال مكتب التنسيق الإلكتروني لوزارة التعليم العالي</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="application-method-2">يمكن التقديم إلكترونياً عبر موقع التنسيق الرسمي</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="application-method-3">متابعة إعلانات التنسيق والتواريخ المحددة للتقديم</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="admission-image">
+                        <img src="m4 - png.jpg" alt="Admission">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Academic News Section -->
+    <section class="academic-news-section" id="academic-news">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="academic-news-section-title">الأخبار الأكاديمية</h2>
+                <p class="section-subtitle" data-i18n="academic-news-section-subtitle">آخر الأخبار والإعلانات الأكاديمية في المعهد</p>
+            </div>
+            
+            <div class="news-item-grid">
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-item-img">
+                        <img src="s6.jpg" alt="Graduation">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="graduation-news">للتخرج فتح باب التقديم</h3>
+                        <p class="news-item-excerpt" data-i18n="graduation-news-desc">تم فتح باب التقديم لطلاب الفرقة النهائية للحصول على شهادات التخرج. يرجى مراجعة إدارة شؤون الطلاب لاستكمال الإجراءات اللازمة.</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 15 أكتوبر 2025
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-item-img">
+                        <img src="s7.jpg" alt="Admission">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="admission-news">القبول والتقديم في المعهد</h3>
+                        <p class="news-item-excerpt" data-i18n="admission-news-desc">بدء التقديم للطلاب الجدد عبر موقع التنسيق الإلكتروني. يمكن للطلاب المستوفين للشروط التقديم الآن عبر الموقع الرسمي لتنسيق القبول.</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 10 أكتوبر 2025
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-item-img">
+                        <img src="S3.jpg" alt="Fees">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="fees-news">مصروفات إدارة أعمال وهندسة</h3>
+                        <p class="news-item-excerpt" data-i18n="fees-news-desc">إعلان مصروفات الفصل الدراسي الجديد لكليات إدارة الأعمال والهندسة. يمكن الاطلاع على التفاصيل الكاملة في قسم المصروفات بالموقع.</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 5 أكتوبر 2025
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="news-item-img">
+                        <img src="s4.jpg" alt="Results">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="results-news">إعلان عن ظهور النتيجة الفصل الصيفي</h3>
+                        <p class="news-item-excerpt" data-i18n="results-news-desc">إعلان نتائج امتحانات الفصل الدراسي الأول والثاني عبر بوابة الطالب. يمكن للطلاب تسجيل الدخول للاطلاع على نتائجهم.</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 1 أكتوبر 2024
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="news-item-img">
+                        <img src="S1.jpg" alt="Files">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="files-news">معرفة التقديرات من خلال القائمة</h3>
+                        <p class="news-item-excerpt" data-i18n="files-news-desc">..</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 28 سبتمبر 2025
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="news-item-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="news-item-img">
+                        <img src="S10.jpg" alt="Training">
+                    </div>
+                    <div class="news-item-content">
+                        <h3 class="news-item-title" data-i18n="training-news">تم  علان عن التنسيق القبول في المعهد للعام الدراسي الجديد(2025-2026)</h3>
+                        <p class="news-item-excerpt" data-i18n="training-news-desc">لشهادة الثانوية العامة لقسم ادارة الأعمال والهندسة.</p>
+                        <div class="news-item-date">
+                            <i class="far fa-calendar-alt"></i> 25 سبتمبر 2025
+                        </div>
+                        <a href="#" class="news-item-read-more">
+                            <i class="fas fa-book-open"></i> اقرأ المزيد
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Grades Section -->
+    <section class="grades-section" id="grades">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="grades-title">التقديرات الأكاديمية</h2>
+                <p class="section-subtitle" data-i18n="grades-subtitle">تعرف على نظام التقديرات المتبع في المعهد</p>
+            </div>
+            
+            <div class="grades-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="grades-header">
+                    <h3 data-i18n="grades-system">نظام التقديرات</h3>
+                    <p data-i18n="grades-system-desc">التقديرات المعتمدة في معهد أكتوبر العالي للهندسة والتكنولوجيا</p>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="grades-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="grade">التقدير</th>
+                                <th data-i18n="description">الوصف</th>
+                                <th data-i18n="percentage">النسبة المئوية</th>
+                                <th data-i18n="symbol">الرمز</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="grade-badge grade-a-plus">A+</span></td>
+                                <td data-i18n="grade-a-plus-desc">امتياز مرتفع</td>
+                                <td data-i18n="grade-a-plus-percent">من 90% إلى 100%</td>
+                                <td>4.0</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-a">A</span></td>
+                                <td data-i18n="grade-a-desc">امتياز</td>
+                                <td data-i18n="grade-a-percent">من 85% إلى أقل من 90%</td>
+                                <td>3.7</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-b-plus">B+</span></td>
+                                <td data-i18n="grade-b-plus-desc">جيد جداً مرتفع</td>
+                                <td data-i18n="grade-b-plus-percent">من 80% إلى أقل من 85%</td>
+                                <td>3.3</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-b">B</span></td>
+                                <td data-i18n="grade-b-desc">جيد جداً</td>
+                                <td data-i18n="grade-b-percent">من 75% إلى أقل من 80%</td>
+                                <td>3.0</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-c-plus">C+</span></td>
+                                <td data-i18n="grade-c-plus-desc">جيد مرتفع</td>
+                                <td data-i18n="grade-c-plus-percent">من 70% إلى أقل من 75%</td>
+                                <td>2.7</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-c">C</span></td>
+                                <td data-i18n="grade-c-desc">جيد</td>
+                                <td data-i18n="grade-c-percent">من 65% إلى أقل من 70%</td>
+                                <td>2.4</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-d-plus">D+</span></td>
+                                <td data-i18n="grade-d-plus-desc">مقبول مرتفع</td>
+                                <td data-i18n="grade-d-plus-percent">من 60% إلى أقل من 65%</td>
+                                <td>2.0</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-d">D</span></td>
+                                <td data-i18n="grade-d-desc">مقبول</td>
+                                <td data-i18n="grade-d-percent">من 50% إلى أقل من 60%</td>
+                                <td>1.7</td>
+                            </tr>
+                            <tr>
+                                <td><span class="grade-badge grade-f">F</span></td>
+                                <td data-i18n="grade-f-desc">راسب</td>
+                                <td data-i18n="grade-f-percent">أقل من 50%</td>
+                                <td>0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grades-note">
+                    <h4><i class="fas fa-info-circle"></i> <span data-i18n="grades-note-title">ملاحظات هامة</span></h4>
+                    <p data-i18n="grades-note-desc">يتم اعتماد نظام النقاط (GPA) بما يتماشى مع المعايير العالمية، مما يتيح للطلاب فرصًا أوسع في الدراسات العليا داخل وخارج مصر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- New Admission Requirements Section -->
+    <section class="admission-requirements-section" id="admission-requirements">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="admission-requirements-title">متطلبات القبول للعام الدراسي 2025-2026</h2>
+                <p class="section-subtitle" data-i18n="admission-requirements-subtitle">تهنئة إدارة المعهد بقبول الطلاب المستجدين والأوراق المطلوبة للقيد</p>
+            </div>
+            
+            <div class="requirements-container">
+                <div class="requirements-card" data-aos="fade-right">
+                    <h3><i class="fas fa-user-graduate"></i> <span data-i18n="new-students-congratulations">تهنئة بقبول الطلاب المستجدين</span></h3>
+                    <p data-i18n="congratulations-message">تهنئ إدارة المعهد الطلاب المستجدين والمرشحين من خلال مكتب التنسيق للعام الدراسي 2025-2026م.</p>
+                    
+                    <h4 data-i18n="required-documents-title">الأوراق المطلوبة للقيد:</h4>
+                    <ul class="requirements-list">
+                        <li><i class="fas fa-file-alt"></i> <span data-i18n="doc-1">أصل شهادة المؤهل لسنة 2025 + صورة</span></li>
+                        <li><i class="fas fa-id-card"></i> <span data-i18n="doc-2">أصل بطاقة الترشيح لسنة 2025</span></li>
+                        <li><i class="fas fa-birthday-cake"></i> <span data-i18n="doc-3">أصل شهادة الميلاد بتاريخ حديث + صورة</span></li>
+                        <li><i class="fas fa-images"></i> <span data-i18n="doc-4">عدد (7) صور شخصية في ظرف</span></li>
+                        <li><i class="fas fa-id-badge"></i> <span data-i18n="doc-5">عدد (2) صورة البطاقة الشخصية للطالب + صورة بطاقة ولى الأمر</span></li>
+                        <li><i class="fas fa-clipboard-list"></i> <span data-i18n="doc-6">نموذج (2) جند، 6 جند للطلاب الذكور من منطقة التجنيد التابع لها</span></li>
+                        <li><i class="fas fa-folder"></i> <span data-i18n="doc-7">حافظة بكبسولة</span></li>
+                    </ul>
+                </div>
+                
+                <div class="requirements-card" data-aos="fade-left">
+                    <h3><i class="fas fa-graduation-cap"></i> <span data-i18n="master-programs-title">شروط الالتحاق ببرامج الماجستير</span></h3>
+                    
+                    <div class="master-requirements">
+                        <h4><i class="fas fa-check-circle"></i> <span data-i18n="master-requirements">المتطلبات الأساسية:</span></h4>
+                        <ul>
+                            <li><i class="fas fa-certificate"></i> <span data-i18n="master-req-1">شهادة البكالوريوس + شهادة المعادلة من المجلس الأعلى للجامعات</span></li>
+                            <li><i class="fas fa-star"></i> <span data-i18n="master-req-2">الماجستير المهني: لا يشترط تقدير معين</span></li>
+                            <li><i class="fas fa-star-half-alt"></i> <span data-i18n="master-req-3">الماجستير الأكاديمي: يشترط تقدير عام جيد جدًا</span></li>
+                        </ul>
+                        
+                        <h4><i class="fas fa-laptop"></i> <span data-i18n="master-application">طريقة التقديم:</span></h4>
+                        <p data-i18n="master-application-desc">التقديم يتم فقط من خلال الموقع الرسمي للجامعة عبر الرابط:</p>
+                        <a href="https://admission.must.edu.eg/postgraduate/login" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> https://admission.must.edu.eg/postgraduate/login
+                        </a>
+                        
+                        <h4><i class="fas fa-money-bill-wave"></i> <span data-i18n="master-fees">المصروفات:</span></h4>
+                        <p data-i18n="master-fees-desc">المصروفات تُسدد على فصلين دراسيين.</p>
+                        
+                        <h4><i class="fas fa-clock"></i> <span data-i18n="master-duration">مدة الدراسة:</span></h4>
+                        <p data-i18n="master-duration-desc">مدة الدراسة لا تقل عن عامين.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Fees Section -->
+    <section class="fees-section" id="fees">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="fees-title">الرسوم والخدمات الإدارية</h2>
+                <p class="section-subtitle" data-i18n="fees-subtitle">تعرف على رسوم الدراسة والخدمات الإدارية للعام الجامعي 2025/2026</p>
+            </div>
+            
+            <div class="fees-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="fees-header">
+                    <h3 data-i18n="fees-academic-year">مصروفات العام الجامعي 2025/2026</h3>
+                    <p data-i18n="fees-academic-year-desc">تفاصيل مصروفات الفصل الدراسي الأول والثاني</p>
+                </div>
+                
+                <div class="fees-tabs">
+                    <div class="fees-tab business active" data-tab="business" data-i18n="business-department">قسم إدارة الأعمال</div>
+                    <div class="fees-tab engineering" data-tab="engineering" data-i18n="engineering-department">قسم الهندسة</div>
+                </div>
+                
+                <div class="fees-content">
+                    <div class="fees-tab-content" id="business-tab">
+                        <div class="table-responsive">
+                            <table class="fees-table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="item">البيان</th>
+                                        <th data-i18n="amount">المبلغ (جنيه)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-i18n="first-term-fees">مصروفات الترم الأول</td>
+                                        <td>7,425</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="first-term-admin-fees">رسوم إدارية (ترم أول)</td>
+                                        <td>359</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="first-term-total">إجمالي (ترم أول)</td>
+                                        <td>7,784</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-fees">مصروفات الترم الثاني</td>
+                                        <td>7,425</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-admin-fees">رسوم إدارية (ترم ثاني)</td>
+                                        <td>359</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-total">إجمالي (ترم ثاني)</td>
+                                        <td>7,784</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="insurance">تأمين (مسترد عند التخرج)</td>
+                                        <td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="additional-course-fees">رسوم تسجيل مادة إضافية أو متأخرة</td>
+                                        <td>400</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong data-i18n="total">الإجمالي الكلي</strong></td>
+                                        <td><strong>8,684</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="fees-total business" data-i18n="business-total">الإجمالي الكلي: 8,684 جنيه</div>
+                    </div>
+                    
+                    <div class="fees-tab-content" id="engineering-tab" style="display: none;">
+                        <div class="table-responsive">
+                            <table class="fees-table">
+                                <thead>
+                                    <tr>
+                                        <th data-i18n="item">البيان</th>
+                                        <th data-i18n="amount">المبلغ (جنيه)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-i18n="first-term-fees">مصروفات الترم الأول</td>
+                                        <td>17,019</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="first-term-admin-fees">رسوم إدارية (ترم أول)</td>
+                                        <td>574.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="first-term-total">إجمالي (ترم أول)</td>
+                                        <td>17,594</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-fees">مصروفات الترم الثاني</td>
+                                        <td>17,019</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-admin-fees">رسوم إدارية (ترم ثاني)</td>
+                                        <td>574.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="second-term-total">إجمالي (ترم ثاني)</td>
+                                        <td>17,594</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="insurance">تأمين (مسترد عند التخرج)</td>
+                                        <td>500</td>
+                                    </tr>
+                                    <tr>
+                                        <td data-i18n="additional-course-fees">رسوم تسجيل مادة إضافية أو متأخرة</td>
+                                        <td>400</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong data-i18n="total">الإجمالي الكلي</strong></td>
+                                        <td><strong>18,494</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="fees-total engineering" data-i18n="engineering-total">الإجمالي الكلي: 18,494 جنيه</div>
+                    </div>
+                    
+                    <div class="fees-flexible-payment">
+                        <h4><i class="fas fa-credit-card"></i> <span data-i18n="flexible-payment">خطط سداد مرنة</span></h4>
+                        <p data-i18n="flexible-payment-desc">يوفر المعهد خطط سداد مرنة وتسهيلات دفع لدعم الطلاب وأولياء الأمور.</p>
+                        <p>ملحوظه المصريف تختلف من عام لاخر</p>
+                    </div>
+                    <div class="fees-note">
+                        <h4><i class="fas fa-info-circle"></i> <span data-i18n="additional-fees-title">رسوم وخدمات إضافية للخريجين</span></h4>
+                        <ul>
+                            <li><i class="fas fa-file-alt"></i> <span data-i18n="file-cost">تكلفة سحب الملف للخريج: 600 جنيه</span></li>
+                            <li><i class="fas fa-certificate"></i> <span data-i18n="certificate-cost">استخراج شهادة تخرج أصلية: 155 جنيه</span></li>
+                            <li><i class="fas fa-graduation-cap"></i> <span data-i18n="graduation-cost">حفلة تخرج: 1100 جنيه (شاملة الروب والوشاح والكاب وتذكرتين للمرافقين)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="events-title">الفعاليات القادمة</h2>
+                <p class="section-subtitle" data-i18n="events-subtitle">تعرف على أحدث الفعاليات والأنشطة في المعهد</p>
+            </div>
+            
+            <div class="events-timeline">
+                <div class="event-item" data-aos="fade-right">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">أكتوبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-calendar-check"></i> <span data-i18n="event-1-title">بدء التسجيل في الفصل الدراسي الجديد</span></h3>
+                        <p class="event-description" data-i18n="event-1-desc">يبدأ التسجيل للفصل الدراسي الجديد لجميع الطلاب. يمكن للطلاب تسجيل المواد عبر بوابة الطالب الإلكترونية.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-left">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">نوفمبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-laptop-code"></i> <span data-i18n="event-2-title">برنامج تطوير صيفي (كورس برمجة ويب)</span></h3>
+                        <p class="event-description" data-i18n="event-2-desc">انطلاق برنامج تطوير صيفي متخصص في برمجة الويب. البرنامج مفتوح لجميع الطلاب الراغبين في تطوير مهاراتهم البرمجية.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-right">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">ديسمبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-bullhorn"></i> <span data-i18n="event-3-title">إعلان هام للطلاب (نظام ساعات معتمدة)</span></h3>
+                        <p class="event-description" data-i18n="event-3-desc">إعلان هام لطلاب هندسة وإدارة الأعمال (نظام الساعات المعتمدة) حول التسجيل للمواد والخطط الدراسية الجديدة.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-left">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">22 سبتمبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-graduation-cap"></i> <span data-i18n="event-4-title">حفلة تخرج قسم هندسة ونظم</span></h3>
+                        <p class="event-description" data-i18n="event-4-desc">حفلة تخرج ضخمة لخريجي قسم الهندسة ونظم المعلومات. الحفل سيقام في القاعة الكبرى بالمعهد بحضور شخصيات أكاديمية بارزة.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-right">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">23 سبتمبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-graduation-cap"></i> <span data-i18n="event-5-title">حفلة تخرج استثمار + إدارة + تسويق أعمال</span></h3>
+                        <p class="event-description" data-i18n="event-5-desc">حفلة تخرج لخريجي أقسام الاستثمار وإدارة الأعمال والتسويق. سيتم تكريم الطلاب المتفوقين وإعلان جوائز التميز.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-left">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">أكتوبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-user-graduate"></i> <span data-i18n="event-6-title">القبول في العام الجديد 2025/2026</span></h3>
+                        <p class="event-description" data-i18n="event-6-desc">فتح باب القبول للعام الجامعي الجديد 2025/2026. يمكن للطلاب المستوفين للشروط التقديم عبر موقع التنسيق الإلكتروني.</p>
+                    </div>
+                </div>
+                
+                <div class="event-item" data-aos="fade-right">
+                    <div class="event-dot"></div>
+                    <div class="event-content">
+                        <div class="event-date">نوفمبر 2025</div>
+                        <h3 class="event-title"><i class="fas fa-chart-line"></i> <span data-i18n="event-7-title">ظهور نتيجة الترم الصيفي (نظام ساعات معتمدة)</span></h3>
+                        <p class="event-description" data-i18n="event-7-desc">إعلان نتائج الترم الصيفي لطلاب نظام الساعات المعتمدة. يمكن للطلاب الاطلاع على نتائجهم عبر بوابة الطالب.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title" data-i18n="contact-title">تواصل معنا</h2>
+                <p class="section-subtitle" data-i18n="contact-subtitle">يسعدنا التواصل معكم والإجابة عن استفساراتكم</p>
+            </div>
+            
+            <div class="contact-cards">
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 data-i18n="address-title">العنوان</h3>
+                    <p data-i18n="address">مدينة 6 أكتوبر - الحي الثالث - المنطقة الثانية</p>
+                    <p data-i18n="address-details">معهد أكتوبر العالي للهندسة والتكنولوجيا</p>
+                </div>
+                
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 data-i18n="phone-title">أرقام الهاتف</h3>
+                    <p><a href="tel:01006069292">01006069292</a></p>
+                    <p><a href="tel:0238359464">38359464</a></p>
+                    <p><a href="tel:0238356496">38356496 (فاكس)</a></p>
+                </div>
+                
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 data-i18n="email-title">البريد الإلكتروني</h3>
+                    <p><a href="mailto:phi@ohledu.eg">phi@ohledu.eg</a></p>
+                    <p><a href="mailto:info@ohledu.eg">info@ohledu.eg</a></p>
+                </div>
+                
+                <div class="contact-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 data-i18n="working-hours-title">أوقات العمل</h3>
+                    <p data-i18n="working-days">السبت - الخميس</p>
+                    <p data-i18n="working-hours">9:00 صباحاً - 4:00 مساءً</p>
+                    <p data-i18n="weekend">الجمعة : مغلق</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5 data-i18n="about-institute">عن المعهد</h5>
+                        <p data-i18n="about-institute-desc">معهد أكتوبر العالي للهندسة والتكنولوجيا مؤسسة تعليمية رائدة تقدم برامج هندسية وإدارية متطورة تواكب متطلبات سوق العمل الحديث.</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/ohinstitute"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/Ohi_1993?t=79l5XJ4KeAaxJn7jeGuTrg&s=09"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/ohi_1993?igsh=d2NkcjJ4ZHE2aHFw"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5 data-i18n="quick-links">روابط سريعة</h5>
+                        <ul class="footer-links">
+                            <li><a href="index.html" data-i18n="home">الرئيسية</a></li>
+                            <li><a href="#admission" data-i18n="admission">القبول والتنسيق</a></li>
+                            <li><a href="#academic-news" data-i18n="academic-news">الأخبار الأكاديمية</a></li>
+                            <li><a href="#grades" data-i18n="grades">التقديرات الأكاديمية</a></li>
+                            <li><a href="#fees" data-i18n="fees">الرسوم والخدمات</a></li>
+                            <li><a href="#events" data-i18n="events">الفعاليات القادمة</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5 data-i18n="contact-info">معلومات الاتصال</h5>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt ms-2"></i> <span data-i18n="address">اكتوبر، مصر</span></li>
+                            <li><i class="fas fa-phone ms-2"></i> <span data-i18n="phone">01006069292</span></li>
+                            <li><i class="fas fa-envelope ms-2"></i> <span data-i18n="email">news@october-institute.edu</span></li>
+                            <li><i class="fas fa-clock ms-2"></i> <span data-i18n="working-hours">السبت - الخميس: 9 ص - 4 م</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="copyright">&copy; 2025 معهد أكتوبر العالي للهندسة والتكنولوجيا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Initialize Particles
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Translation data
+        const translations = {
+            ar: {
+                "institute-name": "معهد أكتوبر العالي",
+                "home": "الرئيسية",
+                "about": "عن المعهد",
+                "admission": "القبول والتنسيق",
+                "programs": "البرامج الأكاديمية",
+                "engineering-college": "كلية الهندسة",
+                "business-college": "كلية إدارة الأعمال",
+                "news": "الأخبار والفعاليات",
+                "academic-news": "أخبار أكاديمية",
+                "student-news": "أخبار الطلاب",
+                "events": "الفعاليات",
+                "fees": "الرسوم والخدمات",
+                "contact": "تواصل معنا",
+                "apply-now": "التقديم الآن",
+                "welcome-message": "مرحبًا بكم في معهد أكتوبر العالي للهندسة والتكنولوجيا",
+                "institute-description": "مؤسسة تعليمية رائدة تسعى لتخريج مهندسين ومديرين أكفاء قادرين على مواكبة تحديات سوق العمل المحلي والدولي.",
+                "academic-programs": "برامج أكاديمية معتمدة",
+                "academic-programs-desc": "برامج معتمدة من وزارة التعليم العالي والبحث العلمي",
+                "practical-training": "تدريب عملي",
+                "practical-training-desc": "تدريب عملي وربط مباشر بسوق العمل",
+                "partnerships": "شراكات دولية",
+                "partnerships-desc": "شراكات مع مؤسسات دولية مرموقة",
+                "about-title": "عن المعهد",
+                "about-subtitle": "تعرف على رؤيتنا ورسالتنا وقيمنا",
+                "vision": "رؤيتنا",
+                "vision-desc": "أن يكون المعهد منارة تعليمية رائدة على المستويين المحلي والدولي، معتمداً على التميز الأكاديمي والبحث العلمي المبتكر.",
+                "mission": "رسالتنا",
+                "mission-desc": "إعداد خريجين متميزين قادرين على الابتكار والمنافسة في سوق العمل، وتزويدهم بالمهارات والمعارف اللازمة لمواجهة تحديات المستقبل.",
+                "values": "قيمنا",
+                "values-desc": "التميز - الابتكار - النزاهة - المسؤولية الاجتماعية - التنوع والشمولية",
+                "admission-title": "القبول والتنسيق",
+                "admission-subtitle": "تعرف على شروط القبول والتنسيق في معهد أكتوبر العالي للهندسة والتكنولوجيا",
+                "admission-conditions": "شروط القبول",
+                "condition-1": "الثانوية العامة (شعبة علمي رياضة)",
+                "condition-2": "الثانوية الأزهرية (شعبة علمي)",
+                "condition-3": "الدبلومات الفنية الصناعية (3 سنوات – 5 سنوات)",
+                "application-method": "طريقة التقديم",
+                "application-method-1": "القبول يتم من خلال مكتب التنسيق الإلكتروني لوزارة التعليم العالي",
+                "application-method-2": "يمكن التقديم إلكترونياً عبر موقع التنسيق الرسمي",
+                "application-method-3": "متابعة إعلانات التنسيق والتواريخ المحددة للتقديم",
+                "admission-motivation-text": "انضم إلى نخبة من الطلاب المتميزين وابدأ رحلتك الأكاديمية في بيئة تعليمية حديثة.",
+                "admission-link-text": "التقديم عبر التنسيق الإلكتروني",
+                "academic-news-section-title": "الأخبار الأكاديمية",
+                "academic-news-section-subtitle": "آخر الأخبار والإعلانات الأكاديمية في المعهد",
+                "graduation-news": "للتخرج فتح باب التقديم",
+                "graduation-news-desc": "تم فتح باب التقديم لطلاب الفرقة النهائية للحصول على شهادات التخرج. يرجى مراجعة إدارة شؤون الطلاب لاستكمال الإجراءات اللازمة.",
+                "admission-news": "القبول والتقديم في المعهد",
+                "admission-news-desc": "بدء التقديم للطلاب الجدد عبر موقع التنسيق الإلكتروني. يمكن للطلاب المستوفين للشروط التقديم الآن عبر الموقع الرسمي لتنسيق القبول.",
+                "fees-news": "مصروفات إدارة أعمال وهندسة",
+                "fees-news-desc": "إعلان مصروفات الفصل الدراسي الجديد لكليات إدارة الأعمال والهندسة. يمكن الاطلاع على التفاصيل الكاملة في قسم المصروفات بالموقع.",
+                "results-news": "إعلان نتائج الامتحانات",
+                "results-news-desc": "إعلان نتائج امتحانات الفصل الدراسي الأول والثاني عبر بوابة الطالب. يمكن للطلاب تسجيل الدخول للاطلاع على نتائجهم.",
+                "files-news": "مواعيد سحب الملفات وتجديد الاشتراكات",
+                "files-news-desc": "تحديد مواعيد سحب الملفات وتجديد الاشتراكات للطلاب القدامى. يرجى الالتزام بالمواعيد المحددة لتجنب أي غرامات تأخير.",
+                "training-news": "فتح باب التقديم للتدريب الصيفي",
+                "training-news-desc": "فتح باب التقديم للتدريب الصيفي للطلاب داخل وخارج المعهد. يمكن للطلاب الراغبين في الالتحاق بالبرامج التدريبية التقديم الآن.",
+                "grades-title": "التقديرات الأكاديمية",
+                "grades-subtitle": "تعرف على نظام التقديرات المتبع في المعهد",
+                "grades-system": "نظام التقديرات",
+                "grades-system-desc": "التقديرات المعتمدة في معهد أكتوبر العالي للهندسة والتكنولوجيا",
+                "grade": "التقدير",
+                "description": "الوصف",
+                "percentage": "النسبة المئوية",
+                "symbol": "الرمز",
+                "grade-a-plus-desc": "امتياز مرتفع",
+                "grade-a-plus-percent": "من 90% إلى 100%",
+                "grade-a-desc": "امتياز",
+                "grade-a-percent": "من 85% إلى أقل من 90%",
+                "grade-b-plus-desc": "جيد جداً مرتفع",
+                "grade-b-plus-percent": "من 80% إلى أقل من 85%",
+                "grade-b-desc": "جيد جداً",
+                "grade-b-percent": "من 75% إلى أقل من 80%",
+                "grade-c-plus-desc": "جيد مرتفع",
+                "grade-c-plus-percent": "من 70% إلى أقل من 75%",
+                "grade-c-desc": "جيد",
+                "grade-c-percent": "من 65% إلى أقل من 70%",
+                "grade-d-plus-desc": "مقبول مرتفع",
+                "grade-d-plus-percent": "من 60% إلى أقل من 65%",
+                "grade-d-desc": "مقبول",
+                "grade-d-percent": "من 50% إلى أقل من 60%",
+                "grade-f-desc": "راسب",
+                "grade-f-percent": "أقل من 50%",
+                "grades-note-title": "ملاحظات هامة",
+                "grades-note-desc": "يتم اعتماد نظام النقاط (GPA) بما يتماشى مع المعايير العالمية، مما يتيح للطلاب فرصًا أوسع في الدراسات العليا داخل وخارج مصر.",
+                "fees-title": "الرسوم والخدمات الإدارية",
+                "fees-subtitle": "تعرف على رسوم الدراسة والخدمات الإدارية للعام الجامعي 2025/2026",
+                "fees-academic-year": "مصروفات العام الجامعي 2025/2026",
+                "fees-academic-year-desc": "تفاصيل مصروفات الفصل الدراسي الأول والثاني",
+                "business-department": "قسم إدارة الأعمال",
+                "engineering-department": "قسم الهندسة",
+                "item": "البيان",
+                "amount": "المبلغ (جنيه)",
+                "first-term-fees": "مصروفات الترم الأول",
+                "first-term-admin-fees": "رسوم إدارية (ترم أول)",
+                "first-term-total": "إجمالي (ترم أول)",
+                "second-term-fees": "مصروفات الترم الثاني",
+                "second-term-admin-fees": "رسوم إدارية (ترم ثاني)",
+                "second-term-total": "إجمالي (ترم ثاني)",
+                "insurance": "تأمين (مسترد عند التخرج)",
+                "additional-course-fees": "رسوم تسجيل مادة إضافية أو متأخرة",
+                "total": "الإجمالي الكلي",
+                "business-total": "الإجمالي الكلي: 8,684 جنيه",
+                "engineering-total": "الإجمالي الكلي: 18,494 جنيه",
+                "additional-fees-title": "رسوم وخدمات إضافية للخريجين",
+                "file-cost": "تكلفة سحب الملف للخريج: 600 جنيه",
+                "certificate-cost": "استخراج شهادة تخرج أصلية: 155 جنيه",
+                "graduation-cost": "حفلة تخرج: 1100 جنيه (شاملة الروب والوشاح والكاب وتذكرتين للمرافقين)",
+                "flexible-payment": "خطط سداد مرنة",
+                "flexible-payment-desc": "يوفر المعهد خطط سداد مرنة وتسهيلات دفع لدعم الطلاب وأولياء الأمور.",
+                "events-title": "الفعاليات القادمة",
+                "events-subtitle": "تعرف على أحدث الفعاليات والأنشطة في المعهد",
+                "event-1-title": "بدء التسجيل في الفصل الدراسي الجديد",
+                "event-1-desc": "يبدأ التسجيل للفصل الدراسي الجديد لجميع الطلاب. يمكن للطلاب تسجيل المواد عبر بوابة الطالب الإلكترونية.",
+                "event-2-title": "برنامج تطوير صيفي (كورس برمجة ويب)",
+                "event-2-desc": "انطلاق برنامج تطوير صيفي متخصص في برمجة الويب. البرنامج مفتوح لجميع الطلاب الراغبين في تطوير مهاراتهم البرمجية.",
+                "event-3-title": "إعلان هام للطلاب (نظام ساعات معتمدة)",
+                "event-3-desc": "إعلان هام لطلاب هندسة وإدارة الأعمال (نظام الساعات المعتمدة) حول التسجيل للمواد والخطط الدراسية الجديدة.",
+                "event-4-title": "حفلة تخرج قسم هندسة ونظم",
+                "event-4-desc": "حفلة تخرج ضخمة لخريجي قسم الهندسة ونظم المعلومات. الحفل سيقام في القاعة الكبرى بالمعهد بحضور شخصيات أكاديمية بارزة.",
+                "event-5-title": "حفلة تخرج استثمار + إدارة + تسويق أعمال",
+                "event-5-desc": "حفلة تخرج لخريجي أقسام الاستثمار وإدارة الأعمال والتسويق. سيتم تكريم الطلاب المتفوقين وإعلان جوائز التميز.",
+                "event-6-title": "القبول في العام الجديد 2025/2026",
+                "event-6-desc": "فتح باب القبول للعام الجامعي الجديد 2025/2026. يمكن للطلاب المستوفين للشروط التقديم عبر موقع التنسيق الإلكتروني.",
+                "event-7-title": "ظهور نتيجة الترم الصيفي (نظام ساعات معتمدة)",
+                "event-7-desc": "إعلان نتائج الترم الصيفي لطلاب نظام الساعات المعتمدة. يمكن للطلاب الاطلاع على نتائجهم عبر بوابة الطالب.",
+                "contact-title": "تواصل معنا",
+                "contact-subtitle": "يسعدنا التواصل معكم والإجابة عن استفساراتكم",
+                "address-title": "العنوان",
+                "address": "مدينة 6 أكتوبر - الحي الثالث - المنطقة الثانية",
+                "address-details": "معهد أكتوبر العالي للهندسة والتكنولوجيا",
+                "phone-title": "أرقام الهاتف",
+                "email-title": "البريد الإلكتروني",
+                "working-hours-title": "أوقات العمل",
+                "working-days": "السبت - الخميس",
+                "working-hours": "9:00 صباحاً - 4:00 مساءً",
+                "weekend": "الجمعة : مغلق",
+                "about-institute": "عن المعهد",
+                "about-institute-desc": "معهد أكتوبر العالي للهندسة والتكنولوجيا مؤسسة تعليمية رائدة تقدم برامج هندسية وإدارية متطورة تواكب متطلبات سوق العمل الحديث.",
+                "quick-links": "روابط سريعة",
+                "contact-info": "معلومات الاتصال",
+                "phone": "011272146",
+                "email": "news@october-institute.edu",
+                "copyright": "© 2025 معهد أكتوبر العالي للهندسة والتكنولوجيا. جميع الحقوق محفوظة.",
+                "admission-requirements-title": "متطلبات القبول للعام الدراسي 2025-2026",
+                "admission-requirements-subtitle": "تهنئة إدارة المعهد بقبول الطلاب المستجدين والأوراق المطلوبة للقيد",
+                "new-students-congratulations": "تهنئة بقبول الطلاب المستجدين",
+                "congratulations-message": "تهنئ إدارة المعهد الطلاب المستجدين والمرشحين من خلال مكتب التنسيق للعام الدراسي 2025-2026م.",
+                "required-documents-title": "الأوراق المطلوبة للقيد:",
+                "doc-1": "أصل شهادة المؤهل لسنة 2025 + صورة",
+                "doc-2": "أصل بطاقة الترشيح لسنة 2025",
+                "doc-3": "أصل شهادة الميلاد بتاريخ حديث + صورة",
+                "doc-4": "عدد (7) صور شخصية في ظرف",
+                "doc-5": "عدد (2) صورة البطاقة الشخصية للطالب + صورة بطاقة ولى الأمر",
+                "doc-6": "نموذج (2) جند، 6 جند للطلاب الذكور من منطقة التجنيد التابع لها",
+                "doc-7": "حافظة بكبسولة",
+                "master-programs-title": "شروط الالتحاق ببرامج الماجستير",
+                "master-requirements": "المتطلبات الأساسية:",
+                "master-req-1": "شهادة البكالوريوس + شهادة المعادلة من المجلس الأعلى للجامعات",
+                "master-req-2": "الماجستير المهني: لا يشترط تقدير معين",
+                "master-req-3": "الماجستير الأكاديمي: يشترط تقدير عام جيد جدًا",
+                "master-application": "طريقة التقديم:",
+                "master-application-desc": "التقديم يتم فقط من خلال الموقع الرسمي للجامعة عبر الرابط:",
+                "master-fees": "المصروفات:",
+                "master-fees-desc": "المصروفات تُسدد على فصلين دراسيين.",
+                "master-duration": "مدة الدراسة:",
+                "master-duration-desc": "مدة الدراسة لا تقل عن عامين."
+            },
+            en: {
+                "institute-name": "October Higher Institute",
+                "home": "Home",
+                "about": "About",
+                "admission": "Admission",
+                "programs": "Academic Programs",
+                "engineering-college": "Engineering College",
+                "business-college": "Business College",
+                "news": "News & Events",
+                "academic-news": "Academic News",
+                "student-news": "Student News",
+                "events": "Events",
+                "fees": "Fees & Services",
+                "contact": "Contact",
+                "apply-now": "Apply Now",
+                "welcome-message": "Welcome to October Higher Institute for Engineering and Technology",
+                "institute-description": "A leading educational institution that aims to graduate competent engineers and managers capable of keeping up with local and international labor market challenges.",
+                "academic-programs": "Accredited Academic Programs",
+                "academic-programs-desc": "Programs accredited by the Ministry of Higher Education and Scientific Research",
+                "practical-training": "Practical Training",
+                "practical-training-desc": "Practical training with direct linkage to the labor market",
+                "partnerships": "International Partnerships",
+                "partnerships-desc": "Partnerships with prestigious international institutions",
+                "about-title": "About the Institute",
+                "about-subtitle": "Learn about our vision, mission and values",
+                "vision": "Our Vision",
+                "vision-desc": "To be a leading educational beacon locally and internationally, based on academic excellence and innovative scientific research.",
+                "mission": "Our Mission",
+                "mission-desc": "To prepare distinguished graduates capable of innovation and competition in the labor market, and equip them with the necessary skills and knowledge to face future challenges.",
+                "values": "Our Values",
+                "values-desc": "Excellence - Innovation - Integrity - Social Responsibility - Diversity and Inclusion",
+                "admission-title": "Admission and Coordination",
+                "admission-subtitle": "Learn about the admission and coordination conditions at October Higher Institute for Engineering and Technology",
+                "admission-conditions": "Admission Conditions",
+                "condition-1": "General Secondary Education (Science track)",
+                "condition-2": "Al-Azhar Secondary Education (Science track)",
+                "condition-3": "Industrial Technical Diplomas (3 years - 5 years)",
+                "application-method": "Application Method",
+                "application-method-1": "Admission is through the Electronic Coordination Office of the Ministry of Higher Education",
+                "application-method-2": "You can apply electronically through the official coordination website",
+                "application-method-3": "Follow coordination announcements and specified application dates",
+                "admission-motivation-text": "Join an elite group of outstanding students and begin your academic journey in a modern educational environment.",
+                "admission-link-text": "Apply through Electronic Coordination",
+                "academic-news-section-title": "Academic News",
+                "academic-news-section-subtitle": "Latest academic news and announcements at the institute",
+                "graduation-news": "Graduation Applications Open",
+                "graduation-news-desc": "Applications are now open for final year students to obtain graduation certificates. Please visit the student affairs administration to complete the necessary procedures.",
+                "admission-news": "Admission and Registration at the Institute",
+                "admission-news-desc": "Start of applications for new students through the electronic coordination website. Eligible students can now apply through the official admission coordination website.",
+                "fees-news": "Business and Engineering Fees",
+                "fees-news-desc": "Announcement of the new semester fees for the faculties of business administration and engineering. Full details can be found in the fees section of the website.",
+                "results-news": "Exam Results Announcement",
+                "results-news-desc": "Announcement of first and second semester exam results through the student portal. Students can log in to view their results.",
+                "files-news": "File Withdrawal and Subscription Renewal Dates",
+                "files-news-desc": "Specifying dates for file withdrawal and subscription renewal for old students. Please adhere to the specified dates to avoid any late fines.",
+                "training-news": "Summer Training Applications Open",
+                "training-news-desc": "Opening applications for summer training for students inside and outside the institute. Interested students can now apply for the training programs.",
+                "grades-title": "Academic Grades",
+                "grades-subtitle": "Learn about the grading system used at the institute",
+                "grades-system": "Grading System",
+                "grades-system-desc": "The approved grades at October Higher Institute for Engineering and Technology",
+                "grade": "Grade",
+                "description": "Description",
+                "percentage": "Percentage",
+                "symbol": "Symbol",
+                "grade-a-plus-desc": "High Excellent",
+                "grade-a-plus-percent": "90% to 100%",
+                "grade-a-desc": "Excellent",
+                "grade-a-percent": "85% to less than 90%",
+                "grade-b-plus-desc": "High Very Good",
+                "grade-b-plus-percent": "80% to less than 85%",
+                "grade-b-desc": "Very Good",
+                "grade-b-percent": "75% to less than 80%",
+                "grade-c-plus-desc": "High Good",
+                "grade-c-plus-percent": "70% to less than 75%",
+                "grade-c-desc": "Good",
+                "grade-c-percent": "65% to less than 70%",
+                "grade-d-plus-desc": "High Pass",
+                "grade-d-plus-percent": "60% to less than 65%",
+                "grade-d-desc": "Pass",
+                "grade-d-percent": "50% to less than 60%",
+                "grade-f-desc": "Fail",
+                "grade-f-percent": "Less than 50%",
+                "grades-note-title": "Important Notes",
+                "grades-note-desc": "The GPA system is adopted in line with international standards, providing students with broader opportunities for postgraduate studies inside and outside Egypt.",
+                "fees-title": "Fees and Administrative Services",
+                "fees-subtitle": "Learn about tuition fees and administrative services for the academic year 2025/2026",
+                "fees-academic-year": "Academic Year 2025/2026 Fees",
+                "fees-academic-year-desc": "Details of first and second semester fees",
+                "business-department": "Business Administration Department",
+                "engineering-department": "Engineering Department",
+                "item": "Item",
+                "amount": "Amount (EGP)",
+                "first-term-fees": "First Term Fees",
+                "first-term-admin-fees": "Administrative Fees (First Term)",
+                "first-term-total": "Total (First Term)",
+                "second-term-fees": "Second Term Fees",
+                "second-term-admin-fees": "Administrative Fees (Second Term)",
+                "second-term-total": "Total (Second Term)",
+                "insurance": "Insurance (Refundable upon graduation)",
+                "additional-course-fees": "Additional or Late Course Registration Fees",
+                "total": "Total",
+                "business-total": "Total: 8,684 EGP",
+                "engineering-total": "Total: 18,494 EGP",
+                "additional-fees-title": "Additional Fees and Services for Graduates",
+                "file-cost": "File Withdrawal Cost for Graduates: 600 EGP",
+                "certificate-cost": "Original Graduation Certificate Issuance: 155 EGP",
+                "graduation-cost": "Graduation Ceremony: 1100 EGP (includes gown, scarf, cap and two companion tickets)",
+                "flexible-payment": "Flexible Payment Plans",
+                "flexible-payment-desc": "The institute provides flexible payment plans and payment facilities to support students and parents.",
+                "events-title": "Upcoming Events",
+                "events-subtitle": "Learn about the latest events and activities at the institute",
+                "event-1-title": "Start of Registration for the New Academic Semester",
+                "event-1-desc": "Registration for the new academic semester begins for all students. Students can register for courses through the student electronic portal.",
+                "event-2-title": "Summer Development Program (Web Programming Course)",
+                "event-2-desc": "Launch of a specialized summer development program in web programming. The program is open to all students interested in developing their programming skills.",
+                "event-3-title": "Important Announcement for Students (Credit Hour System)",
+                "event-3-desc": "Important announcement for engineering and business administration students (credit hour system) regarding course registration and new study plans.",
+                "event-4-title": "Engineering and Systems Department Graduation Ceremony",
+                "event-4-desc": "A grand graduation ceremony for graduates of the Engineering and Information Systems Department. The ceremony will be held in the Grand Hall of the institute with the attendance of prominent academic figures.",
+                "event-5-title": "Investment + Management + Business Marketing Graduation Ceremony",
+                "event-5-desc": "Graduation ceremony for graduates of the Investment, Business Administration, and Marketing departments. Outstanding students will be honored and excellence awards will be announced.",
+                "event-6-title": "Admission for the New Year 2025/2026",
+                "event-6-desc": "Opening of admission for the new academic year 2025/2026. Eligible students can apply through the electronic coordination website.",
+                "event-7-title": "Summer Term Results Announcement (Credit Hour System)",
+                "event-7-desc": "Announcement of summer term results for credit hour system students. Students can view their results through the student portal.",
+                "contact-title": "Contact Us",
+                "contact-subtitle": "We are happy to communicate with you and answer your inquiries",
+                "address-title": "Address",
+                "address": "6th of October City - Third District - Second Area",
+                "address-details": "October Higher Institute for Engineering and Technology",
+                "phone-title": "Phone Numbers",
+                "email-title": "Email",
+                "working-hours-title": "Working Hours",
+                "working-days": "Saturday - Thursday",
+                "working-hours": "9:00 AM - 4:00 PM",
+                "weekend": "Friday: Closed",
+                "about-institute": "About the Institute",
+                "about-institute-desc": "October Higher Institute for Engineering and Technology is a leading educational institution that offers advanced engineering and administrative programs that keep pace with the requirements of the modern labor market.",
+                "quick-links": "Quick Links",
+                "contact-info": "Contact Information",
+                "phone": "011272146",
+                "email": "news@october-institute.edu",
+                "copyright": "© 2025 October Higher Institute for Engineering and Technology. All rights reserved.",
+                "admission-requirements-title": "Admission Requirements for Academic Year 2025-2026",
+                "admission-requirements-subtitle": "Institute Administration Congratulates New Students and Required Documents for Registration",
+                "new-students-congratulations": "Congratulations to New Students",
+                "congratulations-message": "The institute administration congratulates the new students and candidates through the coordination office for the academic year 2025-2026.",
+                "required-documents-title": "Required Documents for Registration:",
+                "doc-1": "Original qualification certificate for 2025 + a copy",
+                "doc-2": "Original nomination card for 2025",
+                "doc-3": "Original birth certificate with recent date + a copy",
+                "doc-4": "7 personal photos in an envelope",
+                "doc-5": "2 copies of the student's personal ID + a copy of the guardian's ID",
+                "doc-6": "Form (2) military, 6 military for male students from their recruitment area",
+                "doc-7": "File with a capsule",
+                "master-programs-title": "Master's Programs Admission Conditions",
+                "master-requirements": "Basic Requirements:",
+                "master-req-1": "Bachelor's degree + Equivalence certificate from the Supreme Council of Universities",
+                "master-req-2": "Professional Master's: No specific grade required",
+                "master-req-3": "Academic Master's: Requires a very good general grade",
+                "master-application": "Application Method:",
+                "master-application-desc": "Application is only through the university's official website via the link:",
+                "master-fees": "Fees:",
+                "master-fees-desc": "Fees are paid over two academic semesters.",
+                "master-duration": "Study Duration:",
+                "master-duration-desc": "Study duration is not less than two years."
+            }
+        };
+        
+        // Current language
+        let currentLang = 'ar';
+        
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.lang-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Set current language
+                currentLang = this.getAttribute('data-lang');
+                
+                // Update page language
+                updateLanguage();
+                
+                // Show notification
+                showNotification(currentLang === 'ar' ? 'تم تغيير اللغة بنجاح' : 'Language changed successfully', 'success');
+            });
+        });
+        
+        // Update page language
+        function updateLanguage() {
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLang;
+            
+            // Update body direction
+            if (currentLang === 'en') {
+                document.body.classList.add('lang-en');
+                document.body.dir = 'ltr';
+            } else {
+                document.body.classList.remove('lang-en');
+                document.body.dir = 'rtl';
+            }
+            
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+            
+            // Update page title
+            document.title = currentLang === 'ar' 
+                ? 'الأخبار الأكاديمية - معهد أكتوبر العالي للهندسة والتكنولوجيا'
+                : 'Academic News - October Higher Institute for Engineering and Technology';
+        }
+        
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            
+            // Toggle icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Fees Tabs
+        document.querySelectorAll('.fees-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.fees-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                document.querySelectorAll('.fees-tab-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+                
+                // Show selected tab content
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId + '-tab').style.display = 'block';
+            });
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = document.querySelector('.mobile-menu-toggle i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+        
+        // Theme Toggle
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            const body = document.body;
+            const icon = this.querySelector('i');
+            
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                showNotification(currentLang === 'ar' ? 'تم تفعيل الوضع الفاتح' : 'Light mode activated', 'info');
+            } else {
+                body.classList.add('dark-theme');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                showNotification(currentLang === 'ar' ? 'تم تفعيل الوضع الداكن' : 'Dark mode activated', 'info');
+            }
+        });
+        
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            // Set message
+            notificationMessage.textContent = message;
+            
+            // Set type
+            notification.className = 'notification-toast';
+            notification.classList.add(type);
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000);
+        });
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.news-hero');
+            const speed = scrolled * 0.5;
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+        
+        // Add animation to elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.hero-feature, .contact-card, .news-item-card, .event-content, .requirements-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initial check for elements in view
+        animateOnScroll();
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Add floating animation to hero features
+        const heroFeatures = document.querySelectorAll('.hero-feature');
+        heroFeatures.forEach((feature, index) => {
+            feature.style.animationDelay = `${index * 0.2}s`;
+            feature.style.animation = 'float 6s ease-in-out infinite';
+        });
+        
+        // Add hover effect to news items
+        const newsItems = document.querySelectorAll('.news-item-card');
+        newsItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-10px)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add click animation to buttons
+        const buttons = document.querySelectorAll('.hero-btn, .apply-now-btn, .admission-link');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.7);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .hero-feature, .contact-card, .news-item-card, .event-content, .requirements-card {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Mouse movement effect for hero section
+        const hero = document.querySelector('.news-hero');
+        hero.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            hero.style.backgroundPosition = `${x * 50}px ${y * 50}px`;
+        });
+    </script>
+</body>
+</html>

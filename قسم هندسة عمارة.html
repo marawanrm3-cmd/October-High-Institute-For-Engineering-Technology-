@@ -1,0 +1,2840 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="قسم هندسة العمارة بمعهد أكتوبر العالي للهندسة والتكنولوجيا - نقدم برامج تعليمية متميزة في التصميم المعماري والتخطيط الحضري">
+    <meta name="keywords" content="هندسة عمارة, معهد أكتوبر, تصميم معماري, تخطيط حضري, مشاريع معمارية, استوديوهات تصميم">
+    <meta name="author" content="معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    <meta property="og:title" content="قسم هندسة عمارة - معهد أكتوبر العالي">
+    <meta property="og:description" content="نصنع مستقبل المدن من خلال التصميم المعماري المبتكر">
+    <meta property="og:image" content="https://example.com/architecture-department-image.jpg">
+    <meta property="og:url" content="https://example.com/architecture-department">
+    <meta name="twitter:card" content="summary_large_image">
+        <link rel="icon" type="image/png" href="image.png.jpg">
+
+    <title>قسم هندسة عمارة - معهد أكتوبر العالي للهندسة والتكنولوجيا</title>
+    
+    <!-- مكتبات CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #012b5b;
+            --primary-light: #0056b3;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --accent-purple: #6f42c1;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --bg-white: #ffffff;
+            --bg-light: #f8f9fa;
+            --footer-dark: #001f3f;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --nav-glow: 0 0 15px rgba(1, 43, 91, 0.7);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        body.en {
+            font-family: 'Roboto', sans-serif;
+            direction: ltr;
+        }
+        
+        /* شريط التنقل المحسن */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: var(--nav-glow);
+            transition: var(--transition);
+            position:absolute;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--bg-white);
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            top: 0;
+            left: -100%;
+            transition: left 0.5s;
+            z-index: -1;
+            border-radius: 8px;
+        }
+        
+        .logo:hover::before {
+            left: 100%;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 30px;
+            margin: right 30px;
+            border-radius: 4px;
+            background: var(--secondary-color);
+            padding: 2px;
+            transition: var(--transition);
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg);
+        }
+        
+        body.en .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        /* زر القائمة للموبايل */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(252, 163, 17, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .menu-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .menu-toggle:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        /* الروابط */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg-white);
+            min-width: 280px;
+            border-radius: var(--border-radius);
+            padding: 15px 0;
+            display: none;
+            z-index: 100;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 0 20px rgba(1, 43, 91, 0.2);
+            border: 1px solid rgba(1, 43, 91, 0.1);
+        }
+        
+        body.en .dropdown {
+            right: auto;
+            left: 0;
+        }
+        
+        .nav-links li:hover .dropdown {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 0 25px rgba(1, 43, 91, 0.3);
+        }
+        
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 43, 91, 0.05);
+            transition: right 0.3s;
+        }
+        
+        body.en .dropdown a::before {
+            right: auto;
+            left: -100%;
+        }
+        
+        .dropdown a:hover::before {
+            right: 0;
+        }
+        
+        body.en .dropdown a:hover::before {
+            left: 0;
+        }
+        
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        body.en .dropdown a:hover {
+            transform: translateX(-5px);
+        }
+        
+        .dropdown a i {
+            margin-left: 10px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .dropdown a:hover i {
+            transform: scale(1.2);
+        }
+        
+        body.en .dropdown a i {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        /* زر تبديل اللغة */
+        .lang-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.en .lang-toggle {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(252, 163, 17, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .lang-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        .lang-toggle i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .lang-toggle:hover i {
+            transform: rotate(20deg);
+        }
+        
+        body.en .lang-toggle i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        /* زر تبديل الثيم */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            z-index: 1001;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(252, 163, 17, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05) rotate(15deg);
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        /* البنر الرئيسي */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            margin-top: 90px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5);
+            z-index: -1;
+            animation: zoomEffect 20s infinite alternate;
+        }
+        
+        @keyframes zoomEffect {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.8), rgba(252, 163, 17, 0.6));
+            z-index: -1;
+        }
+        
+        /* تأثير الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--bg-white);
+            z-index: 1;
+            padding: 0 30px;
+            max-width: 900px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+            animation: expandWidth 2s forwards;
+        }
+        
+        @keyframes expandWidth {
+            to {
+                width: 80%;
+            }
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(252, 163, 17, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(252, 163, 17, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(252, 163, 17, 0);
+            }
+        }
+        
+        /* تأثير الماوس على البنر */
+        .hero-mouse-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(252, 163, 17, 0.2) 0%, rgba(252, 163, 17, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 80px 30px;
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* قسم التعريف */
+        .intro-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.1;
+            border-radius: 0 0 0 150px;
+            z-index: 0;
+        }
+        
+        .intro-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .intro-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .intro-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .intro-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .intro-text p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .intro-image {
+            position: relative;
+            height: 350px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* قسم المشاريع المركبة */
+        .composite-projects {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .composite-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .composite-item {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .composite-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .composite-images {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .composite-main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .composite-item:hover .composite-main {
+            transform: scale(1.1);
+        }
+        
+        .composite-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .composite-item:hover .composite-overlay {
+            opacity: 1;
+        }
+        
+        .composite-title {
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .composite-item:hover .composite-title {
+            transform: translateY(0);
+        }
+        
+        .composite-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transform: translateY(20px);
+            transition: transform 0.3s ease 0.1s;
+        }
+        
+        .composite-item:hover .composite-subtitle {
+            transform: translateY(0);
+        }
+        
+        .composite-details {
+            padding: 30px;
+        }
+        
+        .composite-details h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .composite-item:hover .composite-details h3 {
+            color: var(--primary-color);
+        }
+        
+        .composite-details p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .composite-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+            padding: 15px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        .stat:hover {
+            background: var(--primary-color);
+            color: var(--bg-white);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            transition: var(--transition);
+        }
+        
+        .stat:hover .stat-number {
+            color: var(--bg-white);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .stat:hover .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .composite-gallery {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .composite-gallery img {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .composite-gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* قسم المشاريع */
+        .projects-section {
+            margin-bottom: 60px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-badge {
+            transform: scale(1.05);
+        }
+        
+        body.en .project-badge {
+            right: auto;
+            left: 20px;
+        }
+        
+        .project-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+        
+        .project-card:hover .project-title {
+            color: var(--primary-color);
+        }
+        
+        .project-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--bg-light);
+        }
+        
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .project-year {
+            background: var(--primary-color);
+            color: var(--bg-white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-year {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .project-link {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+            margin-top: auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .project-link:hover::before {
+            width: 100%;
+        }
+        
+        .project-link:hover {
+            transform: translateX(5px);
+            color: var(--secondary-color);
+        }
+        
+        body.en .project-link:hover {
+            transform: translateX(-5px);
+        }
+        
+        .project-link i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        body.en .project-link i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        .project-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        body.en .project-link:hover i {
+            transform: translateX(-3px);
+        }
+        
+        /* قسم الأخبار */
+        .news-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            border: 1px solid var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 40px 40px 0;
+            border-color: transparent var(--secondary-color) transparent transparent;
+            transition: border-width 0.3s ease;
+        }
+        
+        .news-card:hover::before {
+            border-width: 0 60px 60px 0;
+        }
+        
+        .news-card:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .news-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .news-card:hover .news-image::before {
+            opacity: 1;
+        }
+        
+        .news-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: var(--bg-white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(1, 43, 91, 0.3);
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .news-card:hover .news-date {
+            transform: scale(1.05);
+        }
+        
+        body.en .news-date {
+            right: auto;
+            left: 15px;
+        }
+        
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+        
+        .news-card:hover .news-title {
+            color: var(--primary-color);
+        }
+        
+        .news-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: auto;
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .news-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .news-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        body.en .news-link::after {
+            right: auto;
+            left: 0;
+        }
+        
+        .news-link:hover::after {
+            width: 100%;
+        }
+        
+        .news-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* قسم الاستوديو والمرافق */
+        .studios-section {
+            margin-bottom: 60px;
+        }
+        
+        .studios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .studio-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .studio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .studio-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .studio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .studio-card:hover .studio-overlay {
+            opacity: 1;
+        }
+        
+        .studio-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .studio-card:hover .studio-icon {
+            transform: scale(1) rotate(10deg);
+        }
+        
+        .studio-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .studio-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .studio-card:hover .studio-title {
+            color: var(--primary-color);
+        }
+        
+        .studio-description {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        /* قسم المهارات */
+        .skills-section {
+            background: var(--bg-white);
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            background: var(--bg-light);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+        
+        .skill-item:hover::before {
+            opacity: 1;
+        }
+        
+        .skill-item:hover {
+            color: var(--bg-white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(1, 43, 91, 0.2);
+        }
+        
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skill-item:hover .skill-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--bg-white);
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .skill-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skill-item:hover h4 {
+            color: var(--bg-white);
+        }
+        
+        .skill-item p {
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skill-item:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* قسم البرامج */
+        .programs-section {
+            margin-bottom: 60px;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 20px rgba(1, 43, 91, 0.3);
+            transition: var(--transition);
+        }
+        
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .program-card h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        
+        .program-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .program-duration {
+            background: var(--bg-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: inline-block;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+        
+        .program-card:hover .program-duration {
+            background: var(--primary-color);
+            color: var(--bg-white);
+        }
+        
+        /* زر الحجز */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .cta-button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(252, 163, 17, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-light);
+            box-shadow: 0 15px 35px rgba(252, 163, 17, 0.4);
+        }
+        
+        /* تأثير التموج عند النقر */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--footer-dark);
+            color: var(--bg-white);
+            padding: 60px 30px 40px;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-links a:hover::before {
+            width: 100%;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* زر العودة للأعلى */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.en .back-to-top {
+            left: auto;
+            right: 30px;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* رسالة التحميل */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-circle {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--bg-light);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* الوضع الليلي */
+        body.dark-theme {
+            --bg-light: #2c3e50;
+            --bg-white: #1a1a1a;
+            --text-dark: #f8f9fa;
+            --text-light: #adb5bd;
+        }
+        
+        /* تأثيرات الحركة */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* تحسينات إمكانية الوصول */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        a:focus, button:focus, input:focus, textarea:focus, select:focus {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .composite-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .composite-grid,
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                overflow-y: auto;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            body.en .nav-links {
+                right: auto;
+                left: -100%;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            body.en .nav-links.active {
+                right: auto;
+                left: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 15px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: none;
+                border: none;
+                padding: 10px 0;
+                margin-top: 10px;
+                border-radius: var(--border-radius);
+            }
+            
+            .dropdown a {
+                color: var(--bg-white);
+                padding: 10px 15px;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+            
+            .hero-banner {
+                height: 60vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                padding: 60px 20px;
+            }
+            
+            .intro-section,
+            .news-section,
+            .skills-section {
+                padding: 40px 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .composite-grid,
+            .projects-grid,
+            .news-grid,
+            .studios-grid,
+            .skills-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                padding: 0 20px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            body.en .back-to-top {
+                left: auto;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            .intro-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .intro-text p {
+                font-size: 1rem;
+            }
+            
+            .composite-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .news-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .social-links {
+                gap: 10px;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رسالة التحميل -->
+    <div class="loader">
+        <div class="loader-circle"></div>
+    </div>
+    
+    <!-- زر العودة للأعلى -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <a href="index.html" class="logo">
+                <img src="m4.jpg" alt="شعار المعهد">
+                <span data-ar="معهد أكتوبر العالي" data-en="October Higher Institute">معهد أكتوبر العالي</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-ar="كلية الهندسة" data-en="Engineering College">كلية الهندسة</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-ar="قسم هندسة مدني" data-en="Civil Engineering">قسم هندسة مدني</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-ar="قسم هندسة عمارة" data-en="Architecture">قسم هندسة عمارة</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-ar="قسم هندسة اتصالات" data-en="Communications Engineering">قسم هندسة اتصالات</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-ar="كلية إدارة الأعمال" data-en="Business College">كلية إدارة الأعمال</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-ar="نظم معلومات الأعمال" data-en="Business Information Systems">نظم معلومات الأعمال</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-ar="إدارة أعمال" data-en="Business Administration">إدارة أعمال</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-ar="استثمار وبنوك" data-en="Investment and Banking">استثمار وبنوك</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-ar="تسويق" data-en="Marketing">تسويق</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span data-ar="الأخبار" data-en="News">الأخبار</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-ar="أخبار أكاديمية" data-en="Academic News">أخبار أكاديمية</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="Student News">أخبار الطلبة</span></a>
+                        <a href="عن المعهد .html"><i class="fas fa-users"></i> <span data-ar="عن المعهد" data-en="About the institute">أخبار الطلبة</span></a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span></a></li>
+            </ul>
+            
+            <div style="display: flex; align-items: center;">
+                <button class="lang-toggle" id="langToggle" title="Change Language">
+                    <i class="fas fa-globe"></i> <span id="currentLang">EN</span>
+                </button>
+                
+                <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- البنر الرئيسي -->
+    <section class="hero-banner">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        
+        <!-- تأثير الجسيمات -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- تأثير الماوس -->
+        <div class="hero-mouse-effect" id="heroMouseEffect"></div>
+        
+        <div class="hero-content" data-aos="fade-up">
+            <div class="hero-badge">
+                <i class="fas fa-drafting-compass"></i> <span data-ar="فن التصميم" data-en="Art of Design">فن التصميم</span>
+            </div>
+            <h1 data-ar="قسم هندسة عمارة" data-en="Architecture Department">قسم هندسة عمارة</h1>
+            <p data-ar="نصنع مستقبل المدن من خلال التصميم المعماري المبتكر" data-en="We Shape the Future of Cities Through Innovative Architectural Design">نصنع مستقبل المدن من خلال التصميم المعماري المبتكر</p>
+        </div>
+    </section>
+    
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="container">
+            <!-- قسم التعريف -->
+            <section class="intro-section fade-in" data-aos="fade-up">
+                <div class="intro-header">
+                    <h2 data-ar="مرحباً بك في قسم هندسة عمارة" data-en="Welcome to the Architecture Department">مرحباً بك في قسم هندسة عمارة</h2>
+                </div>
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <p data-ar="يعد قسم هندسة عمارة من الأقسام الرائدة في معهد أكتوبر العالي للهندسة والتكنولوجيا، حيث يجمع بين الفن والهندسة لإعداد مهندسين معماريين مبدعين قادرين على تصميم فراغات عصرية ومستدامة." data-en="The Architecture Department is one of the leading departments at October Higher Institute for Engineering and Technology, combining art and engineering to prepare creative architects capable of designing modern and sustainable spaces.">
+                            يعد قسم هندسة عمارة من الأقسام الرائدة في معهد أكتوبر العالي للهندسة والتكنولوجيا، 
+                            حيث يجمع بين الفن والهندسة لإعداد مهندسين معماريين مبدعين قادرين على تصميم 
+                            فراغات عصرية ومستدامة.
+                        </p>
+                        <p data-ar="يركز القسم على تطوير مهارات الطلاب في التصميم المعماري، التخطيط الحضري، والاستدامة البيئية، مع استخدام أحدث التقنيات والبرامج في مجال التصميم المعماري." data-en="The department focuses on developing students' skills in architectural design, urban planning, and environmental sustainability, using the latest technologies and software in the field of architectural design.">
+                            يركز القسم على تطوير مهارات الطلاب في التصميم المعماري، التخطيط الحضري، 
+                            والاستدامة البيئية، مع استخدام أحدث التقنيات والبرامج في مجال التصميم المعماري.
+                        </p>
+                    </div>
+                    <div class="intro-image">
+                        <img src="m6.jpeg" alt="استوديو التصميم">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المشاريع المركبة -->
+            <section class="composite-projects fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="مشاريع مركبة مميزة" data-en="Distinguished Composite Projects">مشاريع مركبة مميزة</h2>
+                    <p data-ar="أهم المشاريع التي نفذها طلاب القسم" data-en="Most important projects implemented by the department's students">أهم المشاريع التي نفذها طلاب القسم</p>
+                </div>
+                <div class="composite-grid">
+                    <div class="composite-item" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="composite-images">
+                            <div class="composite-main" style="background-image: url('A1.jpeg')"></div>
+                            <div class="composite-overlay">
+                                <div>
+                                    <div class="composite-title" data-ar="مركز ثقافي متكامل" data-en="Integrated Cultural Center">مركز ثقافي متكامل</div>
+                                    <div class="composite-subtitle" data-ar="مشروع تخرج 2023" data-en="Graduation Project 2023">مشروع تخرج 2023</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="composite-details">
+                            <h3 data-ar="مركز ثقافي وفني متعدد الأغراض" data-en="Multi-purpose Cultural and Art Center">مركز ثقافي وفني متعدد الأغراض</h3>
+                            <p data-ar="مشروع معماري مبتكر يجمع بين الفنون المختلفة في مكان واحد، مع التركيز على الاستدامة والتكامل مع البيئة المحيطة." data-en="An innovative architectural project that brings together different arts in one place, with a focus on sustainability and integration with the surrounding environment.">
+                                مشروع معماري مبتكر يجمع بين الفنون المختلفة في مكان واحد، مع التركيز على الاستدامة والتكامل مع البيئة المحيطة.
+                            </p>
+                            
+                            <div class="composite-stats">
+                                <div class="stat">
+                                    <div class="stat-number">5000م²</div>
+                                    <div class="stat-label" data-ar="المساحة" data-en="Area">المساحة</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">20</div>
+                                    <div class="stat-label" data-ar="طالب" data-en="Students">طالب</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">10</div>
+                                    <div class="stat-label" data-ar="أشهر" data-en="Months">أشهر</div>
+                                </div>
+                            </div>
+                            
+                            <div class="composite-gallery">
+                                <img src="A2.jpeg" alt="الواجهة الرئيسية">
+                                <img src="A3.jpeg" alt="المساحات الداخلية">
+                                <img src="A1.jpeg" alt="التصميم الخارجي">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="composite-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="composite-images">
+                            <div class="composite-main" style="background-image: url('A4.jpeg')"></div>
+                            <div class="composite-overlay">
+                                <div>
+                                    <div class="composite-title" data-ar="مجمع سكني ذكي" data-en="Smart Residential Complex">مجمع سكني ذكي</div>
+                                    <div class="composite-subtitle" data-ar="مشروع مبتكر 2023" data-en="Innovative Project 2023">مشروع مبتكر 2023</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="composite-details">
+                            <h3 data-ar="مجمع سكني ذكي بتقنيات حديثة" data-en="Smart Residential Complex with Modern Technologies">مجمع سكني ذكي بتقنيات حديثة</h3>
+                            <p data-ar="تصميم مجمع سكني متكامل يستخدم أحدث تقنيات البناء الذكي والتصميم المستدام، مع التركيز على راحة السكان والكفاءة الطاقية." data-en="Design of an integrated residential complex that uses the latest smart building technologies and sustainable design, with a focus on residents' comfort and energy efficiency.">
+                                تصميم مجمع سكني متكامل يستخدم أحدث تقنيات البناء الذكي والتصميم المستدام، مع التركيز على راحة السكان والكفاءة الطاقية.
+                            </p>
+                            
+                            <div class="composite-stats">
+                                <div class="stat">
+                                    <div class="stat-number">150</div>
+                                    <div class="stat-label" data-ar="وحدة سكنية" data-en="Residential Units">وحدة سكنية</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">25</div>
+                                    <div class="stat-label" data-ar="طالب" data-en="Students">طالب</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-number">8</div>
+                                    <div class="stat-label" data-ar="أشهر" data-en="Months">أشهر</div>
+                                </div>
+                            </div>
+                            
+                            <div class="composite-gallery">
+                                <img src="A5.jpeg" alt="الوحدات السكنية">
+                                <img src="A6.jpeg" alt="المساحات الخضراء">
+                                <img src="A4.jpeg" alt="المرافق المشتركة">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المشاريع -->
+            <section class="projects-section fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="مشاريع طلابية متميزة" data-en="Distinguished Student Projects">مشاريع طلابية متميزة</h2>
+                    <p data-ar="أمثلة على مشاريع مبتكرة نفذها طلاب القسم" data-en="Examples of innovative projects implemented by the department's students">أمثلة على مشاريع مبتكرة نفذها طلاب القسم</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-aos="flip-left" data-aos-delay="100">
+                        <div class="project-image" style="background-image: url('A8.jpeg')">
+                            <div class="project-badge" data-ar="مشروع تخرج" data-en="Graduation Project">مشروع تخرج</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-ar="متحف الفن الحديث" data-en="Museum of Modern Art">متحف الفن الحديث</h3>
+                            <p class="project-description" data-ar="تصميم متحف للفن الحديث يجمع بين العمارة الكلاسيكية والتصميم المعاصر مع مساحات عرض مرنة وقاعات متعددة الأغراض." data-en="Design of a modern art museum that combines classical architecture with contemporary design, with flexible exhibition spaces and multi-purpose halls.">
+                                تصميم متحف للفن الحديث يجمع بين العمارة الكلاسيكية والتصميم المعاصر مع مساحات عرض مرنة وقاعات متعددة الأغراض.
+                            </p>
+                            <div class="project-meta">
+                                <div class="project-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span data-ar="القاهرة الجديدة" data-en="New Cairo">القاهرة الجديدة</span>
+                                </div>
+                                <div class="project-year">2023</div>
+                            </div>
+                            <a href="#" class="project-link">
+                                <span data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</span> <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="flip-left" data-aos-delay="200">
+                        <div class="project-image" style="background-image: url('A14.jpeg')">
+                            <div class="project-badge" data-ar="مسابقة" data-en="Competition">مسابقة</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-ar="مكتبة المستقبل" data-en="Library of the Future">مكتبة المستقبل</h3>
+                            <p class="project-description" data-ar="تصميم مكتبة عامة تستخدم الطاقة المتجددة وتقنيات البناء الأخضر مع مساحات مفتوحة ومرافق تعليمية متطورة." data-en="Design of a public library that uses renewable energy and green building technologies, with open spaces and advanced educational facilities.">
+                                تصميم مكتبة عامة تستخدم الطاقة المتجددة وتقنيات البناء الأخضر مع مساحات مفتوحة ومرافق تعليمية متطورة.
+                            </p>
+                            <div class="project-meta">
+                                <div class="project-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span data-ar="مسابقة دولية" data-en="International Competition">مسابقة دولية</span>
+                                </div>
+                                <div class="project-year">2023</div>
+                            </div>
+                            <a href="#" class="project-link">
+                                <span data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</span> <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card" data-aos="flip-left" data-aos-delay="300">
+                        <div class="project-image" style="background-image: url('A10.jpeg')">
+                            <div class="project-badge" data-ar="بحث علمي" data-en="Scientific Research">بحث علمي</div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title" data-ar="الإسكان المستدام" data-en="Sustainable Housing">الإسكان المستدام</h3>
+                            <p class="project-description" data-ar="بحث علمي في تصميم وحدات سكنية صديقة للبيئة باستخدام مواد محلية وتقنيات بناء منخفضة التكلفة." data-en="Scientific research in designing environmentally friendly housing units using local materials and low-cost construction techniques.">
+                                بحث علمي في تصميم وحدات سكنية صديقة للبيئة باستخدام مواد محلية وتقنيات بناء منخفضة التكلفة.
+                            </p>
+                            <div class="project-meta">
+                                <div class="project-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span data-ar="أبحاث القسم" data-en="Department Research">أبحاث القسم</span>
+                                </div>
+                                <div class="project-year">2025</div>
+                            </div>
+                            <a href="كلية هندسة.html" class="project-link">
+                                <span data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</span> <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم الأخبار -->
+            <section class="news-section fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="أخبار القسم" data-en="Department News">أخبار القسم</h2>
+                    <p data-ar="تابع آخر المستجدات والأنشطة" data-en="Follow the latest updates and activities">تابع آخر المستجدات والأنشطة</p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="news-image" style="background-image: url('A11.jpeg')">
+                            <div class="news-date">15 نوفمبر 2023</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title" data-ar="افتتاح استوديوهات تصميم متطورة" data-en="Opening of Advanced Design Studios">افتتاح استوديوهات تصميم متطورة</h3>
+                            <p class="news-excerpt" data-ar="افتتح القسم استوديوهات جديدة مجهزة بأحدث برامج التصميم المعماري ثلاثي الأبعاد والطباعة ثلاثية الأبعاد..." data-en="The department opened new studios equipped with the latest 3D architectural design software and 3D printing...">
+                                افتتح القسم استوديوهات جديدة مجهزة بأحدث برامج التصميم المعماري ثلاثي الأبعاد والطباعة ثلاثية الأبعاد...
+                            </p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <i class="fas fa-user"></i>
+                                    <span data-ar="إدارة القسم" data-en="Department Administration">إدارة القسم</span>
+                                </div>
+                                <a href="كلية هندسة.html" class="news-link" data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="news-image" style="background-image: url('A16.jpeg')">
+                            <div class="news-date">10 نوفمبر 2023</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title" data-ar="ورشة عمل في التصميم المستدام" data-en="Workshop on Sustainable Design">ورشة عمل في التصميم المستدام</h3>
+                            <p class="news-excerpt" data-ar="نظم القسم ورشة عمل متخصصة في التصميم المعماري المستدام بمشاركة مهندسين معماريين من الشركات العالمية..." data-en="The department organized a specialized workshop on sustainable architectural design with the participation of architects from global companies...">
+                                نظم القسم ورشة عمل متخصصة في التصميم المعماري المستدام بمشاركة مهندسين معماريين من الشركات العالمية...
+                            </p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <i class="fas fa-user"></i>
+                                    <span data-ar="التدريب المستمر" data-en="Continuous Training">التدريب المستمر</span>
+                                </div>
+                                <a href="كلية هندسة.html" class="news-link" data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="news-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="news-image" style="background-image: url('A14.jpeg')">
+                            <div class="news-date">5 نوفمبر 2023</div>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title" data-ar="معرض المشاريع الطلابية" data-en="Student Projects Exhibition">معرض المشاريع الطلابية</h3>
+                            <p class="news-excerpt" data-ar="أقام القسم معرضاً لأفضل المشاريع المعمارية للطلاب، تم عرض مشاريع مبتكرة في التصميم الحضري والعمراني..." data-en="The department held an exhibition of the best architectural projects of students, where innovative projects in urban and architectural design were displayed...">
+                                أقام القسم معرضاً لأفضل المشاريع المعمارية للطلاب، تم عرض مشاريع مبتكرة في التصميم الحضري والعمراني...
+                            </p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <i class="fas fa-user"></i>
+                                    <span data-ar="أنشطة طلابية" data-en="Student Activities">أنشطة طلابية</span>
+                                </div>
+                                <a href="كلية هندسة.html" class="news-link" data-ar="اقرأ المزيد" data-en="Read More">اقرأ المزيد</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم الاستوديوهات والمرافق -->
+            <section class="studios-section fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="الاستوديوهات والمرافق" data-en="Studios and Facilities">الاستوديوهات والمرافق</h2>
+                    <p data-ar="أحدث المرافق المتاحة للطلاب" data-en="Latest facilities available for students">أحدث المرافق المتاحة للطلاب</p>
+                </div>
+                <div class="studios-grid">
+                    <div class="studio-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="studio-image" style="background-image: url('A4.jpeg')">
+                            <div class="studio-overlay">
+                                <div class="studio-icon">
+                                    <i class="fas fa-pencil-ruler"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="studio-content">
+                            <h3 class="studio-title" data-ar="استوديو التصميم" data-en="Design Studio">استوديو التصميم</h3>
+                            <p class="studio-description" data-ar="مجهز بأحدث برامج CAD والنمذجة ثلاثية الأبعاد" data-en="Equipped with the latest CAD and 3D modeling software">
+                                مجهز بأحدث برامج CAD والنمذجة ثلاثية الأبعاد
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="studio-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="studio-image" style="background-image: url('A12.jpeg')">
+                            <div class="studio-overlay">
+                                <div class="studio-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="studio-content">
+                            <h3 class="studio-title" data-ar="معمل النماذج" data-en="Models Lab">معمل النماذج</h3>
+                            <p class="studio-description" data-ar="متخصص في بناء النماذج المعمارية المادية" data-en="Specialized in building physical architectural models">
+                                متخصص في بناء النماذج المعمارية المادية
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="studio-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="studio-image" style="background-image: url('A15.jpeg')">
+                            <div class="studio-overlay">
+                                <div class="studio-icon">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="studio-content">
+                            <h3 class="studio-title" data-ar="معمل الطباعة" data-en="Printing Lab">معمل الطباعة</h3>
+                            <p class="studio-description" data-ar="مجهز بطابعات ثلاثية الأبعاد متطورة" data-en="Equipped with advanced 3D printers">
+                                مجهز بطابعات ثلاثية الأبعاد متطورة
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم البرامج -->
+            <section class="programs-section fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="البرامج الدراسية" data-en="Academic Programs">البرامج الدراسية</h2>
+                    <p data-ar="البرامج المتاحة في القسم" data-en="Programs available in the department">البرامج المتاحة في القسم</p>
+                </div>
+                <div class="programs-grid">
+                    <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 data-ar="بكالوريوس هندسة عمارة" data-en="Bachelor of Architecture">بكالوريوس هندسة عمارة</h3>
+                        <p data-ar="برنامج شامل مدته 4 سنوات في التصميم المعماري والتخطيط الحضري" data-en="Comprehensive 4-year program in architectural design and urban planning">برنامج شامل مدته 4 سنوات في التصميم المعماري والتخطيط الحضري</p>
+                        <div class="program-duration" data-ar="4 سنوات" data-en="4 Years">4 سنوات</div>
+                    </div>
+                    
+                    <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="program-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 data-ar="دبلوم التصميم الداخلي" data-en="Diploma in Interior Design">دبلوم التصميم الداخلي</h3>
+                        <p data-ar="برنامج متخصص في تصميم الفراغات الداخلية والديكور" data-en="Specialized program in interior spaces design and decoration">برنامج متخصص في تصميم الفراغات الداخلية والديكور</p>
+                        <div class="program-duration" data-ar="سنتان" data-en="2 Years">سنتان</div>
+                    </div>
+                    
+                    <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="program-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <h3 data-ar="دبلوم التخطيط الحضري" data-en="Diploma in Urban Planning">دبلوم التخطيط الحضري</h3>
+                        <p data-ar="برنامج في تخطيط المدن والمناطق العمرانية" data-en="Program in planning cities and urban areas">برنامج في تخطيط المدن والمناطق العمرانية</p>
+                        <div class="program-duration" data-ar="سنتان" data-en="2 Years">سنتان</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المهارات -->
+            <section class="skills-section fade-in" data-aos="fade-up">
+                <div class="section-header">
+                    <h2 data-ar="المهارات التي ستكتسبها" data-en="Skills You Will Acquire">المهارات التي ستكتسبها</h2>
+                    <p data-ar="أهم المهارات المعمارية والتقنية" data-en="Most important architectural and technical skills">أهم المهارات المعمارية والتقنية</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="skill-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <h4 data-ar="الرسم المعماري" data-en="Architectural Drawing">الرسم المعماري</h4>
+                        <p data-ar="إتقان الرسم اليدي والرقمي" data-en="Mastery of manual and digital drawing">إتقان الرسم اليدي والرقمي</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="skill-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h4 data-ar="النمذجة ثلاثية الأبعاد" data-en="3D Modeling">النمذجة ثلاثية الأبعاد</h4>
+                        <p data-ar="التصميم باستخدام برامج 3D المتقدمة" data-en="Design using advanced 3D software">التصميم باستخدام برامج 3D المتقدمة</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="skill-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4 data-ar="التصميم المستدام" data-en="Sustainable Design">التصميم المستدام</h4>
+                        <p data-ar="تصميم مباني صديقة للبيئة" data-en="Designing environmentally friendly buildings">تصميم مباني صديقة للبيئة</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 data-ar="التخطيط الحضري" data-en="Urban Planning">التخطيط الحضري</h4>
+                        <p data-ar="تخطيط المدن والمناطق العمرانية" data-en="Planning cities and urban areas">تخطيط المدن والمناطق العمرانية</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- زر الحجز -->
+            <div class="cta-section fade-in" data-aos="fade-up">
+                <a href="الاتصال والتواصل.html" class="cta-button">
+                    <i class="fas fa-user-plus"></i> <span data-ar="انضم إلينا الآن" data-en="Join Us Now">انضم إلينا الآن</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- الفوتر -->
+    <footer data-aos="fade-up">
+        <div class="footer-content">
+            <p data-ar="معهد أكتوبر العالي للهندسة والتكنولوجيا - قسم هندسة عمارة" data-en="October Higher Institute for Engineering and Technology - Architecture Department">معهد أكتوبر العالي للهندسة والتكنولوجيا - قسم هندسة عمارة</p>
+            <p data-ar="نسعى لتخريج مهندسين معماريين مبدعين قادرين على مواكبة أحدث التطورات في مجال التصميم المعماري والتخطيط الحضري" data-en="We strive to graduate creative architects who are able to keep up with the latest developments in the field of architectural design and urban planning">نسعى لتخريج مهندسين معماريين مبدعين قادرين على مواكبة أحدث التطورات في مجال التصميم المعماري والتخطيط الحضري</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/ohinstitute" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/Ohi_1993?t=79l5XJ4KeAaxJn7jeGuTrg&s=09" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ohi_1993?igsh=d2NkcjJ4ZHE2aHFw" title="إنستجرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ohi.channel-r4r?si=ba_FuEv0kgs1nyB3" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/" title="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p data-ar="&copy; 2025 معهد أكتوبر العالي. جميع الحقوق محفوظة." data-en="&copy; 2025 October Higher Institute. All rights reserved.">&copy; 2025 معهد أكتوبر العالي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    
+    <!-- مكتبات JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // إخفاء رسالة التحميل عند تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 500);
+        });
+        
+        // تبديل اللغة
+        const langToggle = document.getElementById('langToggle');
+        const currentLangSpan = document.getElementById('currentLang');
+        const body = document.body;
+        const html = document.documentElement;
+        
+        // تحقق من وجود لغة محفوظة
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'en') {
+            body.classList.add('en');
+            html.setAttribute('lang', 'en');
+            html.setAttribute('dir', 'ltr');
+            currentLangSpan.textContent = 'AR';
+            updateLanguage('en');
+        }
+        
+        langToggle.addEventListener('click', function() {
+            if (body.classList.contains('en')) {
+                body.classList.remove('en');
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                currentLangSpan.textContent = 'EN';
+                localStorage.setItem('lang', 'ar');
+                updateLanguage('ar');
+            } else {
+                body.classList.add('en');
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                currentLangSpan.textContent = 'AR';
+                localStorage.setItem('lang', 'en');
+                updateLanguage('en');
+            }
+        });
+        
+        // تحديث النصوص حسب اللغة
+        function updateLanguage(lang) {
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else {
+                    element.textContent = element.getAttribute('data-ar');
+                }
+            });
+            
+            // تحديث عناوين الصفحة
+            document.title = lang === 'en' 
+                ? 'Architecture Department - October Higher Institute for Engineering and Technology' 
+                : 'قسم هندسة عمارة - معهد أكتوبر العالي للهندسة والتكنولوجيا';
+        }
+        
+        // زر العودة للأعلى
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // تبديل الثيم (فاتح/داكن)
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // تحميل الثيم المحفوظ
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        // تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تأثير التمرير للشريط العلوي
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('scroll-up');
+                navbar.classList.add('scrolled');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
+                navbar.classList.remove('scroll-up');
+                navbar.classList.add('scroll-down');
+                navbar.classList.remove('scrolled');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('scroll-down')) {
+                navbar.classList.remove('scroll-down');
+                navbar.classList.add('scroll-up');
+                navbar.classList.add('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // القائمة المتجاوبة للموبايل
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            if (navLinks.classList.contains('active')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Fade in animation for elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+        
+        // تأثير الجسيمات في البنر
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // حجم عشوائي للجسيمات
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // موضع عشوائي
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // مدة عشوائية للأنيميشن
+                const duration = Math.random() * 15 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // تأخير عشوائي
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // تأثير الماوس على البنر
+        const heroBanner = document.querySelector('.hero-banner');
+        const heroMouseEffect = document.getElementById('heroMouseEffect');
+        
+        heroBanner.addEventListener('mousemove', (e) => {
+            const rect = heroBanner.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            heroMouseEffect.style.left = `${x}px`;
+            heroMouseEffect.style.top = `${y}px`;
+            heroMouseEffect.style.opacity = '1';
+        });
+        
+        heroBanner.addEventListener('mouseleave', () => {
+            heroMouseEffect.style.opacity = '0';
+        });
+        
+        // Interactive gallery images
+        const galleryImages = document.querySelectorAll('.composite-gallery img');
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                const mainImage = this.closest('.composite-item').querySelector('.composite-main');
+                const tempSrc = mainImage.style.backgroundImage;
+                mainImage.style.backgroundImage = `url('${this.src}')`;
+                this.src = tempSrc.slice(5, -2); // Remove url(" and ")
+            });
+        });
+        
+        // Add hover effect to cards
+        const cards = document.querySelectorAll('.project-card, .news-card, .studio-card, .program-card, .skill-item');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // تأثير التموج عند النقر
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const circle = document.createElement('span');
+            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const radius = diameter / 2;
+            
+            circle.style.width = circle.style.height = `${diameter}px`;
+            circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+            circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+            circle.classList.add('ripple');
+            
+            const ripple = button.getElementsByClassName('ripple')[0];
+            if (ripple) {
+                ripple.remove();
+            }
+            
+            button.appendChild(circle);
+        }
+        
+        // إضافة تأثير التموج للأزرار
+        const buttons = document.querySelectorAll('.cta-button, .lang-toggle, .theme-toggle, .menu-toggle, .social-links a');
+        buttons.forEach(button => {
+            button.addEventListener('click', createRipple);
+        });
+        
+        // Optimize animations for mobile
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
+        if (isMobile()) {
+            // Reduce animations on mobile for better performance
+            const animatedElements = document.querySelectorAll('[data-aos]');
+            animatedElements.forEach((element, index) => {
+                if (index > 6) { // Disable animations for elements after the 6th one
+                    element.removeAttribute('data-aos');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO تحسينات -->
+    <title>قسم إدارة الأعمال - معهد أكتوبر العالي | التعليم الإداري المتميز</title>
+    <meta name="description" content="قسم إدارة الأعمال بمعهد أكتوبر العالي يقدم برامج تعليمية متميزة تجمع بين الأساس النظري والتطبيق العملي لإعداد كفاءات إدارية قادرة على قيادة المؤسسات">
+    <meta name="keywords" content="إدارة أعمال, معهد أكتوبر العالي, تعليم إداري, إدارة, قيادة, تسويق, استثمار, بنوك, نظم معلومات">
+    <meta name="author" content="معهد أكتوبر العالي">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:title" content="قسم إدارة الأعمال - معهد أكتوبر العالي">
+    <meta property="og:description" content="قسم إدارة الأعمال بمعهد أكتوبر العالي يقدم برامج تعليمية متميزة تجمع بين الأساس النظري والتطبيق العملي">
+    <meta property="og:image" content="https://example.com/logo.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com">
+    <meta property="twitter:title" content="قسم إدارة الأعمال - معهد أكتوبر العالي">
+    <meta property="twitter:description" content="قسم إدارة الأعمال بمعهد أكتوبر العالي يقدم برامج تعليمية متميزة تجمع بين الأساس النظري والتطبيق العملي">
+    <meta property="twitter:image" content="https://example.com/logo.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="m4.jpg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="m4.jpg">
+    
+    <!-- مكتبات CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Library للأنيميشن -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #012b5b;
+            --primary-light: #0056b3;
+            --secondary-color: #fca311;
+            --secondary-light: #ffd700;
+            --accent-color: #17a2b8;
+            --accent-green: #28a745;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --footer-dark: #001f3f;
+            --border-radius: 12px;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --nav-glow: 0 0 15px rgba(1, 43, 91, 0.7);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* شاشة التحميل */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* شريط التنقل المحسن */
+        .navbar {
+            position: fixed;
+            top: 0%;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: var(--nav-glow);
+            transition: all 0.3s ease;
+            position:absolute;
+        }
+        
+        .navbar.scrolled {
+            padding: 5px 0;
+            background: rgba(1, 43, 91, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--bg-white);
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            padding: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* خلفية متحركة عند التمرير فوق العناصر */
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(252, 163, 17, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .nav-menu a:hover::before {
+            left: 100%;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* زر القائمة المتجاوبة */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            color: var(--secondary-color);
+        }
+        
+        /* Dropdown Menu محسن */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown a {
+            color: var(--text-dark);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            margin: 5px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dropdown a::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary-color);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown a:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .dropdown a::after {
+            display: none;
+        }
+        
+        .dropdown a i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Chevron Icon محسن */
+        .fa-chevron-down {
+            margin-left: 5px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-menu li:hover .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* Theme Toggle Button محسن */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        
+        .theme-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.05) rotate(15deg);
+        }
+        
+        /* زر تبديل اللغة */
+        .lang-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            margin-left: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        
+        .lang-toggle:hover::before {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .lang-toggle:hover {
+            transform: scale(1.05);
+        }
+        
+        /* البنر الرئيسي */
+        .hero-banner {
+            position: relative;
+            height: 60vh;
+            margin-top: 90px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.5);
+            z-index: -1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.8), rgba(252, 163, 17, 0.6));
+            z-index: -1;
+        }
+        
+        /* تأثيرات الجسيمات في البنر */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--bg-white);
+            z-index: 1;
+            padding: 0 30px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        
+        /* زر العودة للأعلى */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        /* تأثير التموج عند النقر */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ripple::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ripple:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            padding: 80px 30px;
+            background: var(--bg-light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* قسم التعريف المختصر */
+        .intro-section {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .intro-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .intro-section h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .intro-section p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* قسم الصور */
+        .gallery-section {
+            margin-bottom: 60px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 30px 20px 20px;
+            color: var(--bg-white);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* قسم المقالات */
+        .articles-section {
+            margin-bottom: 60px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(252, 163, 17, 0.3);
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+        
+        .article-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-link {
+            color: var(--primary-color);
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 25px;
+            background: var(--bg-light);
+        }
+        
+        .read-more-link:hover {
+            transform: translateX(5px);
+            background: var(--primary-color);
+            color: var(--bg-white);
+        }
+        
+        .read-more-link i {
+            margin-right: 8px;
+        }
+        
+        /* قسم الأخبار */
+        .news-section {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .news-item {
+            border: 1px solid var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .news-item:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .news-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .news-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .news-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .news-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* قسم المهارات */
+        .skills-section {
+            margin-bottom: 60px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: var(--bg-white);
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            color: var(--bg-white);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .skill-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .skill-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* زر الحجز */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .cta-button {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(252, 163, 17, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-light);
+            box-shadow: 0 15px 35px rgba(252, 163, 17, 0.4);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--footer-dark);
+            color: var(--bg-white);
+            padding: 60px 30px 40px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        .footer-content p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px) scale(1.1);
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 60px 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-grid,
+            .articles-grid,
+            .news-grid,
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .nav-container {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .intro-section {
+                padding: 30px 20px;
+            }
+            
+            .intro-section h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .gallery-grid,
+            .articles-grid,
+            .news-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-banner {
+                height: 50vh;
+                margin-top: 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                padding: 40px 15px;
+            }
+            
+            .intro-section,
+            .news-section {
+                padding: 20px 15px;
+            }
+            
+            .article-content {
+                padding: 20px 15px;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* القائمة المتجاوبة */
+        @media (max-width: 992px) {
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            .nav-menu li {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .nav-menu a {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 15px;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(255, 255, 255, 0.1);
+                margin: 10px 0 0 0;
+                width: 100%;
+                padding: 10px 0;
+            }
+            
+            .dropdown a {
+                color: rgba(255, 255, 255, 0.9);
+                padding: 10px 20px;
+                margin: 0;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                color: var(--secondary-color);
+            }
+            
+            .dropdown a i {
+                color: var(--secondary-color);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+        }
+        
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .navbar {
+                background: linear-gradient(135deg, #0f172a, #1e293b);
+            }
+            
+            .dropdown {
+                background: #1e293b;
+                border: 1px solid #334155;
+            }
+            
+            .dropdown a {
+                color: #e2e8f0;
+            }
+            
+            .dropdown a:hover {
+                background: #334155;
+                color: white;
+            }
+        }
+        
+        /* تعديلات اللغة الإنجليزية */
+        [dir="ltr"] .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        [dir="ltr"] .dropdown {
+            left: auto;
+            right: 0;
+        }
+        
+        [dir="ltr"] .dropdown a {
+            padding: 12px 20px 12px 12px;
+        }
+        
+        [dir="ltr"] .dropdown a i {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        
+        [dir="ltr"] .dropdown a:hover {
+            transform: translateX(-5px);
+        }
+        
+        [dir="ltr"] .nav-menu {
+            right: auto;
+            left: 0;
+        }
+        
+        [dir="ltr"] .nav-menu a {
+            justify-content: flex-start;
+        }
+        
+        [dir="ltr"] .fa-chevron-down {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        [dir="ltr"] .nav-menu li:hover .fa-chevron-down {
+            transform: rotate(-180deg);
+        }
+        
+        [dir="ltr"] .read-more-link {
+            transform: translateX(0);
+        }
+        
+        [dir="ltr"] .read-more-link:hover {
+            transform: translateX(-5px);
+        }
+        
+        [dir="ltr"] .read-more-link i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        [dir="ltr"] .news-meta span {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="ltr"] .news-meta span i {
+            margin-right: 0;
+            margin-left: 5px;
+        }
+        
+        [dir="ltr"] .back-to-top {
+            left: auto;
+            right: 30px;
+        }
+        
+        @media (max-width: 576px) {
+            [dir="ltr"] .back-to-top {
+                right: 20px;
+                left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-lang="ar">جاري التحميل...</div>
+        <div class="loading-text" data-lang="en" style="display: none;">Loading...</div>
+    </div>
+    
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="m4.jpg" alt="شعار معهد أكتوبر العالي" data-lang="ar">
+                <img src="m4.jpg" alt="October Higher Institute Logo" data-lang="en" style="display: none;">
+                <span data-lang="ar">معهد أكتوبر العالي</span>
+                <span data-lang="en" style="display: none;">October Higher Institute</span>
+            </a>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-lang="ar">الرئيسية</span><span data-lang="en" style="display: none;">Home</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-lang="ar">كلية الهندسة</span><span data-lang="en" style="display: none;">Faculty of Engineering</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-lang="ar">قسم هندسة مدني</span><span data-lang="en" style="display: none;">Civil Engineering</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-lang="ar">قسم هندسة عمارة</span><span data-lang="en" style="display: none;">Architecture Engineering</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-lang="ar">قسم هندسة اتصالات</span><span data-lang="en" style="display: none;">Communication Engineering</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-lang="ar">كلية إدارة الأعمال</span><span data-lang="en" style="display: none;">Faculty of Business</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-lang="ar">نظم معلومات الأعمال</span><span data-lang="en" style="display: none;">Business Information Systems</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-lang="ar">إدارة أعمال</span><span data-lang="en" style="display: none;">Business Administration</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-lang="ar">استثمار وبنوك</span><span data-lang="en" style="display: none;">Investment and Banking</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-lang="ar">تسويق</span><span data-lang="en" style="display: none;">Marketing</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span data-lang="ar">الأخبار</span><span data-lang="en" style="display: none;">News</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-lang="ar">الفعاليات</span><span data-lang="en" style="display: none;">Events</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-lang="ar">أخبار أكاديمية</span><span data-lang="en" style="display: none;">Academic News</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-lang="ar">أخبار الطلبة</span><span data-lang="en" style="display: none;">Student News</span></a>
+                        <a href="عن المعهد .html"><i class="fas fa-users"></i> <span data-lang="ar">عن المعهد</span><span data-lang="en" style="display: none;">About the institute</span></a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span data-lang="ar">اتصل بنا</span><span data-lang="en" style="display: none;">Contact Us</span></a></li>
+                <li>
+                    <button class="lang-toggle" id="lang-toggle" title="تبديل اللغة">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                </li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- البنر الرئيسي -->
+    <section class="hero-banner" id="hero-banner">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <canvas id="particles-canvas"></canvas>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 data-lang="ar">قسم إدارة الأعمال</h1>
+            <h1 data-lang="en" style="display: none;">Business Administration Department</h1>
+            <p data-lang="ar">نصنع قادة المستقبل من خلال التعليم الإداري المتميز</p>
+            <p data-lang="en" style="display: none;">We shape future leaders through distinguished management education</p>
+        </div>
+    </section>
+    
+    <!-- زر العودة للأعلى -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <div class="container">
+            <!-- قسم التعريف المختصر -->
+            <section class="intro-section" data-aos="fade-up" data-aos-delay="100">
+                <h2 data-lang="ar">مرحباً بك في قسم إدارة الأعمال</h2>
+                <h2 data-lang="en" style="display: none;">Welcome to the Business Administration Department</h2>
+                <p data-lang="ar">
+                    يعد قسم إدارة الأعمال أحد الأقسام الرائدة في معهد أكتوبر العالي، حيث يقدم برامج تعليمية متميزة 
+                    تجمع بين الأساس النظري والتطبيق العملي، ويهدف إلى إعداد كفاءات إدارية قادرة على قيادة المؤسسات 
+                    نحو التميز والنجاح في بيئة الأعمال المتغيرة.
+                </p>
+                <p data-lang="en" style="display: none;">
+                    The Business Administration Department is one of the leading departments at October Higher Institute, offering distinguished educational programs 
+                    that combine theoretical foundations with practical application, aiming to prepare administrative competencies capable of leading organizations 
+                    towards excellence and success in a changing business environment.
+                </p>
+            </section>
+            
+            <!-- قسم الصور -->
+            <section class="gallery-section" data-aos="fade-up" data-aos-delay="200">
+                <div class="section-header">
+                    <h2 data-lang="ar">صور من القسم</h2>
+                    <h2 data-lang="en" style="display: none;">Department Photos</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="Q3.jpg" alt="قاعة محاضرات" data-lang="ar">
+                        <img src="Q3.jpg" alt="Lecture Hall" data-lang="en" style="display: none;">
+                        <div class="gallery-overlay">
+                            <h4 data-lang="ar">قاعة المحاضرات</h4>
+                            <h4 data-lang="en" style="display: none;">Lecture Hall</h4>
+                            <p data-lang="ar">بيئة تعليمية مجهزة بأحدث التقنيات</p>
+                            <p data-lang="en" style="display: none;">Educational environment equipped with the latest technologies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="Q4.jpg" alt="ورش عمل" data-lang="ar">
+                        <img src="Q4.jpg" alt="Workshops" data-lang="en" style="display: none;">
+                        <div class="gallery-overlay">
+                            <h4 data-lang="ar">ورش العمل</h4>
+                            <h4 data-lang="en" style="display: none;">Workshops</h4>
+                            <p data-lang="ar">تدريب عملي على مهارات الإدارة</p>
+                            <p data-lang="en" style="display: none;">Practical training on management skills</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="Q5.jpg" alt="فعاليات طلابية" data-lang="ar">
+                        <img src="Q5.jpg" alt="Student Activities" data-lang="en" style="display: none;">
+                        <div class="gallery-overlay">
+                            <h4 data-lang="ar">الفعاليات الطلابية</h4>
+                            <h4 data-lang="en" style="display: none;">Student Activities</h4>
+                            <p data-lang="ar">أنشطة تطوير المهارات القيادية</p>
+                            <p data-lang="en" style="display: none;">Leadership skills development activities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="m14.jpg" alt="مكتبة القسم" data-lang="ar">
+                        <img src="m14.jpg" alt="Department Library" data-lang="en" style="display: none;">
+                        <div class="gallery-overlay">
+                            <h4 data-lang="ar">مكتبة القسم</h4>
+                            <h4 data-lang="en" style="display: none;">Department Library</h4>
+                            <p data-lang="ar">مصادر معرفية غنية ومتخصصة</p>
+                            <p data-lang="en" style="display: none;">Rich and specialized knowledge resources</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المقالات -->
+            <section class="articles-section" data-aos="fade-up" data-aos-delay="300">
+                <div class="section-header">
+                    <h2 data-lang="ar">مقالات متميزة</h2>
+                    <h2 data-lang="en" style="display: none;">Featured Articles</h2>
+                </div>
+                <div class="articles-grid">
+                    <article class="article-card" data-aos="fade-right" data-aos-delay="400">
+                        <div class="article-image" style="background-image: url('Q1.png')">
+                            <div class="article-date" data-lang="ar">15 نوفمبر 2024</div>
+                            <div class="article-date" data-lang="en" style="display: none;">November 15, 2024</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-lang="ar">فن القيادة في القرن الحادي والعشرين</h3>
+                            <h3 class="article-title" data-lang="en" style="display: none;">The Art of Leadership in the 21st Century</h3>
+                            <p class="article-excerpt" data-lang="ar">استكشف أهم المهارات القيادية التي يحتاجها المديرون في العصر الحديث وكيفية تطويرها...</p>
+                            <p class="article-excerpt" data-lang="en" style="display: none;">Explore the most important leadership skills that managers need in the modern era and how to develop them...</p>
+                            <a href="#" class="read-more-link" data-lang="ar">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="#" class="read-more-link" data-lang="en" style="display: none;">Read More <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="article-image" style="background-image: url('Q1.jpeg')">
+                            <div class="article-date" data-lang="ar">10 نوفمبر 2024</div>
+                            <div class="article-date" data-lang="en" style="display: none;">November 10, 2024</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-lang="ar">التحول الرقمي في إدارة الأعمال</h3>
+                            <h3 class="article-title" data-lang="en" style="display: none;">Digital Transformation in Business Management</h3>
+                            <p class="article-excerpt" data-lang="ar">كيف تؤثر التكنولوجيا الحديثة على طرق الإدارة التقليدية وما هي الفرص والتحديات...</p>
+                            <p class="article-excerpt" data-lang="en" style="display: none;">How modern technology affects traditional management methods and what are the opportunities and challenges...</p>
+                            <a href="#" class="read-more-link" data-lang="ar">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="#" class="read-more-link" data-lang="en" style="display: none;">Read More <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="article-card" data-aos="fade-left" data-aos-delay="600">
+                        <div class="article-image" style="background-image: url('Q6.jpeg')">
+                            <div class="article-date" data-lang="ar">5 نوفمبر 2025</div>
+                            <div class="article-date" data-lang="en" style="display: none;">November 5, 2025</div>
+                        </div>
+                        <div class="article-content">
+                            <h3 class="article-title" data-lang="ar">ريادة الأعمال: من الفكرة إلى النجاح</h3>
+                            <h3 class="article-title" data-lang="en" style="display: none;">Entrepreneurship: From Idea to Success</h3>
+                            <p class="article-excerpt" data-lang="ar">دليل شامل للمسوقين الطموحين حول كيفية تحويل الأفكار المبتكرة إلى مشاريع ناجحة...</p>
+                            <p class="article-excerpt" data-lang="en" style="display: none;">A comprehensive guide for aspiring entrepreneurs on how to transform innovative ideas into successful projects...</p>
+                            <a href="اخبار للطلابه.html" class="read-more-link" data-lang="ar">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="#article-title" class="read-more-link" data-lang="en" style="display: none;">Read More <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- قسم الأخبار -->
+            <section class="news-section" data-aos="fade-up" data-aos-delay="400">
+                <div class="section-header">
+                    <h2 data-lang="ar">آخر الأخبار</h2>
+                    <h2 data-lang="en" style="display: none;">Latest News</h2>
+                </div>
+                <div class="news-grid">
+                    <div class="news-item" data-aos="fade-right" data-aos-delay="500">
+                        <h4 data-lang="ar">ورشة عمل في إدارة المشاريع</h4>
+                        <h4 data-lang="en" style="display: none;">Project Management Workshop</h4>
+                        <div class="news-meta">
+                            <span data-lang="ar"><i class="fas fa-calendar"></i> 20 نوفمبر 2023</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-calendar"></i> November 20, 2023</span>
+                            <span data-lang="ar"><i class="fas fa-user"></i> إدارة القسم</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-user"></i> Department Administration</span>
+                        </div>
+                        <p data-lang="ar">
+                            ينظم القسم ورشة عمل متخصصة في إدارة المشاريع بمشاركة خبراء من الشركات الرائدة...
+                        </p>
+                        <p data-lang="en" style="display: none;">
+                            The department organizes a specialized workshop in project management with the participation of experts from leading companies...
+                        </p>
+                        <a href="#" class="news-link" data-lang="en" style="display: none;">More <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="news-item" data-aos="fade-up" data-aos-delay="600">
+                        <h4 data-lang="ar">اتفاقية شراكة مع شركة عالمية</h4>
+                        <h4 data-lang="en" style="display: none;">Partnership Agreement with International Company</h4>
+                        <div class="news-meta">
+                            <span data-lang="ar"><i class="fas fa-calendar"></i> 18 نوفمبر 2023</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-calendar"></i> November 18, 2023</span>
+                            <span data-lang="ar"><i class="fas fa-user"></i> إدارة القسم</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-user"></i> Department Administration</span>
+                        </div>
+                        <p data-lang="ar">
+                            وقع المعهد اتفاقية شراكة استراتيجية مع شركة عالمية لتدريب الطلاب وتوفير فرص عمل...
+                        </p>
+                        <p data-lang="en" style="display: none;">
+                            The institute signed a strategic partnership agreement with an international company to train students and provide job opportunities...
+                        </p>
+                        <a href="#" class="news-link" data-lang="en" style="display: none;">More <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="news-item" data-aos="fade-left" data-aos-delay="700">
+                        <h4 data-lang="ar">مسابقة أفضل خطة عمل</h4>
+                        <h4 data-lang="en" style="display: none;">Best Business Plan Competition</h4>
+                        <div class="news-meta">
+                            <span data-lang="ar"><i class="fas fa-calendar"></i> 15 نوفمبر 2023</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-calendar"></i> November 15, 2023</span>
+                            <span data-lang="ar"><i class="fas fa-user"></i> أنشطة طلابية</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-user"></i> Student Activities</span>
+                        </div>
+                        <p data-lang="ar">
+                            أعلن القسم عن مسابقة "أفضل خطة عمل" للطلاب بهدف تشجيع الابتكار والإبداع...
+                        </p>
+                        <p data-lang="en" style="display: none;">
+                            The department announced the "Best Business Plan" competition for students with the aim of encouraging innovation and creativity...
+                        </p>
+                        <a href="#" class="news-link" data-lang="en" style="display: none;">More <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    
+                    <div class="news-item" data-aos="fade-right" data-aos-delay="800">
+                        <h4 data-lang="ar">محاضرة ضيف في القيادة الاستراتيجية</h4>
+                        <h4 data-lang="en" style="display: none;">Guest Lecture on Strategic Leadership</h4>
+                        <div class="news-meta">
+                            <span data-lang="ar"><i class="fas fa-calendar"></i> 12 نوفمبر 2023</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-calendar"></i> November 12, 2023</span>
+                            <span data-lang="ar"><i class="fas fa-user"></i> إدارة القسم</span>
+                            <span data-lang="en" style="display: none;"><i class="fas fa-user"></i> Department Administration</span>
+                        </div>
+                        <p data-lang="ar">
+                            يستضيف القسم الدكتور أحمد خالد، الخبير في القيادة الاستراتيجية، لإلقاء محاضرة مفتوحة...
+                        </p>
+                        <p data-lang="en" style="display: none;">
+                            The department hosts Dr. Ahmed Khalid, an expert in strategic leadership, to deliver an open lecture...
+                        </p>
+                        <a href="#" class="news-link" data-lang="en" style="display: none;">More <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- قسم المهارات -->
+            <section class="skills-section" data-aos="fade-up" data-aos-delay="500">
+                <div class="section-header">
+                    <h2 data-lang="ar">المهارات التي ستكتسبها</h2>
+                    <h2 data-lang="en" style="display: none;">Skills You Will Acquire</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item" data-aos="flip-left" data-aos-delay="600">
+                        <div class="skill-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 data-lang="ar">القيادة والإدارة</h4>
+                        <h4 data-lang="en" style="display: none;">Leadership and Management</h4>
+                        <p data-lang="ar">تطوير المهارات القيادية وإدارة الفرق</p>
+                        <p data-lang="en" style="display: none;">Developing leadership skills and team management</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="flip-left" data-aos-delay="700">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 data-lang="ar">التحليل الاستراتيجي</h4>
+                        <h4 data-lang="en" style="display: none;">Strategic Analysis</h4>
+                        <p data-lang="ar">تحليل البيانات واتخاذ القرارات</p>
+                        <p data-lang="en" style="display: none;">Data analysis and decision making</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="flip-left" data-aos-delay="800">
+                        <div class="skill-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 data-lang="ar">التواصل الفعال</h4>
+                        <h4 data-lang="en" style="display: none;">Effective Communication</h4>
+                        <p data-lang="ar">مهارات التواصل والتفاوض</p>
+                        <p data-lang="en" style="display: none;">Communication and negotiation skills</p>
+                    </div>
+                    
+                    <div class="skill-item" data-aos="flip-left" data-aos-delay="900">
+                        <div class="skill-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4 data-lang="ar">التفكير الابتكاري</h4>
+                        <h4 data-lang="en" style="display: none;">Innovative Thinking</h4>
+                        <p data-lang="ar">حل المشكلات والإبداع في العمل</p>
+                        <p data-lang="en" style="display: none;">Problem solving and creativity at work</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- زر الحجز -->
+            <div class="cta-section" data-aos="zoom-in" data-aos-delay="1000">
+                <a href="الاتصال والتواصل.html" class="cta-button ripple">
+                    <i class="fas fa-user-plus"></i>
+                    <span data-lang="ar">انضم إلينا الآن</span>
+                    <span data-lang="en" style="display: none;">Join Us Now</span>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- الفوتر -->
+    <footer data-aos="fade-up" data-aos-delay="1100">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="m4.jpg" alt="شعار معهد أكتوبر العالي" data-lang="ar">
+                <img src="m4.jpg" alt="October Higher Institute Logo" data-lang="en" style="display: none;">
+            </div>
+            <p data-lang="ar">معهد أكتوبر العالي للهندسة والتكنولوجيا - قسم إدارة الأعمال</p>
+            <p data-lang="en" style="display: none;">October Higher Institute for Engineering and Technology - Business Administration Department</p>
+            <p data-lang="ar">نسعى لتقديم تعليم عالي الجودة يواكب متطلبات سوق العمل ويؤهل الطلاب للمنافسة عالمياً</p>
+            <p data-lang="en" style="display: none;">We strive to provide high-quality education that meets the requirements of the job market and qualifies students to compete globally</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/ohinstitute" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/Ohi_1993?t=79l5XJ4KeAaxJn7jeGuTrg&s=09" title="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/ohi_1993?igsh=d2NkcjJ4ZHE2aHFw" title="انستجرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@ohi.channel-r4r?si=ba_FuEv0kgs1nyB3" title="يوتيوب"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/" title="لينكدإن"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-lang="ar">&copy; 2025 معهد أكتوبر العالي. جميع الحقوق محفوظة.</p>
+                <p data-lang="en" style="display: none;">&copy; 2025 October Higher Institute. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- مكتبات JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // إخفاء شاشة التحميل بعد تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.visibility = 'hidden';
+            }, 1000);
+        });
+        
+        // تأثير التمرير على شريط التنقل
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // إظهار/إخفاء زر العودة للأعلى
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // تأثير بارالكسا للبنر عند التمرير
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBanner = document.getElementById('hero-banner');
+            const heroImage = heroBanner.querySelector('.hero-image');
+            
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // زر العودة للأعلى
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // تأثير الماوس على البنر
+        const heroBanner = document.getElementById('hero-banner');
+        heroBanner.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const heroContent = heroBanner.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = `translate(${(x - 0.5) * 20}px, ${(y - 0.5) * 20}px)`;
+            }
+        });
+        
+        heroBanner.addEventListener('mouseleave', function() {
+            const heroContent = heroBanner.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = 'translate(0, 0)';
+            }
+        });
+        
+        // تأثير الجسيمات في البنر
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('.hero-banner').offsetHeight;
+        
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = document.querySelector('.hero-banner').offsetHeight;
+        });
+        
+        // إنشاء الجسيمات
+        const particles = [];
+        const particleCount = 100;
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5,
+                opacity: Math.random() * 0.5 + 0.2
+            });
+        }
+        
+        // رسم الجسيمات
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
+                ctx.fill();
+                
+                // تحديث موقع الجسيمات
+                particle.x += particle.speedX;
+                particle.y += particle.speedY;
+                
+                // إعادة الجسيمات التي تخرج من الشاشة
+                if (particle.x < 0 || particle.x > canvas.width) {
+                    particle.speedX = -particle.speedX;
+                }
+                
+                if (particle.y < 0 || particle.y > canvas.height) {
+                    particle.speedY = -particle.speedY;
+                }
+            });
+            
+            requestAnimationFrame(drawParticles);
+        }
+        
+        drawParticles();
+        
+        // تبديل الوضع الليلي/النهاري
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // القائمة المتجاوبة
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على رابط
+        const links = document.querySelectorAll('.nav-menu a');
+        
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // تبديل اللغة
+        const langToggle = document.getElementById('lang-toggle');
+        const html = document.documentElement;
+        let currentLang = 'ar'; // اللغة الافتراضية
+        
+        langToggle.addEventListener('click', function() {
+            // تبديل اللغة الحالية
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            // إخفاء جميع العناصر
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                element.style.display = 'none';
+            });
+            
+            // إظهار عناصر اللغة المختارة
+            document.querySelectorAll(`[data-lang="${currentLang}"]`).forEach(element => {
+                element.style.display = '';
+            });
+            
+            // تغيير اتجاه الصفحة (RTL/LTR)
+            if (currentLang === 'ar') {
+                html.setAttribute('dir', 'rtl');
+                html.setAttribute('lang', 'ar');
+            } else {
+                html.setAttribute('dir', 'ltr');
+                html.setAttribute('lang', 'en');
+            }
+            
+            // حفظ اللغة المختارة في التخزين المحلي
+            localStorage.setItem('selectedLanguage', currentLang);
+        });
+        
+        // عند تحميل الصفحة، تحقق من اللغة المحفوظة
+        window.addEventListener('load', function() {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang && savedLang !== currentLang) {
+                langToggle.click(); // محاكاة النقر على زر تبديل اللغة
+            }
+        });
+        
+        // تأثير التموج عند النقر
+        const rippleButtons = document.querySelectorAll('.ripple');
+        
+        rippleButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

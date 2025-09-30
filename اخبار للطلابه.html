@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-ar="بوابة أخبار الطلاب - معهد أكتوبر العالي" data-en="Student News Portal - October Higher Institute">بوابة أخبار الطلاب - معهد أكتوبر العالي</title>
+    <meta name="description" data-ar="آخر أخبار الطلاب والفعاليات والإعلانات من معهد أكتوبر العالي" 
+        data-en="Latest student news, events and announcements from October Higher Institute">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="image.png.jpg">
+    
+    <!-- AOS Library للأنيميشن -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        :root {
+            --primary: #0056b3;
+            --primary-light: #007bff;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+            --bg-light: #f5f5f5;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* الوضع الليلي */
+        [data-theme="dark"] {
+            --primary: #4285f4;
+            --secondary: #34a853;
+            --accent: #ea4335;
+            --dark: #e8eaed;
+            --light: #202124;
+            --gray: #9aa0a6;
+            --bg-light: #202124;
+        }
+        
+        [data-theme="dark"] body {
+            background-color: #121212;
+            color: var(--dark);
+        }
+        
+        [data-theme="dark"] .counters-section,
+        [data-theme="dark"] .news-card,
+        [data-theme="dark"] .text-news,
+        [data-theme="dark"] .category-btn,
+        [data-theme="dark"] .modal-content,
+        [data-theme="dark"] .announcement-card,
+        [data-theme="dark"] .announcement-grid-item,
+        [data-theme="dark"] .grading-table,
+        [data-theme="dark"] .fees-table {
+            background: #292929;
+            color: var(--dark);
+        }
+        
+        [data-theme="dark"] .news-category {
+            background: #3c4043;
+            color: var(--primary);
+        }
+        
+        [data-theme="dark"] .counter-item:hover {
+            background: #3c4043;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Loading Screen */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* شريط التنقل الاحترافي */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: var(--transition);
+            position: absolute;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(0, 86, 179, 0.95);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+            z-index: -1;
+        }
+        
+        .logo:hover::before {
+            transform: translateX(0);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-left: 15px;
+            border-radius: 50%;
+            background: white;
+            padding: 3px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* القائمة المنسدلة */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: var(--transition);
+            z-index: 100;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown a {
+            color: var(--dark);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border-radius: 0;
+        }
+        
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .dropdown a i {
+            margin-left: 10px;
+            color: var(--primary);
+        }
+        
+        /* زر الوضع الليلي/النهاري */
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* زر تبديل اللغة */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 5px;
+            margin-right: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .lang-btn.active::before {
+            width: 100%;
+        }
+        
+        .lang-btn.active {
+            color: var(--primary);
+        }
+        
+        .lang-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* البانر الرئيسي */
+        .hero-banner {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            z-index: -1;
+            animation: zoom 20s infinite alternate;
+        }
+        
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 86, 179, 0.7), rgba(0, 123, 255, 0.6));
+            z-index: -1;
+        }
+        
+        /* تأثير الجسيمات */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 40px;
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(52, 168, 83, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+        
+        .cta-button:hover::before {
+            left: 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            background: var(--secondary-light);
+            box-shadow: 0 15px 35px rgba(52, 168, 83, 0.4);
+        }
+        
+        /* العدادات */
+        .counters-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            transition: var(--transition);
+        }
+        
+        .counter-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .counter-item:hover::before {
+            opacity: 0.1;
+        }
+        
+        .counter-item:hover {
+            transform: translateY(-5px);
+            background: var(--bg-light);
+        }
+        
+        .counter-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+        
+        .counter-item:hover .counter-icon {
+            transform: scale(1.1);
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .counter-title {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+        
+        /* الإعلانات الهامة */
+        .announcements-section {
+            margin: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        .announcements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .announcement-grid-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .announcement-grid-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .announcement-grid-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .announcement-grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .announcement-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .announcement-grid-item:hover .announcement-image {
+            transform: scale(1.05);
+        }
+        
+        .announcement-content {
+            padding: 20px;
+        }
+        
+        .announcement-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .announcement-grid-item:hover .announcement-icon {
+            transform: scale(1.1);
+        }
+        
+        .announcement-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .announcement-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        /* Categories */
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 0;
+            margin: 20px 0;
+            scrollbar-width: thin;
+        }
+        
+        .category-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .category-btn:hover::before {
+            width: 100%;
+        }
+        
+        .category-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            animation: fadeInUp 0.7s ease-out;
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: var(--bg-light);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .news-meta i {
+            margin-left: 5px;
+        }
+        
+        /* Text News */
+        .text-news {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-right: 5px solid var(--primary);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .text-news::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            opacity: 0.05;
+            border-radius: 0 0 0 100px;
+        }
+        
+        .text-news:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .text-news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .text-news-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .text-news-content {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* جدول نظام التقديرات */
+        .grading-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 0.9s ease-out;
+        }
+        
+        .grading-table thead {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .grading-table th, .grading-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .grading-table tbody tr:nth-child(even) {
+            background-color: rgba(0, 86, 179, 0.05);
+        }
+        
+        .grading-table tbody tr:hover {
+            background-color: rgba(0, 86, 179, 0.1);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .grade-a { color: #28a745; font-weight: bold; }
+        .grade-b { color: #17a2b8; font-weight: bold; }
+        .grade-c { color: #ffc107; font-weight: bold; }
+        .grade-d { color: #fd7e14; font-weight: bold; }
+        .grade-f { color: #dc3545; font-weight: bold; }
+        
+        /* جدول المصروفات */
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .fees-table thead {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .fees-table th, .fees-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .fees-table tbody tr:nth-child(even) {
+            background-color: rgba(0, 86, 179, 0.05);
+        }
+        
+        .fees-table tbody tr:hover {
+            background-color: rgba(0, 86, 179, 0.1);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .fees-table .department-row {
+            background-color: rgba(0, 86, 179, 0.1);
+            font-weight: bold;
+        }
+        
+        .fees-table .total-row {
+            background-color: rgba(0, 86, 179, 0.15);
+            font-weight: bold;
+        }
+        
+        /* Gallery */
+        .gallery {
+            margin: 40px 0;
+        }
+        
+        .gallery-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            animation: fadeInUp 1.1s ease-out;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .show-more-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .show-more-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.5s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        /* زر التمرير للأعلى */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* القائمة المتجاوبة */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: var(--primary);
+            z-index: 1001;
+            padding: 20px;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+        }
+        
+        .mobile-menu-links li {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .mobile-menu-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-links a i {
+            margin-left: 10px;
+        }
+        
+        .mobile-menu-links .dropdown {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+            margin-top: 10px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .mobile-menu-links .dropdown a {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* تأثير التموج عند النقر */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .counters-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .language-switcher {
+                margin-right: 10px;
+            }
+            
+            .grading-table, .fees-table {
+                font-size: 0.9rem;
+            }
+            
+            .grading-table th, .grading-table td, 
+            .fees-table th, .fees-table td {
+                padding: 10px 5px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .logo-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .counters-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-title {
+                font-size: 1.1rem;
+            }
+            
+            .text-news-title {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .grading-table, .fees-table {
+                font-size: 0.8rem;
+            }
+            
+            .grading-table th, .grading-table td, 
+            .fees-table th, .fees-table td {
+                padding: 8px 3px;
+            }
+        }
+        
+        /* تصميم لغة إنجليزية */
+        body[dir="ltr"] {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body[dir="ltr"] .logo img {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        body[dir="ltr"] .dropdown {
+            left: 0;
+            right: auto;
+        }
+        
+        body[dir="ltr"] .dropdown a:hover {
+            transform: translateX(-5px);
+        }
+        
+        body[dir="ltr"] .news-card::before {
+            left: 0;
+            right: auto;
+            transform-origin: left;
+        }
+        
+        body[dir="ltr"] .text-news {
+            border-right: none;
+            border-left: 5px solid var(--primary);
+        }
+        
+        body[dir="ltr"] .text-news::before {
+            left: 0;
+            right: auto;
+            border-radius: 0 0 100px 0;
+        }
+        
+        body[dir="ltr"] .announcement-grid-item::before {
+            left: 0;
+            right: auto;
+            transform-origin: left;
+        }
+        
+        body[dir="ltr"] .modal-close {
+            left: 0;
+            right: auto;
+        }
+        
+        body[dir="ltr"] .mobile-menu {
+            right: auto;
+            left: -100%;
+        }
+        
+        body[dir="ltr"] .mobile-menu.active {
+            left: 0;
+        }
+        
+        body[dir="ltr"] .mobile-menu-links a i {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        body[dir="ltr"] .dropdown a i {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+        
+        body[dir="ltr"] .news-meta i {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        body[dir="ltr"] .language-switcher {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        body[dir="ltr"] .theme-toggle {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+        
+        body[dir="ltr"] .scroll-top {
+            left: auto;
+            right: 30px;
+        }
+        
+        body[dir="ltr"] .gallery-overlay {
+            left: 0;
+            right: auto;
+        }
+        
+        body[dir="ltr"] .show-more-btn {
+            left: auto;
+            right: 10px;
+        }
+        
+        body[dir="ltr"] .gallery-title::after {
+            left: 50%;
+            right: auto;
+        }
+        
+        body[dir="ltr"] .section-title::after {
+            left: 50%;
+            right: auto;
+        }
+        
+        /* تحسينات احترافية إضافية */
+        
+        /* تحسينات الشعار */
+        .logo-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: pulse-badge 2s infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* تحسينات القائمة */
+        .nav-links li {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .nav-links li::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 20px;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links li:hover::after {
+            width: calc(100% - 40px);
+        }
+        
+        /* تحسينات البطاقات */
+        .news-card, .announcement-grid-item, .text-news {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-card::after, .announcement-grid-item::after, .text-news::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .news-card:hover::after, .announcement-grid-item:hover::after, .text-news:hover::after {
+            top: -100%;
+            right: -100%;
+            opacity: 1;
+        }
+        
+        /* تحسينات الجداول */
+        .grading-table tbody tr, .fees-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .grading-table tbody tr:hover, .fees-table tbody tr:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        
+        /* تحسينات المعرض */
+        .gallery-item {
+            position: relative;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 0.2;
+        }
+        
+        /* تحسينات العدادات */
+        .counter-item {
+            perspective: 1000px;
+        }
+        
+        .counter-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .counter-item:hover .counter-inner {
+            transform: rotateY(10deg);
+        }
+        
+        /* تحسينات الأزرار */
+        .cta-button, .show-more-btn, .category-btn {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .cta-button::after, .show-more-btn::after, .category-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:active::after, .show-more-btn:active::after, .category-btn:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* تحسينات النوافذ المنبثقة */
+        .modal-content {
+            transform-origin: center;
+            animation: modalBounce 0.5s ease-out;
+        }
+        
+        @keyframes modalBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                transform: scale(1.05) rotate(2deg);
+            }
+            70% {
+                transform: scale(0.95) rotate(-1deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        /* تحسينات التمرير */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px) rotate(15deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* تحسينات القائمة المتجاوبة */
+        .mobile-menu {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-menu-links a {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mobile-menu-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: right 0.3s ease;
+            z-index: -1;
+        }
+        
+        .mobile-menu-links a:hover::before {
+            right: 0;
+        }
+        
+        /* تحسينات البانر */
+        .hero-content {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content h1 {
+            background: linear-gradient(to right, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            margin-bottom: 20px;
+        }
+        
+        /* تحسينات الجسيمات */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-up 10s infinite linear;
+        }
+        
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+        
+        /* تحسينات التحميل */
+        .loader {
+            position: relative;
+        }
+        
+        .loader::before, .loader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .loader::before {
+            border-top-color: var(--secondary);
+            animation: spin 1s linear infinite;
+        }
+        
+        .loader::after {
+            border-top-color: var(--accent);
+            animation: spin 2s linear infinite reverse;
+        }
+        
+        /* تحسينات التذييل */
+        footer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+        
+        /* تحسينات عامة */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* تحسينات الظل */
+        .shadow-enhanced {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* تحسينات التحويم */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <!-- زر تبديل اللغة -->
+            <div class="language-switcher">
+                <button class="lang-btn active" id="lang-ar" onclick="switchLanguage('ar')">
+                    <i class="fas fa-globe"></i> AR
+                </button>
+                <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">
+                    <i class="fas fa-globe"></i> EN
+                </button>
+            </div>
+            
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="m4.jpg" alt="Logo">
+                    <span data-ar="معهد أكتوبر العالي" data-en="October Higher Institute">معهد أكتوبر العالي</span>
+                </a>
+                <div class="logo-badge">جديد</div>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-ar="كلية الهندسة" data-en="Engineering College">كلية الهندسة</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-ar="قسم هندسة مدني" data-en="Civil Engineering">قسم هندسة مدني</span></a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-ar="قسم هندسة عمارة" data-en="Architecture Engineering">قسم هندسة عمارة</span></a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-ar="قسم هندسة اتصالات" data-en="Communications Engineering">قسم هندسة اتصالات</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-ar="كلية إدارة الأعمال" data-en="Business College">كلية إدارة الأعمال</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-ar="نظم معلومات الأعمال" data-en="Business Information Systems">نظم معلومات الأعمال</span></a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-ar="إدارة أعمال" data-en="Business Administration">إدارة أعمال</span></a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-ar="استثمار وبنوك" data-en="Investment and Banking">استثمار وبنوك</span></a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-ar="تسويق" data-en="Marketing">تسويق</span></a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> <span data-ar="الأخبار" data-en="News">الأخبار</span> <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span></a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-ar="أخبار أكاديمية" data-en="Academic News">أخبار أكاديمية</span></a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="Student News">أخبار الطلبة</span></a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- القائمة المتجاوبة -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+            <li>
+                <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> <span data-ar="كلية الهندسة" data-en="Engineering College">كلية الهندسة</span></a>
+                <div class="dropdown">
+                    <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> <span data-ar="قسم هندسة مدني" data-en="Civil Engineering">قسم هندسة مدني</span></a>
+                    <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> <span data-ar="قسم هندسة عمارة" data-en="Architecture Engineering">قسم هندسة عمارة</span></a>
+                    <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> <span data-ar="قسم هندسة اتصالات" data-en="Communications Engineering">قسم هندسة اتصالات</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> <span data-ar="كلية إدارة الأعمال" data-en="Business College">كلية إدارة الأعمال</span></a>
+                <div class="dropdown">
+                    <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> <span data-ar="نظم معلومات الأعمال" data-en="Business Information Systems">نظم معلومات الأعمال</span></a>
+                    <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> <span data-ar="إدارة أعمال" data-en="Business Administration">إدارة أعمال</span></a>
+                    <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> <span data-ar="استثمار وبنوك" data-en="Investment and Banking">استثمار وبنوك</span></a>
+                    <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> <span data-ar="تسويق" data-en="Marketing">تسويق</span></a>
+                </div>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-newspaper"></i> <span data-ar="الأخبار" data-en="News">الأخبار</span></a>
+                <div class="dropdown">
+                    <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span></a>
+                    <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> <span data-ar="أخبار أكاديمية" data-en="Academic News">أخبار أكاديمية</span></a>
+                    <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> <span data-ar="أخبار الطلبة" data-en="Student News">أخبار الطلبة</span></a>
+                    <a href="عن المعهد .html"><i class="fas fa-users"></i> <span data-ar="عن المعهد" data-en="About the institute">أخبار الطلبة</span></a>
+                </div>
+            </li>
+            <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- البانر الرئيسي -->
+    <div class="hero-banner" id="hero-banner">
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="particles" id="particles"></div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 data-ar="بوابة أخبار الطلاب" data-en="Student News Portal">بوابة أخبار الطلاب</h1>
+            <p data-ar="آخر الأخبار والإعلانات والفعاليات من معهد أكتوبر العالي" 
+            data-en="Latest news, announcements and events from October Higher Institute">
+                آخر الأخبار والإعلانات والفعاليات من معهد أكتوبر العالي
+            </p>
+            <a href="اخبار للطلابه.html" class="cta-button" data-ar="اعرف المزيد" data-en="Learn More">اعرف المزيد</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- العدادات -->
+        <div class="counters-section" data-aos="fade-up">
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="counter-number" data-target="27">0</div>
+                    <div class="counter-title" data-ar="عام من الخبرة الأكاديمية" data-en="Years of Academic Experience">عام من الخبرة الأكاديمية</div>
+                </div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="counter-number" data-target="7">0</div>
+                    <div class="counter-title" data-ar="أقسام أكاديمية" data-en="Academic Departments">أقسام أكاديمية</div>
+                </div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="counter-number" data-target="200">0</div>
+                    <div class="counter-title" data-ar="عضو هيئة تدريس" data-en="Faculty Members">عضو هيئة تدريس</div>
+                </div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="counter-number" data-target="25000">0</div>
+                    <div class="counter-title" data-ar="طالب" data-en="Students">طالب</div>
+                </div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="counter-number" data-target="132">0</div>
+                    <div class="counter-title" data-ar="ساعة معتمدة - قسم إدارة" data-en="Credit Hours - Management Department">ساعة معتمدة - قسم إدارة</div>
+                </div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-inner">
+                    <div class="counter-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="counter-number" data-target="170">0</div>
+                    <div class="counter-title" data-ar="ساعة معتمدة - قسم هندسة" data-en="Credit Hours - Engineering Department">ساعة معتمدة - قسم هندسة</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- الإعلانات الهامة -->
+        <div class="announcements-section" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="section-title" data-ar="الإعلانات الهامة" data-en="Important Announcements">الإعلانات الهامة</h2>
+            <div class="announcements-grid">
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="200"
+                    data-title-ar="بدء التسجيل في الفصل الدراسي الجديد" 
+                    data-title-en="Start of Registration for the New Semester"
+                    data-description-ar="يعلن المعهد عن بدء التسجيل في الفصل الدراسي الجديد اعتباراً من يوم الأحد القادم. نرجو من جميع الطلاب الراغبين في التسجيل مراجعة قسم القبول والتسجيل لإكمال الإجراءات اللازمة." 
+                    data-description-en="The institute announces the start of registration for the new semester starting from next Sunday. We ask all students wishing to register to visit the admission and registration department to complete the necessary procedures.">
+                    <img src="s8.jpg" alt="بدء التسجيل" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="بدء التسجيل في الفصل الدراسي الجديد" 
+                            data-en="Start of Registration for the New Semester">
+                            بدء التسجيل في الفصل الدراسي الجديد
+                        </h3>
+                        <p class="announcement-description" data-ar="يعلن المعهد عن بدء التسجيل في الفصل الدراسي الجديد اعتباراً من يوم الأحد القادم. نرجو من جميع الطلاب الراغبين في التسجيل مراجعة قسم القبول والتسجيل لإكمال الإجراءات اللازمة." 
+                        data-en="The institute announces the start of registration for the new semester starting from next Sunday. We ask all students wishing to register to visit the admission and registration department to complete the necessary procedures.">
+                            يعلن المعهد عن بدء التسجيل في الفصل الدراسي الجديد اعتباراً من يوم الأحد القادم. نرجو من جميع الطلاب الراغبين في التسجيل مراجعة قسم القبول والتسجيل لإكمال الإجراءات اللازمة.
+                        </p>
+                    </div>
+                </div>
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="300"
+                    data-title-ar="إعلان هام للطلاب المقدمين في قسم هندسة وإدارة أعمال لنظام الساعات المعتمدة" 
+                    data-title-en="Important Announcement for Students in Engineering and Business Departments for the Credit Hour System"
+                    data-description-ar="تنبيه هام لجميع الطلاب المقدمين في أقسام الهندسة وإدارة الأعمال بخصوص نظام الساعات المعتمدة. يرجى مراجعة الجداول الدراسية ومتطلبات التخرج." 
+                    data-description-en="Important notice for all students in the engineering and business departments regarding the credit hour system. Please review the study schedules and graduation requirements.">
+                    <img src="S10.jpg" alt="نظام الساعات المعتمدة" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="إعلان هام للطلاب المقدمين في قسم هندسة وإدارة أعمال لنظام الساعات المعتمدة" 
+                            data-en="Important Announcement for Students in Engineering and Business Departments for the Credit Hour System">
+                            إعلان هام للطلاب المقدمين في قسم هندسة وإدارة أعمال لنظام الساعات المعتمدة
+                        </h3>
+                        <p class="announcement-description" data-ar="تنبيه هام لجميع الطلاب المقدمين في أقسام الهندسة وإدارة الأعمال بخصوص نظام الساعات المعتمدة. يرجى مراجعة الجداول الدراسية ومتطلبات التخرج." 
+                        data-en="Important notice for all students in the engineering and business departments regarding the credit hour system. Please review the study schedules and graduation requirements.">
+                            تنبيه هام لجميع الطلاب المقدمين في أقسام الهندسة وإدارة الأعمال بخصوص نظام الساعات المعتمدة. يرجى مراجعة الجداول الدراسية ومتطلبات التخرج.
+                        </p>
+                    </div>
+                </div>
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="400"
+                    data-title-ar="إقامة حفلة تخرج قسم هندسة ونظم يوم 22/9/2025" 
+                    data-title-en="Graduation Ceremony for Engineering and Systems Department on 22/9/2025"
+                    data-description-ar="يتم إقامة حفلة تخرج قسم الهندسة ونظم يوم 22 سبتمبر 2025. نرجو من جميع الخريجين تأكيد حضورهم في الموعد المحدد." 
+                    data-description-en="The graduation ceremony for the Engineering and Systems department will be held on September 22, 2025. All graduates are requested to confirm their attendance at the specified time.">
+                    <img src="p3.jpg" alt="حفلة تخرج" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="إقامة حفلة تخرج قسم هندسة ونظم يوم 22/9/2025" 
+                            data-en="Graduation Ceremony for Engineering and Systems Department on 22/9/2025">
+                            إقامة حفلة تخرج قسم هندسة ونظم يوم 22/9/2025
+                        </h3>
+                        <p class="announcement-description" data-ar="يتم إقامة حفلة تخرج قسم الهندسة ونظم يوم 22 سبتمبر 2025. نرجو من جميع الخريجين تأكيد حضورهم في الموعد المحدد." 
+                        data-en="The graduation ceremony for the Engineering and Systems department will be held on September 22, 2025. All graduates are requested to confirm their attendance at the specified time.">
+                            يتم إقامة حفلة تخرج قسم الهندسة ونظم يوم 22 سبتمبر 2025. نرجو من جميع الخريجين تأكيد حضورهم في الموعد المحدد.
+                        </p>
+                    </div>
+                </div>
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="500"
+                    data-title-ar="قائمة حفلة تخرج (استثمار – إدارة – تسويق أعمال – تسويق) يوم 23/9/2025" 
+                    data-title-en="Graduation List (Investment - Management - Business Marketing - Marketing) on 23/9/2025"
+                    data-description-ar="تم إعلان قائمة حفلة تخرج أقسام الاستثمار وإدارة وتسويق أعمال وتسويق يوم 23 سبتمبر 2025. يرجى من الطلاب المدرجين مراجعة القائمة." 
+                    data-description-en="The graduation list for the Investment, Management, Business Marketing, and Marketing departments has been announced for September 23, 2025. Listed students are requested to review the list.">
+                    <img src="p4.jpg" alt="قائمة التخرج" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="قائمة حفلة تخرج (استثمار – إدارة – تسويق أعمال – تسويق) يوم 23/9/2025" 
+                            data-en="Graduation List (Investment - Management - Business Marketing - Marketing) on 23/9/2025">
+                            قائمة حفلة تخرج (استثمار – إدارة – تسويق أعمال – تسويق) يوم 23/9/2025
+                        </h3>
+                        <p class="announcement-description" data-ar="تم إعلان قائمة حفلة تخرج أقسام الاستثمار وإدارة وتسويق أعمال وتسويق يوم 23 سبتمبر 2025. يرجى من الطلاب المدرجين مراجعة القائمة." 
+                        data-en="The graduation list for the Investment, Management, Business Marketing, and Marketing departments has been announced for September 23, 2025. Listed students are requested to review the list.">
+                            تم إعلان قائمة حفلة تخرج أقسام الاستثمار وإدارة وتسويق أعمال وتسويق يوم 23 سبتمبر 2025. يرجو من الطلاب المدرجين مراجعة القائمة.
+                        </p>
+                    </div>
+                </div>
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="600"
+                    data-title-ar="التنسيق والقبول في المعهد للعام الجديد 2025/2026" 
+                    data-title-en="Admission and Registration in the Institute for the New Year 2025/2026"
+                    data-description-ar="فتح باب التنسيق والقبول في المعهد للعام الجديد 2025/2026. يمكن للراغبين في الالتحاق بالمعهد تقديم طلباتهم عبر البوابة الإلكترونية." 
+                    data-en="Opening the door for coordination and admission in the institute for the new year 2025/2026. Those wishing to join the institute can submit their applications through the electronic portal.">
+                    <img src="s7.jpg" alt="التنسيق والقبول" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="التنسيق والقبول في المعهد للعام الجديد 2025/2026" 
+                            data-en="Admission and Registration in the Institute for the New Year 2025/2026">
+                            التنسيق والقبول في المعهد للعام الجديد 2025/2026
+                        </h3>
+                        <p class="announcement-description" data-ar="فتح باب التنسيق والقبول في المعهد للعام الجديد 2025/2026. يمكن للراغبين في الالتحاق بالمعهد تقديم طلباتهم عبر البوابة الإلكترونية." 
+                        data-en="Opening the door for coordination and admission in the institute for the new year 2025/2026. Those wishing to join the institute can submit their applications through the electronic portal.">
+                            فتح باب التنسيق والقبول في المعهد للعام الجديد 2025/2026. يمكن للراغبين في الالتحاق بالمعهد تقديم طلباتهم عبر البوابة الإلكترونية.
+                        </p>
+                    </div>
+                </div>
+                <div class="announcement-grid-item hover-lift" data-aos="zoom-in" data-aos-delay="700"
+                    data-title-ar="ظهور نتيجة الترم الصيفي لنظام الساعات المعتمدة" 
+                    data-title-en="Release of Summer Term Results for the Credit Hour System"
+                    data-description-ar="تم إعلان نتائج الترم الصيفي لنظام الساعات المعتمدة. يمكن للطلاب الاطلاع على نتائجهم عبر البوابة الإلكترونية للمعهد." 
+                    data-en="The results of the summer term for the credit hour system have been announced. Students can view their results through the institute's electronic portal.">
+                    <img src="s4.jpg" alt="نتائج الترم الصيفي" class="announcement-image">
+                    <div class="announcement-content">
+                        <div class="announcement-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="announcement-title" data-ar="ظهور نتيجة الترم الصيفي لنظام الساعات المعتمدة" 
+                            data-en="Release of Summer Term Results for the Credit Hour System">
+                            ظهور نتيجة الترم الصيفي لنظام الساعات المعتمدة
+                        </h3>
+                        <p class="announcement-description" data-ar="تم إعلان نتائج الترم الصيفي لنظام الساعات المعتمدة. يمكن للطلاب الاطلاع على نتائجهم عبر البوابة الإلكترونية للمعهد." 
+                        data-en="The results of the summer term for the credit hour system have been announced. Students can view their results through the institute's electronic portal.">
+                            تم إعلان نتائج الترم الصيفي لنظام الساعات المعتمدة. يمكن للطلاب الاطلاع على نتائجهم عبر البوابة الإلكترونية للمعهد.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Categories -->
+        <div class="categories" data-aos="fade-up" data-aos-delay="200">
+            <button class="category-btn active" data-category="all">
+                <i class="fas fa-globe"></i> <span data-ar="الكل" data-en="All">الكل</span>
+            </button>
+            <button class="category-btn" data-category="institute">
+                <i class="fas fa-university"></i> <span data-ar="المعهد" data-en="Institute">المعهد</span>
+            </button>
+            <button class="category-btn" data-category="training">
+                <i class="fas fa-chalkboard-teacher"></i> <span data-ar="التدريب الصيفي" data-en="Summer Training">التدريب الصيفي</span>
+            </button>
+            <button class="category-btn" data-category="courses">
+                <i class="fas fa-book-open"></i> <span data-ar="الكورسات" data-en="Courses">الكورسات</span>
+            </button>
+            <button class="category-btn" data-category="events">
+                <i class="fas fa-calendar-check"></i> <span data-ar="الفعاليات" data-en="Events">الفعاليات</span>
+            </button>
+            <button class="category-btn" data-category="announcements">
+                <i class="fas fa-bullhorn"></i> <span data-ar="الإعلانات" data-en="Announcements">الإعلانات</span>
+            </button>
+        </div>
+        
+        <!-- News Grid -->
+        <div class="news-grid">
+            <div class="news-card hover-lift" data-category="institute" data-aos="fade-up" data-aos-delay="300">
+                <img src="s8.jpg" alt="المعهد" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="المعهد" data-en="Institute">المعهد</span>
+                    <h3 class="news-title" data-ar="فتح باب التسجيل للعام الدراسي الجديد" data-en="Opening of Registration for the New Academic Year">فتح باب التسجيل للعام الدراسي الجديد</h3>
+                    <p class="news-excerpt" data-ar="يفتح المعهد باب التسجيل للعام الدراسي الجديد للطلاب المستجدين والمستمرين في الدراسة..." 
+                    data-en="The institute opens registration for the new academic year for new and continuing students...">
+                        يفتح المعهد باب التسجيل للعام الدراسي الجديد للطلاب المستجدين والمستمرين في الدراسة...
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ 3 أيام" data-en="3 days ago">منذ 3 أيام</span></span>
+                        <span><i class="far fa-eye"></i> 245 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card hover-lift" data-category="training" data-aos="fade-up" data-aos-delay="400">
+                <img src="m16.jpg" alt="التدريب" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="التدريب الصيفي" data-en="Summer Training">التدريب الصيفي</span>
+                    <h3 class="news-title" data-ar="برنامج تطوير صيفي جديد – كورس برمجة ويب" data-en="New Summer Development Program - Web Programming Course">برنامج تطوير صيفي جديد – كورس برمجة ويب</h3>
+                    <p class="news-excerpt" data-ar="يفتح المعهد باب التسجيل في برنامج التدريب الصيفي الثمر الذي يهدف إلى تطوير مهارات الطلاب..." 
+                    data-en="The institute opens registration for the distinguished summer training program that aims to develop students' skills...">
+                        يفتح المعهد باب التسجيل في برنامج التدريب الصيفي الثمر الذي يهدف إلى تطوير مهارات الطلاب...
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ يوم" data-en="1 day ago">منذ يوم</span></span>
+                        <span><i class="far fa-eye"></i> 1454 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card hover-lift" data-category="courses" data-aos="fade-up" data-aos-delay="500">
+                <img src="S1.jpg" alt="كورس" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="الكورسات" data-en="Courses">كورس</span>
+                    <h3 class="news-title" data-ar="نظام التقديرات – معهد أكتوبر العالي للهندسة والتكنولوجيا" data-en="Grading System - October Higher Institute for Engineering and Technology">نظام التقديرات – معهد أكتوبر العالي للهندسة والتكنولوجيا</h3>
+                    <p class="news-excerpt" data-ar="تم إطلاق نظام التقديرات الجديد في المعهد لضمان تقييم عادل وشفاف للطلاب..." 
+                    data-en="The new grading system has been launched in the institute to ensure fair and transparent evaluation of students...">
+                        تم إطلاق نظام التقديرات الجديد في المعهد لضمان تقييم عادل وشفاف للطلاب...
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ 5 أيام" data-en="5 days ago">منذ 5 أيام</span></span>
+                        <span><i class="far fa-eye"></i> 12014 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card hover-lift" data-category="events" data-aos="fade-up" data-aos-delay="600">
+                <img src="S3.jpg" alt="فعالية" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="الفعاليات" data-en="Events">الفعاليات</span>
+                    <h3 class="news-title" data-ar="مصروفات القسط الأول – العام الجامعي 2025/2026" data-en="First Semester Fees - Academic Year 2025/2026">مصروفات القسط الأول – العام الجامعي 2025/2026</h3>
+                    <p class="news-excerpt" data-ar="تم إعلان مصروفات القسط الأول للعام الجامعي 2025/2026 لكافة الأقسام..." 
+                    data-en="The first semester fees for the academic year 2025/2026 have been announced for all departments...">
+                        تم إعلان مصروفات القسط الأول للعام الجامعي 2025/2026 لكافة الأقسام...
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ أسبوع" data-en="a week ago">منذ أسبوع</span></span>
+                        <span><i class="far fa-eye"></i> 324 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card hover-lift" data-category="announcements" data-aos="fade-up" data-aos-delay="700">
+                <img src="aaa7.jpg" alt="إعلان" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="الإعلانات" data-en="Announcements">الإعلانات</span>
+                    <h3 class="news-title" data-ar="لقاء ترحيبي بالطلاب الجدد" data-en="Details of the Grading System in the Institute">تفاصيل نظام التقديرات في المعهد</h3>
+                    <p class="news-excerpt" data-ar=".لقاء ترحيبي بالطلاب الجدد لطلاب هندسة.." 
+                    data-en="The grading system at October Higher Institute for Engineering and Technology ensures fair evaluation...">
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ يومين" data-en="2 days ago">منذ اسبوع</span></span>
+                        <span><i class="far fa-eye"></i> 456 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card hover-lift" data-category="courses" data-aos="fade-up" data-aos-delay="800">
+                <img src="mm15.jpg" alt="كورس" class="news-image">
+                <div class="news-content">
+                    <span class="news-category" data-ar="الكورسات" data-en="Courses">الكورسات</span>
+                    <h3 class="news-title" data-ar="تم فتح باب التديم في حفلة التخرج" data-en="Second Semester Fees - Academic Year 2025/2026">مصروفات القسط الثاني – العام الجامعي 2025/2026</h3>
+                    <p class="news-excerpt" data-ar="تم فتح باب التديم في حفلة التخرج..." 
+                    data-en="The second semester fees for the academic year 2025/2026 have been announced for all departments...">
+                        
+                    </p>
+                    <div class="news-meta">
+                        <span><i class="far fa-clock"></i> <span data-ar="منذ 4 أيام" data-en="4 days ago">منذ 4 أيام</span></span>
+                        <span><i class="far fa-eye"></i> 278 <span data-ar="مشاهدة" data-en="views">مشاهدة</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نظام التقديرات -->
+        <div class="text-news hover-lift" data-category="announcements" data-aos="fade-up" data-aos-delay="900">
+            <div class="text-news-header">
+                <h2 class="text-news-title" data-ar="نظام التقديرات – معهد أكتوبر العالي للهندسة والتكنولوجيا" 
+                    data-en="Grading System - October Higher Institute for Engineering and Technology">
+                    نظام التقديرات – معهد أكتوبر العالي للهندسة والتكنولوجيا
+                </h2>
+                <span class="news-category" data-ar="نظام تقدير" data-en="Grading System">نظام تقدير</span>
+            </div>
+            <div class="text-news-content">
+                <table class="grading-table">
+                    <thead>
+                        <tr>
+                            <th data-ar="التقدير" data-en="Grade">التقدير</th>
+                            <th data-ar="النسبة المئوية" data-en="Percentage">النسبة المئوية</th>
+                            <th data-ar="النقاط" data-en="Points">النقاط</th>
+                            <th data-ar="الحالة" data-en="Status">الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="grade-a">+A</td>
+                            <td data-ar="من 95% إلى 100%" data-en="From 95% to 100%">من 95% إلى 100%</td>
+                            <td>4.0</td>
+                            <td data-ar="ممتاز" data-en="Excellent">ممتاز</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-a">A</td>
+                            <td data-ar="من 90% إلى أقل من 95%" data-en="From 90% to less than 95%">من 90% إلى أقل من 95%</td>
+                            <td>3.7</td>
+                            <td data-ar="ممتاز" data-en="Excellent">ممتاز</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-b">+B</td>
+                            <td data-ar="من 85% إلى أقل من 90%" data-en="From 85% to less than 90%">من 85% إلى أقل من 90%</td>
+                            <td>3.3</td>
+                            <td data-ar="جيد جداً" data-en="Very Good">جيد جداً</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-b">B</td>
+                            <td data-ar="من 80% إلى أقل من 85%" data-en="From 80% to less than 85%">من 80% إلى أقل من 85%</td>
+                            <td>3.0</td>
+                            <td data-ar="جيد جداً" data-en="Very Good">جيد جداً</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-c">+C</td>
+                            <td data-ar="من 72% إلى أقل من 80%" data-en="From 72% to less than 80%">من 72% إلى أقل من 80%</td>
+                            <td>2.7</td>
+                            <td data-ar="جيد" data-en="Good">جيد</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-c">C</td>
+                            <td data-ar="من 65% إلى أقل من 72%" data-en="From 65% to less than 72%">من 65% إلى أقل من 72%</td>
+                            <td>2.3</td>
+                            <td data-ar="جيد" data-en="Good">جيد</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-d">+D</td>
+                            <td data-ar="من 55% إلى أقل من 65%" data-en="From 55% to less than 65%">من 55% إلى أقل من 65%</td>
+                            <td>2.2</td>
+                            <td data-ar="مقبول" data-en="Acceptable">مقبول</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-d">D</td>
+                            <td data-ar="من 50% إلى أقل من 55%" data-en="From 50% to less than 55%">من 50% إلى أقل من 55%</td>
+                            <td>2.0</td>
+                            <td data-ar="مقبول" data-en="Acceptable">مقبول</td>
+                        </tr>
+                        <tr>
+                            <td class="grade-f">F</td>
+                            <td data-ar="أقل من 50%" data-en="Less than 50%">أقل من 50%</td>
+                            <td>0.0</td>
+                            <td data-ar="راسب" data-en="Fail">راسب</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- مصروفات القسط الأول -->
+        <div class="text-news hover-lift" data-category="announcements" data-aos="fade-up" data-aos-delay="1000">
+            <div class="text-news-header">
+                <h2 class="text-news-title" data-ar="مصروفات القسط الأول – العام الجامعي 2025/2026" 
+                    data-en="First Semester Fees - Academic Year 2025/2026">
+                    مصروفات القسط الأول – العام الجامعي 2025/2026
+                </h2>
+                <span class="news-category" data-ar="مصروفات" data-en="Fees">مصروفات</span>
+            </div>
+            <div class="text-news-content">
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th data-ar="القسم" data-en="Department">القسم</th>
+                            <th data-ar="الترم الأول" data-en="First Term">الترم الأول</th>
+                            <th data-ar="الرسوم الإدارية" data-en="Administrative Fees">الرسوم الإدارية</th>
+                            <th data-ar="الإجمالي" data-en="Total">الإجمالي</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="department-row">
+                            <td colspan="4" data-ar="📘 قسم إدارة الأعمال (المستجدين)" data-en="📘 Business Administration Department (New Students)">📘 قسم إدارة الأعمال (المستجدين)</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="مصروفات الترم الأول" data-en="First Term Fees">مصروفات الترم الأول</td>
+                            <td>7425 جنيه</td>
+                            <td>359 جنيه</td>
+                            <td>7784 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="مصروفات الترم الثاني" data-en="Second Term Fees">مصروفات الترم الثاني</td>
+                            <td>7425 جنيه</td>
+                            <td>359 جنيه</td>
+                            <td>7784 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="تأمين" data-en="Insurance">تأمين</td>
+                            <td>500 جنيه</td>
+                            <td data-ar="مسترد عند التخرج" data-en="Refundable upon graduation">مسترد عند التخرج</td>
+                            <td>500 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="رسوم تسجيل مادة إضافية" data-en="Registration fee for additional course">رسوم تسجيل مادة إضافية</td>
+                            <td>400 جنيه</td>
+                            <td>-</td>
+                            <td>400 جنيه</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td data-ar="الإجمالي الكلي" data-en="Total">الإجمالي الكلي</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>8684 جنيه</td>
+                        </tr>
+                        
+                        <tr class="department-row">
+                            <td colspan="4" data-ar="📗 قسم الهندسة (المستجدين)" data-en="📗 Engineering Department (New Students)">📗 قسم الهندسة (المستجدين)</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="مصروفات الترم الأول" data-en="First Term Fees">مصروفات الترم الأول</td>
+                            <td>17019 جنيه</td>
+                            <td>574.5 جنيه</td>
+                            <td>17594 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="مصروفات الترم الثاني" data-en="Second Term Fees">مصروفات الترم الثاني</td>
+                            <td>17019 جنيه</td>
+                            <td>574.5 جنيه</td>
+                            <td>17594 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="تأمين" data-en="Insurance">تأمين</td>
+                            <td>500 جنيه</td>
+                            <td data-ar="مسترد عند التخرج" data-en="Refundable upon graduation">مسترد عند التخرج</td>
+                            <td>500 جنيه</td>
+                        </tr>
+                        <tr>
+                            <td data-ar="رسوم تسجيل مادة إضافية" data-en="Registration fee for additional course">رسوم تسجيل مادة إضافية</td>
+                            <td>400 جنيه</td>
+                            <td>-</td>
+                            <td>400 جنيه</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td data-ar="الإجمالي الكلي" data-en="Total">الإجمالي الكلي</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>18494 جنيه</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p data-ar="ملاحظة: الأسعار قابلة للتغيير من عام لآخر" data-en="Note: Prices are subject to change from year to year">
+                    <em>ملاحظة: الأسعار قابلة للتغيير من عام لآخر</em>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Gallery -->
+        <div class="gallery" data-aos="fade-up" data-aos-delay="1100">
+            <h2 class="gallery-title" data-ar="معرض الصور" data-en="Photo Gallery">معرض الصور</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item hover-lift" data-aos="zoom-in" data-aos-delay="100"
+                    data-title-ar="حفل تخرج الدفعة سابقة" 
+                    data-title-en="Graduation Ceremony of the New Batch"
+                    data-description-ar="حفل تخرج الدفعة الجديدة من طلاب المعهد بحضور عدد من الشخصيات البارزة في المجتمع الأكاديمي والصناعي. تم تكريم الطلاب المتفوقين وتوزيع الشهادات عليهم في حفل مهيب"
+                    data-description-en="Graduation ceremony of the new batch of institute students with the attendance of prominent figures in the academic and industrial community. Outstanding students were honored and certificates were distributed to them in a solemn ceremony">
+                    <img src="p3.jpg" alt="صورة 1">
+                    <div class="gallery-overlay">
+                        <h4 data-ar="حفل تخرج الدفعة " data-en="Graduation Ceremony of the New Batch">حفل تخرج الدفعة الجديدة</h4>
+                    </div>
+                    <button class="show-more-btn" data-ar="عرض المزيد" data-en="Show More">عرض المزيد</button>
+                </div>
+                <div class="gallery-item hover-lift" data-aos="zoom-in" data-aos-delay="200"
+                    data-title-ar="حفل تخرج سابقة" 
+                    data-title-en="Summer Training Workshop"
+                    data-description-ar="ورشة عمل التدريب الصيفي التي نظمها المعهد لتطوير مهارات الطلاب في مجالات متعددة. شارك في الورشة أكثر من 200 طالب وطالبة من مختلف الأقسام"
+                    data-description-en="Summer training workshop organized by the institute to develop students' skills in various fields. More than 200 male and female students from various departments participated in the workshop">
+                    <img src="p4.jpg" alt="صورة 2">
+                    <div class="gallery-overlay">
+                        <h4 data-ar="حفل تخرج الدفعة سابقة" data-en="Summer Training Workshop">ورشة عمل التدريب الصيفي</h4>
+                    </div>
+                    <button class="show-more-btn" data-ar="عرض المزيد" data-en="Show More">عرض المزيد</button>
+                </div>
+                <div class="gallery-item hover-lift" data-aos="zoom-in" data-aos-delay="300"
+                    data-title-ar="حفل تخرج سابقة" 
+                    data-title-en="Field Visit to Companies"
+                    data-description-ar="زيارة ميدانية قام بها طلاب المعهد لأكبر الشركات التقنية في البلاد. الهدف من الزيارة هو التعرف على بيئة العمل الحقيقية وتطبيق المهارات النظرية في المجال العملي"
+                    data-description-en="Field visit made by the institute students to the largest technology companies in the country. The aim of the visit is to learn about the real work environment and apply theoretical skills in the practical field">
+                    <img src="p5.jpg" alt="صورة 3">
+                    <div class="gallery-overlay">
+                        <h4 data-ar="حفل تخرج الدفعة سابقة" data-en="Field Visit to Companies">زيارة ميدانية للشركات</h4>
+                    </div>
+                    <button class="show-more-btn" data-ar="عرض المزيد" data-en="Show More">عرض المزيد</button>
+                </div>
+                <div class="gallery-item hover-lift" data-aos="zoom-in" data-aos-delay="400"
+                    data-title-ar="حفل تخرج سابقة" 
+                    data-title-en="Annual Programming Competition"
+                    data-description-ar="مسابقة البرمجة السنوية التي ينظمها المعهد لتحفيز الطلاب على الابتكار والإبداع في مجال البرمجة. شارك في المسابقة أكثر من 100 فريق من مختلف الأقسام"
+                    data-description-en="Annual programming competition organized by the institute to encourage students to innovate and create in the field of programming. More than 100 teams from various departments participated in the competition">
+                    <img src="p6.jpg" alt="صورة 4">
+                    <div class="gallery-overlay">
+                        <h4 data-ar="حفل تخرج الدفعة سابقة" data-en="Annual Programming Competition">مسابقة البرمجة السنوية</h4>
+                    </div>
+                    <button class="show-more-btn" data-ar="عرض المزيد" data-en="Show More">عرض المزيد</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">عنوان الصورة</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="m2.jpg" alt="صورة مكبرة" class="modal-image" id="modalImage">
+                <p class="modal-description" id="modalDescription">وصف الصورة</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- زر التمرير للأعلى -->
+    <div class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <footer data-aos="fade-up">
+        <p data-ar="&copy; 2025-القائم علي انشاء الموقع الباشمهندس-Marawan alzawky بوابة أخبار الطلاب. جميع الحقوق محفوظة." 
+        data-en="&copy; 2023 Student News Portal. All rights reserved."
+        </p>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        // إخفاء شاشة التحميل بعد تحميل الصفحة
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1000);
+        });
+        
+        // تبديل اللغة
+        function switchLanguage(lang) {
+            // تحديث الأزرار النشطة
+            document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            
+            // تحديث اتجاه الصفحة
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // تحديث جميع العناصر التي تحتوي على ترجمة
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+            
+            // تحديث عنوان الصفحة
+            const title = document.querySelector('title');
+            const titleAr = "بوابة أخبار الطلاب - معهد أكتوبر العالي";
+            const titleEn = "Student News Portal - October Higher Institute";
+            title.textContent = lang === 'ar' ? titleAr : titleEn;
+            
+            // تحديث وصف الصفحة
+            const metaDescription = document.querySelector('meta[name="description"]');
+            const descAr = "آخر أخبار الطلاب والفعاليات والإعلانات من معهد أكتوبر العالي";
+            const descEn = "Latest student news, events and announcements from October Higher Institute";
+            metaDescription.setAttribute('content', lang === 'ar' ? descAr : descEn);
+            
+            // حفظ اللغة المختارة في التخزين المحلي
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        // تحميل اللغة المحفوظة عند بدء التشغيل
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'ar';
+            switchLanguage(savedLanguage);
+        });
+        
+        // الوضع الليلي/النهاري
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // التحقق من الوضع المحفوظ
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // القائمة المتجاوبة
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // منع التمرير عند فتح القائمة
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // إعادة التمكين عند إغلاق القائمة
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // زر التمرير للأعلى
+        const scrollTop = document.getElementById('scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+            
+            // تغيير شكل شريط التنقل عند التمرير
+            const navbar = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Category filtering
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const newsCards = document.querySelectorAll('.news-card');
+        const textNews = document.querySelectorAll('.text-news');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filter news cards
+                newsCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Filter text news
+                textNews.forEach(news => {
+                    if (category === 'all' || news.dataset.category === category) {
+                        news.style.display = 'block';
+                    } else {
+                        news.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalClose = document.querySelector('.modal-close');
+        const showMoreBtns = document.querySelectorAll('.show-more-btn');
+        const announcementItems = document.querySelectorAll('.announcement-grid-item');
+        
+        // Open modal when clicking on announcement items
+        announcementItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('.announcement-image');
+                const lang = document.documentElement.lang;
+                
+                // Get the appropriate title and description based on current language
+                const title = item.getAttribute(`data-title-${lang}`);
+                const description = item.getAttribute(`data-description-${lang}`);
+                
+                modal.style.display = 'flex';
+                modalImage.src = img.src;
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                document.body.style.overflow = 'hidden'; // منع التمرير عند فتح النافذة المنبثقة
+            });
+        });
+        
+        // Open modal when clicking on show more buttons
+        showMoreBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const galleryItem = btn.parentElement;
+                const img = galleryItem.querySelector('img');
+                const lang = document.documentElement.lang;
+                
+                // Get the appropriate title and description based on current language
+                const title = galleryItem.getAttribute(`data-title-${lang}`);
+                const description = galleryItem.getAttribute(`data-description-${lang}`);
+                
+                modal.style.display = 'flex';
+                modalImage.src = img.src;
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                document.body.style.overflow = 'hidden'; // منع التمرير عند فتح النافذة المنبثقة
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // عداد الإحصائيات
+        const counterNumbers = document.querySelectorAll('.counter-number');
+        
+        const animateCounters = () => {
+            counterNumbers.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    const value = +counter.innerText;
+                    
+                    if (value < target) {
+                        counter.innerText = Math.ceil(value + increment);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        };
+        
+        // تشغيل العداد عند الوصول إلى قسم الإحصائيات
+        const countersSection = document.querySelector('.counters-section');
+        const countersObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                countersObserver.unobserve(countersSection);
+            }
+        }, { threshold: 0.5 });
+        
+        countersObserver.observe(countersSection);
+        
+        // إنشاء تأثير الجسيمات في البنر
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particlesCount = 50;
+            
+            for (let i = 0; i < particlesCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // حجم عشوائي للجسيمات
+                const size = Math.random() * 5 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // موضع عشوائي للجسيمات
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // شفافية عشوائية
+                const opacity = Math.random() * 0.5 + 0.2;
+                particle.style.opacity = opacity;
+                
+                particlesContainer.appendChild(particle);
+                
+                // حركة الجسيمات
+                animateParticle(particle);
+            }
+        }
+        
+        // تحريك الجسيمات
+        function animateParticle(particle) {
+            const speed = Math.random() * 2 + 1;
+            const direction = Math.random() * 360;
+            const moveX = Math.cos(direction * Math.PI / 180) * speed;
+            const moveY = Math.sin(direction * Math.PI / 180) * speed;
+            
+            let posX = parseFloat(particle.style.left);
+            let posY = parseFloat(particle.style.top);
+            
+            function move() {
+                posX += moveX;
+                posY += moveY;
+                
+                // التحقق من حدود الحركة
+                if (posX < 0 || posX > 100) {
+                    posX = Math.max(0, Math.min(100, posX));
+                }
+                
+                if (posY < 0 || posY > 100) {
+                    posY = Math.max(0, Math.min(100, posY));
+                }
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                requestAnimationFrame(move);
+            }
+            
+            move();
+        }
+        
+        // استدعاء دالة إنشاء الجسيمات عند تحميل الصفحة
+        window.addEventListener('load', createParticles);
+        
+        // تأثير الماوس على البنر
+        const heroBanner = document.getElementById('hero-banner');
+        
+        heroBanner.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const heroImage = document.querySelector('.hero-image');
+            heroImage.style.transform = `scale(1.1) translate(${x * 20}px, ${y * 20}px)`;
+        });
+        
+        heroBanner.addEventListener('mouseleave', function() {
+            const heroImage = document.querySelector('.hero-image');
+            heroImage.style.transform = 'scale(1.1) translate(0, 0)';
+        });
+        
+        // تأثير التمرير البارالكسا للبنر
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-image');
+            const speed = scrolled * 0.5;
+            
+            if (parallax) {
+                parallax.style.transform = `scale(1.1) translateY(${speed}px)`;
+            }
+        });
+        
+        // تأثير النقر على الأزرار
+        document.querySelectorAll('.cta-button, .show-more-btn, .category-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // إنشاء تموج عند النقر
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                // إزالة التموج بعد انتهاء الأنيميشن
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>

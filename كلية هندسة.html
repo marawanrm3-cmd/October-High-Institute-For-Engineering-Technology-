@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- تحسين SEO: إضافة meta tags -->
+    <meta name="description" content="كلية الهندسة بمعهد أكتوبر العالي للهندسة والتكنولوجيا. نقدم تعليماً هندسياً متميزاً يجمع بين النظرية والتطبيق مع أحدث المختبرات والتجهيزات.">
+    <meta name="keywords" content="كلية الهندسة, معهد أكتوبر العالي, هندسة مدني, هندسة عمارة, هندسة اتصالات, هندسة حاسب, هندسة ميكانيكا, هندسة قوى">
+    <meta name="author" content="معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/كلية-الهندسة">
+    <meta property="og:title" content="كلية الهندسة - معهد أكتوبر العالي للهندسة والتكنولوجيا">
+    <meta property="og:description" content="كلية الهندسة بمعهد أكتوبر العالي للهندسة والتكنولوجيا. نقدم تعليماً هندسياً متميزاً يجمع بين النظرية والتطبيق مع أحدث المختبرات والتجهيزات.">
+        <link rel="apple-touch-icon-precomposed" href="m4.png">
+    <link rel="icon" href="m4 - png.jpg" type="image/png">
+
+    <title>كلية الهندسة - معهد أكتوبر العالي للهندسة والتكنولوجيا</title>
+    
+    <!-- إضافة مكتبات الأيقونات والخطوط -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- إضافة مكتبة AOS للأنيميشن -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- إضافة مكتبة Particles.js للخلفية المتحركة -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #0066cc;
+            --accent-color: #ff6b35;
+            --text-dark: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --gradient-1: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            --gradient-2: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            --dark-blue: #001a33;
+            --light-blue: #e6f2ff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #fff;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            position:absolute;
+        }
+        
+        .navbar.scrolled {
+            padding: 5px 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        
+        /* Enhanced Logo */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+            color: var(--primary-color) !important;
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-brand:hover::before {
+            width: 100%;
+        }
+        
+        .navbar-brand img {
+            height: 45px;
+            width: 70px;
+            margin-left: 12px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 51, 102, 0.3);
+        }
+        
+        /* Enhanced Navigation Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark) !important;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 51, 102, 0.1), transparent);
+            transition: right 0.5s ease;
+        }
+        
+        .nav-links a:hover::before {
+            right: 100%;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(0, 51, 102, 0.08);
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 51, 102, 0.1);
+        }
+        
+        .nav-links a i {
+            margin-left: 8px;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-links a:hover i {
+            transform: scale(1.1);
+        }
+        
+        /* Enhanced Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            min-width: 250px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 100;
+            padding: 15px 0;
+            border: 1px solid rgba(0, 51, 102, 0.1);
+        }
+        
+        .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(10px);
+        }
+        
+        .dropdown a {
+            color: var(--text-dark) !important;
+            padding: 12px 25px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            margin: 5px 15px;
+            position: relative;
+        }
+        
+        .dropdown a::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .dropdown a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        .dropdown a:hover {
+            background: rgba(0, 51, 102, 0.05);
+            color: var(--primary-color) !important;
+            transform: translateX(5px);
+            padding-right: 30px;
+        }
+        
+        .dropdown a i {
+            margin-left: 12px;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+        
+        /* Enhanced Chevron Icon */
+        .fa-chevron-down {
+            margin-right: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            color: var(--secondary-color);
+        }
+        
+        .nav-links li:hover .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* Enhanced Theme Toggle */
+        .theme-toggle {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 51, 102, 0.3);
+            margin-right: 15px;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 20px rgba(0, 51, 102, 0.4);
+        }
+        
+        /* Enhanced Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 35px;
+            height: 25px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 0;
+        }
+        
+        .menu-toggle span:nth-child(1) {
+            top: 0;
+        }
+        
+        .menu-toggle span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .menu-toggle span:nth-child(3) {
+            bottom: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+        
+        /* Enhanced Hero Section - Engineering Design */
+        .engineering-hero {
+            background: var(--gradient-1);
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        /* Particles Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .engineering-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff10" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.7;
+            z-index: 2;
+        }
+        
+        /* Engineering Pattern Overlay */
+        .engineering-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.03) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.03) 50%, transparent 52%);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            animation: engineeringPattern 20s linear infinite;
+            z-index: 3;
+        }
+        
+        @keyframes engineeringPattern {
+            0% {
+                background-position: 0 0, 0 0, 0 0, 0 0;
+            }
+            100% {
+                background-position: 100px 100px, -100px -100px, 20px 20px, -20px -20px;
+            }
+        }
+        
+        /* Modern Engineering Elements */
+        .engineering-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .engineering-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .engineering-element-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .engineering-element-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: 10%;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+        
+        .engineering-element-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 5%;
+            animation: float 18s infinite ease-in-out;
+        }
+        
+        .engineering-element-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            right: 15%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        /* Engineering Grid Lines */
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 2;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: center top;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .hero-content p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 25px 30px;
+            border-radius: 20px;
+            min-width: 180px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+        
+        .stat-item:hover::before {
+            transform: scale(1);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .stat-item:hover .stat-number::after {
+            width: 100%;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        /* Engineering Icons */
+        .engineering-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 4;
+        }
+        
+        .eng-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.1);
+            animation: floatIcon 6s ease-in-out infinite;
+        }
+        
+        .eng-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .eng-icon:nth-child(2) {
+            top: 70%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+        
+        .eng-icon:nth-child(3) {
+            top: 30%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .eng-icon:nth-child(4) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        .eng-icon:nth-child(5) {
+            top: 40%;
+            left: 50%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Departments Section */
+        .departments-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .department-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .department-img {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .department-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .department-card:hover .department-img img {
+            transform: scale(1.1);
+        }
+        
+        .department-content {
+            padding: 30px;
+        }
+        
+        .department-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .department-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .department-programs {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        .department-programs li {
+            padding: 5px 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .department-programs li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: var(--accent-color);
+        }
+        
+        /* Facilities Section */
+        .facilities-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .facility-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .facility-img {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .facility-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .facility-card:hover .facility-img img {
+            transform: scale(1.1);
+        }
+        
+        .facility-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        
+        .facility-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        /* Research Section */
+        .research-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .research-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .research-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .research-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .research-highlights {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .research-highlights li {
+            padding: 10px 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-right: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .research-highlights li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: var(--accent-color);
+        }
+        
+        .research-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .research-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Student Life Section */
+        .student-life-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .activity-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .activity-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .activity-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Admission Section */
+        .admission-section {
+            padding: 80px 0;
+            background: var(--gradient-1);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .admission-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .admission-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .admission-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        /* Faculty Section */
+        .faculty-section {
+            padding: 80px 0;
+            background: #fff;
+        }
+        
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .faculty-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .faculty-img {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .faculty-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .faculty-info {
+            padding: 25px;
+        }
+        
+        .faculty-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .faculty-position {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .faculty-bio {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Alumni Section */
+        .alumni-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .testimonial-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3rem;
+            color: rgba(0, 51, 102, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+        
+        .alumni-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .alumni-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-left: 15px;
+            object-fit: cover;
+        }
+        
+        .alumni-details h5 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .alumni-details p {
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient-2);
+            text-align: center;
+            color: #fff;
+        }
+        
+        .cta-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary-cta {
+            background: #fff;
+            color: var(--accent-color);
+        }
+        
+        .btn-primary-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary-cta {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+        
+        .btn-secondary-cta:hover {
+            background: #fff;
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-widget h5 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-widget h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                padding: 0 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .theme-toggle {
+                margin-left: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+                z-index: 100;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 51, 102, 0.05);
+                margin-right: 20px;
+                border-radius: 10px;
+                padding: 10px 0;
+            }
+            
+            .dropdown a {
+                color: var(--text-dark) !important;
+                padding: 10px 20px;
+            }
+            
+            .dropdown a:hover {
+                background: rgba(0, 51, 102, 0.05);
+            }
+            
+            .fa-chevron-down {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .research-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                min-width: 150px;
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .about-section,
+            .departments-section,
+            .facilities-section,
+            .research-section,
+            .student-life-section,
+            .admission-section,
+            .faculty-section,
+            .alumni-section,
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            .navbar {
+                background: linear-gradient(135deg, #0f172a, #1e293b);
+            }
+            
+            .dropdown {
+                background: #1e293b;
+                border: 1px solid #334155;
+            }
+            
+            .dropdown a {
+                color: #e2e8f0;
+            }
+            
+            .dropdown a:hover {
+                background: #334155;
+                color: white;
+            }
+        }
+        
+        /* تأثيرات إضافية */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* تحسينات إضافية للوصولية */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+            z-index: 100;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Modern Engineering Design Elements */
+        .engineering-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            right: -100px;
+            animation: floatShape 25s infinite ease-in-out;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: 5%;
+            animation: floatShape 20s infinite ease-in-out reverse;
+        }
+        
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 10%;
+            animation: floatShape 22s infinite ease-in-out;
+        }
+        
+        .shape-4 {
+            width: 150px;
+            height: 150px;
+            bottom: 30%;
+            right: 10%;
+            animation: floatShape 18s infinite ease-in-out reverse;
+        }
+        
+        @keyframes floatShape {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(15deg);
+            }
+        }
+        
+        /* Engineering Grid Background */
+        .engineering-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            transform: perspective(500px) rotateX(60deg);
+            transform-origin: center top;
+            opacity: 0.4;
+        }
+        
+        /* Modern Tech Elements */
+        .tech-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .tech-element {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.08);
+            font-family: monospace;
+            animation: techFloat 10s infinite ease-in-out;
+        }
+        
+        .tech-element:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+        
+        .tech-element:nth-child(2) {
+            top: 65%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+        
+        .tech-element:nth-child(3) {
+            top: 25%;
+            right: 12%;
+            animation-delay: 2s;
+        }
+        
+        .tech-element:nth-child(4) {
+            top: 55%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+        
+        .tech-element:nth-child(5) {
+            top: 35%;
+            left: 45%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes techFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.08;
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+                opacity: 0.15;
+            }
+        }
+        
+        /* Glowing Effect */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.2) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: 1;
+        }
+        
+        .glow-1 {
+            top: 10%;
+            right: 5%;
+            animation: glowPulse 4s infinite alternate ease-in-out;
+        }
+        
+        .glow-2 {
+            bottom: 15%;
+            left: 10%;
+            animation: glowPulse 5s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes glowPulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- رابط تخطي للوصولية -->
+    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+    
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <a href="#" class="navbar-brand">
+                <img src="m4.jpg" alt="شعار معهد أكتوبر العالي">
+                <span>معهد أكتوبر العالي</span>
+            </a>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li>
+                    <a href="كلية هندسة.html"><i class="fas fa-graduation-cap"></i> كلية الهندسة <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="قسم هندسة مدني.html"><i class="fas fa-building"></i> قسم هندسة مدني</a>
+                        <a href="قسم هندسة عمارة.html"><i class="fas fa-drafting-compass"></i> قسم هندسة عمارة</a>
+                        <a href="هندسة اتصالات الكترونية.html"><i class="fas fa-satellite-dish"></i> قسم هندسة اتصالات</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="كلية ادارة اعمال.html"><i class="fas fa-briefcase"></i> كلية إدارة الأعمال <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="نظم معلومات الأعمال.html"><i class="fas fa-database"></i> نظم معلومات الأعمال</a>
+                        <a href="قسم ادارة اعمال.html"><i class="fas fa-chart-line"></i> إدارة أعمال</a>
+                        <a href="قسم استثمار وبنوك.html"><i class="fas fa-coins"></i> استثمار وبنوك</a>
+                        <a href="قسم تسويق.html"><i class="fas fa-bullhorn"></i> تسويق</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-newspaper"></i> الأخبار <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="فعاليات.html"><i class="fas fa-calendar-alt"></i> الفعاليات</a>
+                        <a href="الاخبار ألاكاديمي.html"><i class="fas fa-university"></i> أخبار أكاديمية</a>
+                        <a href="اخبار للطلابه.html"><i class="fas fa-users"></i> أخبار الطلبة</a>
+                        <a href="عن المعهد .html"><i class="fas fa-users"></i> عن المعهد</a>
+                    </div>
+                </li>
+                <li><a href="الاتصال والتواصل.html"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            </ul>
+            
+            <button class="theme-toggle" id="theme-toggle" title="تبديل الوضع الليلي/النهاري">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Engineering Hero Section -->
+    <section class="engineering-hero" id="main-content">
+        <!-- Particles Background -->
+        <div id="particles-js"></div>
+        
+        <!-- Engineering Elements -->
+        <div class="engineering-elements">
+            <div class="engineering-element engineering-element-1"></div>
+            <div class="engineering-element engineering-element-2"></div>
+            <div class="engineering-element engineering-element-3"></div>
+            <div class="engineering-element engineering-element-4"></div>
+        </div>
+        
+        <!-- Engineering Grid -->
+        <div class="engineering-grid"></div>
+        
+        <!-- Tech Elements -->
+        <div class="tech-elements">
+            <div class="tech-element">{code}</div>
+            <div class="tech-element">&lt;/&gt;</div>
+            <div class="tech-element">function()</div>
+            <div class="tech-element">{data}</div>
+            <div class="tech-element">[ ]</div>
+        </div>
+        
+        <!-- Glowing Effects -->
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        
+        <!-- Engineering Icons Background -->
+        <div class="engineering-icons">
+            <i class="fas fa-cogs eng-icon"></i>
+            <i class="fas fa-microchip eng-icon"></i>
+            <i class="fas fa-drafting-compass eng-icon"></i>
+            <i class="fas fa-building eng-icon"></i>
+            <i class="fas fa-satellite-dish eng-icon"></i>
+        </div>
+        
+        <div class="hero-content" data-aos="fade-up">
+            <h1>كلية الهندسة</h1>
+            <p>نحن نقدم تعليماً هندسياً متميزاً يجمع بين النظرية والتطبيق، ويؤهل الطلاب ليصبحوا قادة في مجالاتهم</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">أقسام هندسية</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">مختبر متطور</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">طالب وطالبة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">عن كلية الهندسة</h2>
+            <p class="section-subtitle">تعرف على رحلتنا نحو التميز الهندسي</p>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-content">
+                        <p>
+                            تأسست كلية الهندسة بمعهد أكتوبر العالي للهندسة والتكنولوجيا لتكون رائدة في تقديم التعليم الهندسي المتطور الذي يواكب متطلبات العصر الحديث. نلتزم بتوفير بيئة تعليمية محفزة تشجع على الإبداع والابتكار.
+                        </p>
+                        <p>
+                            تتميز الكلية ببرامجها الأكاديمية المتنوعة التي تغطي مختلف التخصصات الهندسية، وتوفر للطلاب فرصاً حقيقية للتطبيق العملي من خلال المختبرات المتطورة والشراكات مع الصناعة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            <div class="about-features">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="feature-title">تعليم متميز</h3>
+                    <p>برامج أكاديمية معتمدة تتبع أحدث المعايير العالمية</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="feature-title">مختبرات متطورة</h3>
+                    <p>أحدث المعدات والتقنيات للتدريب العملي</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">هيئة تدريس مميزة</h3>
+                    <p>أعضاء هيئة تدريس من ذوي الخبرة والكفاءة العالية</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="feature-title">شراكات صناعية</h3>
+                    <p>تعاون مع كبرى الشركات لتوفير فرص تدريبية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Departments Section -->
+    <section class="departments-section" id="departments">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">الأقسام الأكاديمية</h2>
+            <p class="section-subtitle">استكشف تخصصاتنا الهندسية المتنوعة</p>
+        </div>
+        
+        <div class="department-grid">
+            <div class="department-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="department-img">
+                    <img src="md5.jpeg" alt="Civil Engineering">
+                </div>
+                <div class="department-content">
+                    <h3 class="department-title">هندسة المدني</h3>
+                    <p class="department-description">
+                        يركز القسم على تصميم وتنفيذ المشاريع الحضرية والبنية التحتية مع التركيز على الاستدامة والابتكار.
+                    </p>
+                    <ul class="department-programs">
+                        <li>بكالوريوس هندسة المدني</li>
+                        <li>دبلوم إدارة المشاريع</li>
+                        <li>ماجستير هندسة الإنشاءات</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="department-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="department-img">
+                    <img src="m9.jpeg" alt="Electronic Engineering">
+                </div>
+                <div class="department-content">
+                    <h3 class="department-title">هندسة الاتصالات والالكترونيات</h3>
+                    <p class="department-description">
+                        يتخصص القسم في تصميم الأنظمة الإلكترونية وشبكات الاتصالات الحديثة.
+                    </p>
+                    <ul class="department-programs">
+                        <li>بكالوريوس هندسة الإلكترونيات</li>
+                        <li>دبلوم شبكات الاتصالات</li>
+                        <li>ماجستير أنظمة التحكم</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="department-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="department-img">
+                    <img src="m6.jpeg" alt="Architectural Engineering">
+                </div>
+                <div class="department-content">
+                    <h3 class="department-title">هندسة العمارة</h3>
+                    <p class="department-description">
+                        يجمع القسم بين الفن والعلم في تصميم المباني والتخطيط الحضري المستدام.
+                    </p>
+                    <ul class="department-programs">
+                        <li>بكالوريوس هندسة العمارة</li>
+                        <li>دبلوم التصميم الداخلي</li>
+                        <li>ماجستير التخطيط الحضري</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Facilities Section -->
+    <section class="facilities-section" id="facilities">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">المرافق والمختبرات</h2>
+            <p class="section-subtitle">استكشف مرافقنا المتطورة والمجهزة بأحدث التقنيات</p>
+        </div>
+        
+        <div class="facilities-grid">
+            <div class="facility-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="facility-img">
+                    <img src="I2.jpg" alt="Computer Lab">
+                    <div class="facility-overlay">
+                        <h3 class="facility-title">مختبرات الحاسب</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="facility-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="facility-img">
+                    <img src="I4.jpg" alt="Engineering Workshop">
+                    <div class="facility-overlay">
+                        <h3 class="facility-title">ورش الهندسة</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="facility-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="facility-img">
+                    <img src="m3.jpeg" alt="Library">
+                    <div class="facility-overlay">
+                        <h3 class="facility-title">مبني هندسة</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Research Section -->
+    <section class="research-section" id="research">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">البحث العلمي والابتكار</h2>
+            <p class="section-subtitle">نشر المعرفة ودفع عجلة التطور التكنولوجي</p>
+        </div>
+        
+        <div class="research-content">
+            <div class="research-text" data-aos="fade-right">
+                <h3>ريادة في البحث العلمي</h3>
+                <p>
+                    نلتزم في كلية الهندسة بتقديم أبحاث مبتكرة تساهم في حل التحديات العالمية وتطوير التكنولوجيا. يتميز أعضاء هيئة التدريس والباحثون لدينا بالتميز في مجالات البحث المتقدمة.
+                </p>
+                <p>
+                    من خلال شراكاتنا مع الجامعات والشركات العالمية، نوفر بيئة بحثية محفزة تدعم الابتكار والإبداع.
+                </p>
+                
+                <ul class="research-highlights">
+                    <li>أكثر من 100 بحث منشور سنوياً في مجلات علمية عالمية</li>
+                    <li>مراكز بحثية متخصصة في الهندسة المستدامة والذكاء الاصطناعي</li>
+                    <li>برامج دعم للطلاب المبتكرين والمشاريع البحثية المتميزة</li>
+                    <li>مؤتمرات وورش عمل دولية سنوية</li>
+                </ul>
+            </div>
+            
+            <div class="research-img" data-aos="fade-left">
+                <img src="m10.jpeg" alt="Research">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Student Life Section -->
+    <section class="student-life-section" id="student-life">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">حياة الطلاب</h2>
+            <p class="section-subtitle">تجربة جامعية غنية ومتنوعة خارج الفصل الدراسي</p>
+        </div>
+        
+        <div class="activities-grid">
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="activity-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="activity-title">الأنشطة الطلابية</h3>
+                <p>نوادي طلابية متنوعة تنظم فعاليات ثقافية واجتماعية ورياضية</p>
+            </div>
+            
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="activity-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="activity-title">المسابقات الهندسية</h3>
+                <p>مشاركة في مسابقات هندسية محلية وعالمية</p>
+            </div>
+            
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="activity-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3 class="activity-title">التدريب الميداني</h3>
+                <p>فرص تدريبية في كبرى الشركات والمؤسسات الهندسية</p>
+            </div>
+            
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="activity-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="activity-title">التبادل الطلابي</h3>
+                <p>برامج تبادل طلابي مع جامعات عالمية مرموقة</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Alumni Section -->
+    <section class="alumni-section" id="alumni">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">خريجونا</h2>
+            <p class="section-subtitle">قصص نجاح من خريجي كلية الهندسة</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "دراستي في كلية الهندسة أهلتني للعمل في كبرى الشركات العالمية. البيئة التعليمية المحفزة والتدريب العملي كانا مفتاح نجاحي."
+                </p>
+                <div class="alumni-info">
+                    <img src="https://via.placeholder.com/60x60" alt="Alumni" class="alumni-img">
+                    <div class="alumni-details">
+                        <h5>علي أحمد</h5>
+                        <p>مهندس مدني - شركة البناء العالمية</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "المهارات التي اكتسبتها في الكلية ساعدتني على إطلاق مشروعي الناجح في مجال التكنولوجيا. الشكر لكلية الهندسة على التأهيل المتميز."
+                </p>
+                <div class="alumni-info">
+                    <img src="https://via.placeholder.com/60x60" alt="Alumni" class="alumni-img">
+                    <div class="alumni-details">
+                        <h5>نورا محمد</h5>
+                        <p>مهندسة اتصالات - مؤسسة شركة تقنية</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p class="testimonial-text">
+                    "التركيز على الجانب العملي والبحث العلمي في الكلية أعطاني ميزة تنافسية قوية في سوق العمل. أنا فخور بكوني خريج كلية الهندسة."
+                </p>
+                <div class="alumni-info">
+                    <img src="https://via.placeholder.com/60x60" alt="Alumni" class="alumni-img">
+                    <div class="alumni-details">
+                        <h5>خالد سعيد</h5>
+                        <p>مهندس معماري - مكتب تصميم عالمي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Admission Section -->
+    <section class="admission-section" id="admission">
+        <div class="admission-content" data-aos="fade-up">
+            <h2 class="admission-title">القبول والتسجيل</h2>
+            <p>انضم إلى عائلة كلية الهندسة وابدأ رحلتك نحو التميز</p>
+            
+            <div class="admission-steps">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">التقديم الإلكتروني</h4>
+                    <p>املأ نموذج التقديم عبر الموقع الإلكتروني</p>
+                </div>
+                
+                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">رفع المستندات</h4>
+                    <p>ارفق جميع المستندات المطلوبة</p>
+                </div>
+                
+                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">المقابلة الشخصية</h4>
+                    <p>اجتياز المقابلة الشخصية والاختبارات</p>
+                </div>
+                
+                <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <h4 class="step-title">القبول النهائي</h4>
+                    <p>استلام رسالة القبول وإتمام الإجراءات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content" data-aos="fade-up">
+            <h2 class="cta-title">كن جزءاً من مستقبل الهندسة</h2>
+            <p class="cta-subtitle">سجل الآن في كلية الهندسة وابدأ رحلتك نحو التميز</p>
+            <div class="cta-buttons">
+                <a href="#admission" class="btn-cta btn-primary-cta">سجل الآن</a>
+                <a href="#contact" class="btn-cta btn-secondary-cta">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5>كلية الهندسة</h5>
+                        <p>كلية الهندسة بمعهد أكتوبر العالي للهندسة والتكنولوجيا تقدم تعليماً هندسياً متميزاً يجمع بين النظرية والتطبيق.</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/ohinstitute"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/Ohi_1993?t=79l5XJ4KeAaxJn7jeGuTrg&s=09"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/october-high-institute-for-engineering-technology/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/ohi_1993?igsh=d2NkcjJ4ZHE2aHFw"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5>روابط سريعة</h5>
+                        <ul class="footer-links">
+                            <li><a href="#departments">الأقسام</a></li>
+                            <li><a href="#facilities">المرافق</a></li>
+                            <li><a href="#admission">القبول</a></li>
+                            <li><a href="#research">البحث العلمي</a></li>
+                            <li><a href="#student-life">حياة الطلاب</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-widget">
+                        <h5>معلومات الاتصال</h5>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt ms-2"></i> القاهرة، مصر</li>
+                            <li><i class="fas fa-phone ms-2"></i> 01006069292</li>
+                            <li><i class="fas fa-envelope ms-2"></i> engineering@october-institute.edu</li>
+                            <li><i class="fas fa-clock ms-2"></i> السبت - الخميس: 9 ص - 5 م</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 معهد أكتوبر العالي للهندسة والتكنولوجيا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // تهيئة Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle',
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // القائمة المتجاوبة
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Animated Counter for Hero Stats
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerHTML = Math.floor(progress * (end - start) + start) + (element.innerHTML.includes('+') ? '+' : element.innerHTML.includes('%') ? '%' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+        
+        // Intersection Observer for Counter Animation
+        const observerOptions = {
+            threshold: 0.5
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.innerHTML;
+                        const number = parseInt(text.replace(/\D/g, ''));
+                        animateValue(stat, 0, number, 2000);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            observer.observe(heroStats);
+        }
+        
+        // زر تبديل الوضع الليلي/النهاري
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            // تغيير الأيقونة
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // إضافة تأثيرات حركية للعناصر عند التمرير
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
