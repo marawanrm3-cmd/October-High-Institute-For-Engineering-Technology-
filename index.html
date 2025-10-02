@@ -3990,432 +3990,647 @@
             margin-left: 0;
             margin-right: 10px;
         }
+        
         /* University Email Section Styles */
-.university-email-section {
-    background: var(--bg-white);
-    padding: 80px 30px;
+        .university-email-section {
+            background: var(--bg-white);
+            padding: 80px 30px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--bg-light);
+        }
+        
+        .university-email-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(1, 43, 91, 0.03), rgba(252, 163, 17, 0.03));
+            z-index: -1;
+        }
+        
+        .university-email-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .university-email-content {
+            background: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid var(--bg-light);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .university-email-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .university-email-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 40px;
+            text-align: center;
+            color: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .university-email-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0, transparent 70%);
+            animation: emailPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes emailPulse {
+            0%, 100% { transform: scale(1) rotate(0); }
+            50% { transform: scale(1.2) rotate(5deg); }
+        }
+        
+        .university-email-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .university-email-header:hover .university-email-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .university-email-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .university-email-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .university-email-body {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .email-levels {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .email-level-card {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all var(--transition-speed) ease;
+            border: 1px solid var(--bg-light);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .email-level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .email-level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-level-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--bg-white);
+            box-shadow: 0 5px 15px rgba(1, 43, 91, 0.3);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .email-level-card:hover .email-level-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--primary-light);
+        }
+        
+        .email-level-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+        
+        .email-level-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .btn-email-level {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--bg-white);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(1, 43, 91, 0.3);
+            justify-self: center;
+            margin-top: auto;
+        }
+        
+        .btn-email-level::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+            z-index: -1;
+        }
+        
+        .btn-email-level:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-email-level:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            box-shadow: 0 8px 25px rgba(1, 43, 91, 0.4);
+        }
+        
+        .email-instructions {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--bg-light);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .email-instructions:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-instructions h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .email-instructions ol {
+            margin-right: 20px;
+            counter-reset: step-counter;
+        }
+        
+        .email-instructions li {
+            margin-bottom: 15px;
+            padding-right: 40px;
+            position: relative;
+            counter-increment: step-counter;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .email-instructions li::before {
+            content: counter(step-counter);
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: var(--bg-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .email-note {
+            grid-column: 1 / -1;
+            background: rgba(252, 163, 17, 0.1);
+            border: 1px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .email-note:hover {
+            background: rgba(252, 163, 17, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .email-note i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .email-note p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .university-email-body {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .email-note {
+                grid-column: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .university-email-section {
+                padding: 60px 20px;
+            }
+            
+            .university-email-header {
+                padding: 30px 20px;
+            }
+            
+            .university-email-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .university-email-body {
+                padding: 30px 20px;
+            }
+            
+            .email-level-card {
+                padding: 25px 20px;
+            }
+            
+            .email-level-title {
+                font-size: 1.3rem;
+            }
+            
+            .email-instructions {
+                padding: 25px 20px;
+            }
+            
+            .email-instructions h3 {
+                font-size: 1.3rem;
+            }
+            
+            .email-instructions li {
+                font-size: 1rem;
+                padding-right: 35px;
+            }
+            
+            .email-instructions li::before {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .university-email-header {
+                padding: 25px 15px;
+            }
+            
+            .university-email-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .university-email-body {
+                padding: 25px 15px;
+            }
+            
+            .email-level-card {
+                padding: 20px 15px;
+            }
+            
+            .email-level-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .email-level-title {
+                font-size: 1.2rem;
+            }
+            
+            .btn-email-level {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .email-instructions {
+                padding: 20px 15px;
+            }
+            
+            .email-instructions h3 {
+                font-size: 1.2rem;
+            }
+            
+            .email-instructions li {
+                font-size: 0.9rem;
+                padding-right: 30px;
+                margin-bottom: 12px;
+            }
+            
+            .email-instructions li::before {
+                width: 22px;
+                height: 22px;
+                font-size: 0.8rem;
+            }
+            
+            .email-note {
+                padding: 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* تحسينات CSS للشعار */
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--bg-white);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-    border-top: 1px solid var(--bg-light);
+    z-index: 1;
+    gap: 15px; /* إضافة مسافة بين الصورة والنص */
 }
 
-.university-email-section::before {
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo::before {
     content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--secondary-color), transparent);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover::before {
+    opacity: 0.3;
+    animation: logoPulse 1.5s infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.logo-image-container {
+    width: 70px; /* زيادة الحجم قليلاً */
+    height: 70px;
+    margin-left: 0; /* إزالة الهامش الأيسر */
+    border-radius: 50%;
+    background: var(--bg-white);
+    padding: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo-image-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.logo-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease;
+}
+
+.logo-image-container:hover img {
+    transform: scale(1.05);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.logo-text h3 {
+    font-size: 1rem; /* زيادة الحجم قليلاً */
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+    color: var(--bg-white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* إضافة ظل للنص */
+}
+
+.logo-text .en {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 3px;
+        color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px; /* تحسين تباعد الحروف */
+}
+
+/* تأثير إضافي عند التمرير */
+.navbar.scrolled .logo-image-container {
+    width: 60px;
+    height: 60px;
+}
+
+.navbar.scrolled .logo-text h3 {
+    font-size: 0.9rem;
+}
+
+.navbar.scrolled .logo-text .en {
+    font-size: 0.7rem;
+}
+
+/* تحسينات للوضع المظلم */
+body[data-theme="dark"] .logo-image-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body[data-theme="dark"] .logo-text h3 {
+    color: var(--bg-white);
+}
+
+/* تأثير لامع للشعار */
+.logo-glow {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(1, 43, 91, 0.03), rgba(252, 163, 17, 0.03));
-    z-index: -1;
-}
-
-.university-email-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
-
-.university-email-content {
-    background: var(--bg-white);
-    border-radius: var(--border-radius);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    border: 1px solid var(--bg-light);
-    transition: all var(--transition-speed) ease;
-}
-
-.university-email-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.university-email-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    padding: 40px;
-    text-align: center;
-    color: var(--bg-white);
-    position: relative;
-    overflow: hidden;
-}
-
-.university-email-header::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0, transparent 70%);
-    animation: emailPulse 8s ease-in-out infinite;
-}
-
-@keyframes emailPulse {
-    0%, 100% { transform: scale(1) rotate(0); }
-    50% { transform: scale(1.2) rotate(5deg); }
-}
-
-.university-email-icon {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.2);
+    background: radial-gradient(circle, rgba(252, 163, 17, 0.2) 0%, transparent 70%);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 2.5rem;
-    color: var(--bg-white);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    transition: all var(--transition-speed) ease;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.university-email-header:hover .university-email-icon {
-    transform: scale(1.1) rotate(10deg);
-    background: rgba(255, 255, 255, 0.3);
+.logo:hover .logo-glow {
+    opacity: 1;
 }
 
-.university-email-header h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
+/* تحسينات للغة الإنجليزية */
+body.lang-en .logo {
+    flex-direction: row; /* الحفاظ على الاتجاه من اليسار لليمين */
 }
 
-.university-email-header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+body.lang-en .logo-image-container {
+    margin-left: 15px;
+    margin-right: 0;
 }
 
-.university-email-body {
-    padding: 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+body.lang-en .logo-text {
+    margin-right: 10px;
+    margin-left: 0;
 }
 
-.email-levels {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.email-level-card {
-    background: var(--bg-light);
-    border-radius: var(--border-radius);
-    padding: 30px;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: all var(--transition-speed) ease;
-    border: 1px solid var(--bg-light);
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.email-level-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.email-level-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.email-level-icon {
-    width: 70px;
-    height: 70px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 2rem;
-    color: var(--bg-white);
-    box-shadow: 0 5px 15px rgba(1, 43, 91, 0.3);
-    transition: all var(--transition-speed) ease;
-}
-
-.email-level-card:hover .email-level-icon {
-    transform: scale(1.1) rotate(10deg);
-    background: var(--primary-light);
-}
-
-.email-level-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--text-dark);
-    line-height: 1.4;
-}
-
-.email-level-description {
-    color: var(--text-light);
-    margin-bottom: 25px;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-.btn-email-level {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: var(--bg-white);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    box-shadow: 0 5px 15px rgba(1, 43, 91, 0.3);
-    justify-self: center;
-    margin-top: auto;
-}
-
-.btn-email-level::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.5s, height 0.5s;
-    z-index: -1;
-}
-
-.btn-email-level:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.btn-email-level:hover {
-    transform: translateY(-5px);
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    box-shadow: 0 8px 25px rgba(1, 43, 91, 0.4);
-}
-
-.email-instructions {
-    background: var(--bg-light);
-    border-radius: var(--border-radius);
-    padding: 30px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--bg-light);
-    transition: all var(--transition-speed) ease;
-}
-
-.email-instructions:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.email-instructions h3 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.email-instructions ol {
-    margin-right: 20px;
-    counter-reset: step-counter;
-}
-
-.email-instructions li {
-    margin-bottom: 15px;
-    padding-right: 40px;
-    position: relative;
-    counter-increment: step-counter;
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    line-height: 1.6;
-}
-
-.email-instructions li::before {
-    content: counter(step-counter);
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    background: var(--primary-color);
-    color: var(--bg-white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.email-note {
-    grid-column: 1 / -1;
-    background: rgba(252, 163, 17, 0.1);
-    border: 1px solid var(--secondary-color);
-    border-radius: var(--border-radius);
-    padding: 20px;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: all var(--transition-speed) ease;
-}
-
-.email-note:hover {
-    background: rgba(252, 163, 17, 0.2);
-    transform: translateY(-5px);
-}
-
-.email-note i {
-    color: var(--secondary-color);
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.email-note p {
-    color: var(--text-dark);
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .university-email-body {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
-    .email-note {
-        grid-column: 1;
-    }
-}
-
+/* تحسينات للموبايل */
 @media (max-width: 768px) {
-    .university-email-section {
-        padding: 60px 20px;
+    .logo-image-container {
+        width: 50px;
+        height: 50px;
     }
     
-    .university-email-header {
-        padding: 30px 20px;
-    }
-    
-    .university-email-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .university-email-body {
-        padding: 30px 20px;
-    }
-    
-    .email-level-card {
-        padding: 25px 20px;
-    }
-    
-    .email-level-title {
-        font-size: 1.3rem;
-    }
-    
-    .email-instructions {
-        padding: 25px 20px;
-    }
-    
-    .email-instructions h3 {
-        font-size: 1.3rem;
-    }
-    
-    .email-instructions li {
-        font-size: 1rem;
-        padding-right: 35px;
-    }
-    
-    .email-instructions li::before {
-        width: 25px;
-        height: 25px;
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .university-email-header {
-        padding: 25px 15px;
-    }
-    
-    .university-email-header h2 {
-        font-size: 1.6rem;
-    }
-    
-    .university-email-body {
-        padding: 25px 15px;
-    }
-    
-    .email-level-card {
-        padding: 20px 15px;
-    }
-    
-    .email-level-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-    }
-    
-    .email-level-title {
-        font-size: 1.2rem;
-    }
-    
-    .btn-email-level {
-        padding: 12px 25px;
-        font-size: 1rem;
-    }
-    
-    .email-instructions {
-        padding: 20px 15px;
-    }
-    
-    .email-instructions h3 {
-        font-size: 1.2rem;
-    }
-    
-    .email-instructions li {
-        font-size: 0.9rem;
-        padding-right: 30px;
-        margin-bottom: 12px;
-    }
-    
-    .email-instructions li::before {
-        width: 22px;
-        height: 22px;
+    .logo-text h3 {
         font-size: 0.8rem;
     }
     
-    .email-note {
-        padding: 15px;
-        flex-direction: column;
-        text-align: center;
+    .logo-text .en {
+        font-size: 0.6rem;
     }
+    
+    .navbar.scrolled .logo-image-container {
+        width: 45px;
+        height: 45px;
+    }
+    
 }
     </style>
 </head>
@@ -4441,17 +4656,12 @@
                     <i class="fas fa-globe"></i> EN
                 </button>
             </div>
-            
             <a href="index.html" class="logo">
-                <div class="logo-image-container">                                                  
-                </div>
-                <div class="logo-text">
-                    <h3>معهد أكتوبر العالي </h3>
-                    <div class="en">October Higher Institute</div>
-                </div>
-            </a>
-            
-            <!-- Mobile Menu Button -->
+    <div class="logo-text">
+        <div class="en">October Higher Institute for Engineering & Technology</div>
+    </div>
+</a>
+<!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -4497,7 +4707,7 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <ul class="mobile-menu-links">
+                <ul class="mobile-menu-links">
             <li>
                 <a href="index.html"><i class="fas fa-home"></i> <span class="nav-text">الصفحة الرئيسية</span></a>
             </li>
@@ -4570,7 +4780,7 @@
                     <i class="fas fa-graduation-cap"></i>
                     <span class="btn-text">النتائج الأكاديمية</span>
                 </a>
-                <a href="#university-email" class="btn-email">
+                <a href="https://script.google.com/macros/s/AKfycbys7YMMaI3cr4vGFd-4q5urm6ipn3mBcqM5J1bedpIfyyzNDFoZzHXgHYO2cvxXcU4/exec" class="btn-email">
                     <i class="fas fa-envelope"></i>
                     <span class="btn-text">الحصول على الايميل الجامعي</span>
                 </a>
@@ -4578,6 +4788,7 @@
         </div>
     </section>
     
+
     <!-- Video Section -->
     <section class="video-section fade-in">
         <div class="section-header" data-aos="fade-up">
@@ -4732,7 +4943,7 @@
                         <li><i class="fas fa-check-circle"></i> <span class="feature-text">تصميم الطرق والجسور</span></li>
                         <li><i class="fas fa-check-circle"></i> <span class="feature-text">هندسة المواد والتربة</span></li>
                     </ul>
-                    <a href="الاخبار ألاكاديمي.html" class="btn-department"><span class="btn-text">عرض المزيد</span></a>
+                    <a href="قسم هندسة مدني.html" class="btn-department"><span class="btn-text">عرض المزيد</span></a>
                 </div>
             </div>
             
@@ -4987,62 +5198,64 @@
         </div>
     </section>
     
- <section class="university-email-section fade-in" id="university-email">
-    <div class="section-header" data-aos="fade-up">
-        <div class="section-subtitle">
-            <span class="subtitle-text">البريد الجامعي</span>
-        </div>
-        <h2 class="section-title">
-            <span class="title-text">الحصول على الايميل الجامعي</span>
-        </h2>
-        <p class="section-description">
-            <span class="description-text">احصل على بريدك الإلكتروني الرسمي من معهد أكتوبر العالي للتواصل الأكاديمي والاستفادة من الخدمات الإلكترونية</span>
-        </p>
-    </div>
-    
-    <div class="university-email-container" data-aos="fade-up" data-aos-delay="100">
-        <div class="university-email-content">
-            <div class="university-email-header">
-                <div class="university-email-icon">
-                    <i class="fas fa-envelope-open-text"></i>
-                </div>
-                <h2>البريد الإلكتروني الجامعي</h2>
-                <p>خدمة إلكترونية متاحة لجميع طلاب المعهد والخريجين</p>
+    <!-- University Email Section - Enhanced -->
+    <section class="university-email-section fade-in" id="university-email">
+        <div class="section-header" data-aos="fade-up">
+            <div class="section-subtitle">
+                <span class="subtitle-text">البريد الجامعي</span>
             </div>
-            
-            <div class="university-email-body">
-                <div class="email-levels">
-                    <div class="email-level-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="email-level-icon">
-                            <i class="fas fa-user-graduate"></i>
+            <h2 class="section-title">
+                <span class="title-text">الحصول على الايميل الجامعي</span>
+            </h2>
+            <p class="section-description">
+                <span class="description-text">احصل على بريدك الإلكتروني الرسمي من معهد أكتوبر العالي للتواصل الأكاديمي والاستفادة من الخدمات الإلكترونية</span>
+            </p>
+        </div>
+        
+        <div class="university-email-container" data-aos="fade-up" data-aos-delay="100">
+            <div class="university-email-content">
+                <div class="university-email-header">
+                    <div class="university-email-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h2>البريد الإلكتروني الجامعي</h2>
+                    <p>خدمة إلكترونية متاحة لجميع طلاب المعهد والخريجين</p>
+                </div>
+                
+                <div class="university-email-body">
+                    <div class="email-levels">
+                        <div class="email-level-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="email-level-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h3 class="email-level-title">المستوى الأول<br>المستوى الثاني<br>المستوى الثالث<br>المستوى الرابع<br>الخريجون</h3>
+                            <p class="email-level-description">للطلاب لجميع الطلاب والخريجين</p>
+                            <a href="https://script.google.com/macros/s/AKfycbys7YMMaI3cr4vGFd-4q5urm6ipn3mBcqM5J1bedpIfyyzNDFoZzHXgHYO2cvxXcU4/exec" target="_blank" class="btn-email-level">
+                                <i class="fas fa-arrow-left"></i> احصل على البريد
+                            </a>
                         </div>
-                        <h3 class="email-level-title">المستوى الأول<br>المستوى الثاني<br>المستوى الثالث<br>المستوى الرابع<br>الخريجون</h3>
-                        <p class="email-level-description">للطلاب لجميع الطلاب والخريجين</p>
-                        <a href="https://script.google.com/macros/s/AKfycbys7YMMaI3cr4vGFd-4q5urm6ipn3mBcqM5J1bedpIfyyzNDFoZzHXgHYO2cvxXcU4/exec" target="_blank" class="btn-email-level">
-                            <i class="fas fa-arrow-left"></i> احصل على البريد
-                        </a>
+                    </div>
+                    
+                    <div class="email-instructions">
+                        <h3><i class="fas fa-info-circle"></i> خطوات الحصول على الايميل الجامعي</h3>
+                        <ol>
+                            <li>اضغط علي البوتن</li>
+                            <li>إدخال الكود الخاص بالطالب في الحقل </li>
+                            <li>الضغط على زر "عرض البيانات" أو "إرسال"</li>
+                            <li>ستظهر بيانات الطالب للتأكد من الهوية</li>
+                            <li>سيتم عرض البريد الإلكتروني وكلمة المرور الخاصة بك</li>
+                            <li>يمكنك استخدام هذه البيانات لتسجيل الدخول إلى البريد الإلكتروني الجامعي</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="email-note">
+                        <p><i class="fas fa-exclamation-triangle"></i> ملاحظة: البريد الإلكتروني الجامعي يستخدم للتواصل الرسمي مع المعهد والوصول إلى الخدمات الإلكترونية والمنصات التعليمية</p>
                     </div>
                 </div>
-                
-                <div class="email-instructions">
-                    <h3><i class="fas fa-info-circle"></i> خطوات الحصول على الايميل الجامعي</h3>
-                    <ol>
-                        <li>اضغط علي البوتن</li>
-                        <li>إدخال الكود الخاص بالطالب في الحقل </li>
-                        <li>الضغط على زر "عرض البيانات" أو "إرسال"</li>
-                        <li>ستظهر بيانات الطالب للتأكد من الهوية</li>
-                        <li>سيتم عرض البريد الإلكتروني وكلمة المرور الخاصة بك</li>
-                        <li>يمكنك استخدام هذه البيانات لتسجيل الدخول إلى البريد الإلكتروني الجامعي</li>
-                    </ol>
-                </div>
-                
-                <div class="email-note">
-                    <p><i class="fas fa-exclamation-triangle"></i> ملاحظة: البريد الإلكتروني الجامعي يستخدم للتواصل الرسمي مع المعهد والوصول إلى الخدمات الإلكترونية والمنصات التعليمية</p>
-                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    
     <!-- FAQ Section - New Section -->
     <section class="faq-section fade-in">
         <div class="section-header" data-aos="fade-up">
@@ -6061,22 +6274,6 @@
                     el.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ملاحظة: البريد الإلكتروني الجامعي يستخدم للتواصل الرسمي مع المعهد والوصول إلى الخدمات الإلكترونية والمنصات التعليمية';
                 }
             });
-            
-            // Update FAQ
-            document.querySelectorAll('.faq-question span').forEach(el => {
-                switch(el.textContent) {
-                    case 'ما هي شروط القبول في المعهد؟': el.textContent = 'What are the admission requirements for the institute?'; break;
-                    case 'ما هي المصروفات الدراسية في المعهد؟': el.textContent = 'What are the tuition fees at the institute?'; break;
-                    case 'هل يوفر المعهد سكن للطلاب؟': el.textContent = 'Does the institute provide accommodation for students?'; break;
-                    case 'ما هي فرص التوظيف بعد التخرج؟': el.textContent = 'What are the employment opportunities after graduation?'; break;
-                    case 'هل المعهد معتمد من قبل الهيئات التعليمية؟': el.textContent = 'Is the institute accredited by educational bodies?'; break;
-                    case 'What are the admission requirements for the institute?': el.textContent = 'ما هي شروط القبول في المعهد؟'; break;
-                    case 'What are the tuition fees at the institute?': el.textContent = 'ما هي المصروفات الدراسية في المعهد؟'; break;
-                    case 'Does the institute provide accommodation for students?': el.textContent = 'هل يوفر المعهد سكن للطلاب؟'; break;
-                    case 'What are the employment opportunities after graduation?': el.textContent = 'ما هي فرص التوظيف بعد التخرج؟'; break;
-                    case 'Is the institute accredited by educational bodies?': el.textContent = 'هل المعهد معتمد من قبل الهيئات التعليمية؟'; break;
-                }
-            });
         }
         
         // Mobile Menu
@@ -6736,111 +6933,111 @@
             });
         });
         // University Email Section JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize animations for university email section
-    const universityEmailSection = document.getElementById('university-email');
-    
-    if (universityEmailSection) {
-        // Add hover effect to email level card
-        const emailLevelCard = document.querySelector('.email-level-card');
-        if (emailLevelCard) {
-            emailLevelCard.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize animations for university email section
+            const universityEmailSection = document.getElementById('university-email');
             
-            emailLevelCard.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        }
-        
-        // Add hover effect to instructions
-        const emailInstructions = document.querySelector('.email-instructions');
-        if (emailInstructions) {
-            emailInstructions.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-            
-            emailInstructions.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        }
-        
-        // Add hover effect to note
-        const emailNote = document.querySelector('.email-note');
-        if (emailNote) {
-            emailNote.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-5px)';
-            });
-            
-            emailNote.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        }
-        
-        // Add click animation to email button
-        const emailButton = document.querySelector('.btn-email-level');
-        if (emailButton) {
-            emailButton.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                // Remove ripple after animation completes
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-                
-                // Add loading state
-                const originalText = this.innerHTML;
-                this.innerHTML = '<span class="loading"></span> جاري التحميل...';
-                this.disabled = true;
-                
-                // Simulate loading and then restore button
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.disabled = false;
-                }, 1500);
-            });
-        }
-        
-        // Add step animation on scroll
-        const emailSteps = document.querySelectorAll('.email-instructions li');
-        
-        const stepsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateX(0)';
+            if (universityEmailSection) {
+                // Add hover effect to email level card
+                const emailLevelCard = document.querySelector('.email-level-card');
+                if (emailLevelCard) {
+                    emailLevelCard.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-10px)';
+                    });
+                    
+                    emailLevelCard.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
                 }
-            });
-        }, {
-            threshold: 0.5
+                
+                // Add hover effect to instructions
+                const emailInstructions = document.querySelector('.email-instructions');
+                if (emailInstructions) {
+                    emailInstructions.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                    });
+                    
+                    emailInstructions.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+                }
+                
+                // Add hover effect to note
+                const emailNote = document.querySelector('.email-note');
+                if (emailNote) {
+                    emailNote.addEventListener('mouseenter', function() {
+                        this.style.transform = 'translateY(-5px)';
+                    });
+                    
+                    emailNote.addEventListener('mouseleave', function() {
+                        this.style.transform = 'translateY(0)';
+                    });
+                }
+                
+                // Add click animation to email button
+                const emailButton = document.querySelector('.btn-email-level');
+                if (emailButton) {
+                    emailButton.addEventListener('click', function(e) {
+                        // Create ripple effect
+                        const ripple = document.createElement('span');
+                        ripple.classList.add('ripple');
+                        
+                        const rect = this.getBoundingClientRect();
+                        const size = Math.max(rect.width, rect.height);
+                        const x = e.clientX - rect.left - size / 2;
+                        const y = e.clientY - rect.top - size / 2;
+                        
+                        ripple.style.width = ripple.style.height = size + 'px';
+                        ripple.style.left = x + 'px';
+                        ripple.style.top = y + 'px';
+                        
+                        this.style.position = 'relative';
+                        this.style.overflow = 'hidden';
+                        this.appendChild(ripple);
+                        
+                        // Remove ripple after animation completes
+                        setTimeout(() => {
+                            ripple.remove();
+                        }, 600);
+                        
+                        // Add loading state
+                        const originalText = this.innerHTML;
+                        this.innerHTML = '<span class="loading"></span> جاري التحميل...';
+                        this.disabled = true;
+                        
+                        // Simulate loading and then restore button
+                        setTimeout(() => {
+                            this.innerHTML = originalText;
+                            this.disabled = false;
+                        }, 1500);
+                    });
+                }
+                
+                // Add step animation on scroll
+                const emailSteps = document.querySelectorAll('.email-instructions li');
+                
+                const stepsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateX(0)';
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+                
+                emailSteps.forEach((step, index) => {
+                    // Set initial state
+                    step.style.opacity = '0';
+                    step.style.transform = 'translateX(-20px)';
+                    step.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                    
+                    // Observe step
+                    stepsObserver.observe(step);
+                });
+            }
         });
-        
-        emailSteps.forEach((step, index) => {
-            // Set initial state
-            step.style.opacity = '0';
-            step.style.transform = 'translateX(-20px)';
-            step.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
-            
-            // Observe step
-            stepsObserver.observe(step);
-        });
-    }
-});
     </script>
 </body>
 </html>
